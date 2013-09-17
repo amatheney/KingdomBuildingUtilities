@@ -1,5 +1,6 @@
 package settlements;
 
+/**Container class to store the modifiers for a settlement - broken out to be more flexible and placed in buildings, settlements, disctricts and kingdoms alike.*/
 public class SettlementMods
 {
 	int settlementCorruptionModifier;
@@ -11,6 +12,7 @@ public class SettlementMods
 	int settlementProductivityModifier;
 	int settlementBaseValueModifier;
 	
+	/**Generic constructor*/
 	public SettlementMods()
 	{
 		this.settlementCorruptionModifier = 0;
@@ -23,6 +25,7 @@ public class SettlementMods
 		this.settlementBaseValueModifier = 0;
 	}
 	
+	/**Constructor that just takes the variables supllied and stuffs them in a class*/
 	public SettlementMods(int settlementCorruptionModifier, int settlementCrimeModifier, int settlementLawModifier, int settlementLoreModifier, 
 			int settlementSocietyModifier, int settlementDangerModifier, int settlementProductivityModifier, int settlementBaseValueModifier)
 	{
