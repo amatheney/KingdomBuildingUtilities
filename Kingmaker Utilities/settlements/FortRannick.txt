@@ -1,0 +1,42 @@
+Altar
+Armory
+Artisan's Workshop
+Artisan's Workshop
+Bath
+Bedroom
+Bedroom
+Bedroom
+Bedroom
+Bedroom
+Bedroom
+Bedroom
+Bell Tower
+Book Repository
+Cell
+Cell
+Cell
+Cell
+Cell
+Cell
+Cell
+Cell
+Ceremonial Room
+Courtyard
+Courtyard
+Crypt
+Defensive Wall
+Defensive Wall
+Escape Route
+Forge
+Gatehouse
+Gatehouse
+Gauntlet
+Gauntlet
+Hatchery
+Kitchen
+Lavatory
+Lodging
+Office
+Sanctum
+Storage
+Storage

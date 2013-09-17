@@ -1,0 +1,18 @@
+Altar
+Bedroom
+Bell Tower
+Book Repository
+Cell
+Ceremonial Room
+Confessional
+Courtyard
+Crypt
+Garden
+Gatehouse
+Gauntlet
+Kitchen
+Lavatory
+Office
+Sitting Room
+Statue
+Storage
