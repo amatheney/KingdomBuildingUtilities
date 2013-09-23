@@ -8,10 +8,10 @@ import java.io.Writer;
 import java.util.Scanner;
 
 
-public class BuildingFileReader 
+public class SettlementFileReader 
 {
 	/** Constructor. */
-	BuildingFileReader(String aFileName, String aEncoding)
+	SettlementFileReader(String aFileName, String aEncoding)
 	{
 	    fEncoding = aEncoding;
 	    fFileName = aFileName;
@@ -33,9 +33,9 @@ public class BuildingFileReader
 	}
 	  
 	/** Read the contents of the given file. */
-	Building[] read(Room[] completeRooms, FurnishingsAndTraps[] completeFurnishingList) throws IOException 
+	Settlement[] read(Building[] completeBuildings, Room[] completeRooms, FurnishingsAndTraps[] completeFurnishingList) throws IOException 
 	{
-		Building[] returnList = new Building[0];
+		Settlement[] returnList = new Settlement[0];
 		
 		log("Reading from " + fFileName);
 	    Scanner scanner = new Scanner(new FileInputStream(fFileName), fEncoding);
@@ -43,7 +43,7 @@ public class BuildingFileReader
 	      while (scanner.hasNextLine())
 	      {
 	    	String output = scanner.nextLine();
-	    	Building tempElement = new Building(output, completeRooms, completeFurnishingList);
+	    	Settlement tempElement = new Settlement(output, completeBuildings, completeRooms, completeFurnishingList);
 	    	returnList = expand(tempElement, returnList);
 	    	returnList[returnList.length-1]= tempElement;
 	      }
@@ -56,9 +56,9 @@ public class BuildingFileReader
 	}
 	
 	/**Expand the array by one, adding our new element to the expanded array*/
-	private Building[] expand(Building tempElement, Building[] oldArray)
+	private Settlement[] expand(Settlement tempElement, Settlement[] oldArray)
 	{
-		Building[] newArray = new Building[oldArray.length+1];
+		Settlement[] newArray = new Settlement[oldArray.length+1];
 		
 		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
 		
@@ -109,3 +109,4 @@ public class BuildingFileReader
 
 
 }
+

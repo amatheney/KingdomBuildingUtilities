@@ -1,5 +1,6 @@
 package settlements;
 
+
 /**Container class used to store all the attributes of a Building, from the rooms within to the modifiers on the settlement and kingdom in which the building resides*/
 public class Building 
 {

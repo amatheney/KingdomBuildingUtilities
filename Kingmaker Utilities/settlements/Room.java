@@ -203,9 +203,11 @@ public class Room {
 		FurnishingsAndTraps[] completeFurnishingList = getFurnishingsDB("settlements\\FurnishingsAndTrapsCSV.txt");
 		Building[] completeBuildingList = getBuildingDB("settlements\\buildingsCSV.txt", completeRoomList, completeFurnishingList);
 		
-		System.out.println("I want to find a Castle: ");
-		String buildingToSearchFor = "Castle";
-		System.out.println("There are " + completeBuildingList[RoomUtilities.indexOf(buildingToSearchFor, completeBuildingList)].Furnishings.length + " furnishings in a " + buildingToSearchFor);
-		System.out.println(completeBuildingList[RoomUtilities.indexOf(buildingToSearchFor, completeBuildingList)].toString());
+		//Settlement testSettlement = new Settlement("Wut", completeBuildingList, completeRoomList, completeFurnishingList);
+		Settlement testSettlement = new Settlement("Name=Coastal Cairns;Alignment=NN;Population=600;Qualities=N/A;NotableNPCs=\"Mayor Brodert Quink: CG Adept 3\"," +
+				"\"Balor Hemlock: LN Fighter 4/Rogue 1\";District:The Old Quarter=\"House,House,Castle,Cathedral\";District:Prison District=\"Jail,Jail,Jail,Jail\"",
+				completeBuildingList, completeRoomList, completeFurnishingList);
+		System.out.println("There are " + testSettlement.Districts.length + " districts in this settlement");
+		System.out.println(testSettlement.completeBuildingOutput());
 	}
 }

@@ -3,6 +3,7 @@ package settlements;
 import java.io.*;
 import java.util.Scanner;
 
+
 public class RoomFileReader 
 {
 	 /** Constructor. */

@@ -1,3 +1,9 @@
+System.out.println("I want to find a Castle: ");
+		String buildingToSearchFor = "Castle";
+		System.out.println("There are " + completeBuildingList[RoomUtilities.indexOf(buildingToSearchFor, completeBuildingList)].Furnishings.length + " furnishings in a " + buildingToSearchFor);
+		System.out.println(completeBuildingList[RoomUtilities.indexOf(buildingToSearchFor, completeBuildingList)].toString());
+
+
 		/*System.out.println("Mic Check");
 		Room myRoom = new Room("Alchemy Lab;10;10;0;0;10;0;Counts as an alchemist's laboratory (equipment);390;8;1;5;1;16;8;16;N/A;N/A;" +
 				"\"This room aids you when you're attempting Craft (Alchemy) checks, researching new alchemist's forumulae, and performing similar tasks. " +

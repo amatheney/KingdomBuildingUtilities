@@ -38,4 +38,36 @@ public class SettlementMods
 		this.settlementProductivityModifier = settlementProductivityModifier;
 		this.settlementBaseValueModifier = settlementBaseValueModifier;
 	}
+	
+	public SettlementMods combineSettlementMods(SettlementMods other)
+	{
+		SettlementMods toBeReturned = new SettlementMods();
+		
+		toBeReturned.settlementCorruptionModifier = this.settlementCorruptionModifier + other.settlementCorruptionModifier;
+		toBeReturned.settlementCrimeModifier = this.settlementCrimeModifier + other.settlementCrimeModifier;
+		toBeReturned.settlementLawModifier = this.settlementLawModifier + other.settlementLawModifier;
+		toBeReturned.settlementLoreModifier = this.settlementLoreModifier + other.settlementLoreModifier;
+		toBeReturned.settlementSocietyModifier = this.settlementSocietyModifier + other.settlementSocietyModifier;
+		toBeReturned.settlementDangerModifier = this.settlementDangerModifier + other.settlementDangerModifier;
+		toBeReturned.settlementProductivityModifier = this.settlementProductivityModifier + other.settlementProductivityModifier;
+		toBeReturned.settlementBaseValueModifier = this.settlementBaseValueModifier + other.settlementBaseValueModifier;
+		
+		return toBeReturned;
+	}
+	
+	public String toString()
+	{
+		String returnString = "\n----===Settlement Modifiers===----\n";
+		
+		returnString += "Corruption: " + settlementCorruptionModifier + "\n";
+		returnString += "Crime: " + settlementCrimeModifier + "\n";
+		returnString += "Law: " + settlementLawModifier + "\n";
+		returnString += "Lore: " + settlementLoreModifier + "\n";
+		returnString += "Society: " + settlementSocietyModifier + "\n";
+		returnString += "Danger: " + settlementDangerModifier + "\n";
+		returnString += "Productivity: " + settlementProductivityModifier + "\n";
+		returnString += "Base Purchase Value: " + settlementBaseValueModifier + "\n";
+		
+		return returnString;
+	}
 }
