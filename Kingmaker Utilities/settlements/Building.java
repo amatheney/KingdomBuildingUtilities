@@ -5,6 +5,7 @@ package settlements;
 public class Building 
 {
 	String name;
+	String owner;
 	Room[] rooms;
 	
 	BalanceSheet GPEarnable;
@@ -42,6 +43,7 @@ public class Building
 	public Building()
 	{
 		this.name = "";
+		this.owner = "";
 		this.rooms = new Room[0];
 		
 		this.GPEarnable = new BalanceSheet();
@@ -133,6 +135,7 @@ public class Building
 		String[] tokens = rawCSV.split("\\;");
 		
 		this.name = RoomUtilities.snipQuotes(tokens[0]);										//BuildingName 	[0]
+		this.owner = "";
 		this.Benefit = RoomUtilities.snipQuotes(tokens[1]);										//Benefit 		[1]
 		this.Description = RoomUtilities.snipQuotes(tokens[2]);									//Description	[2]
 		String rawRooms = RoomUtilities.snipQuotes(tokens[25]);
@@ -211,7 +214,7 @@ public class Building
 				}
 				if (!(toBeAdded.Name.equals("")))		//If NOT blank (element found in completeFurnishingList
 				{
-					returnList = expand(toBeAdded, returnList);
+					returnList = RoomUtilities.expand(toBeAdded, returnList);
 					returnList[returnList.length-1] = toBeAdded;
 				}
 			}
@@ -319,12 +322,19 @@ public class Building
 				settlementSocietyModifier,settlementDangerModifier,settlementProductivityModifier,settlementBaseValueModifier);
 	}
 	
+	public void setOwnwer(String name)
+	{
+		this.owner = name;
+	}
+	
 	public String toString()
 	{
 		String returnString = "\n";
 		
 		//First, some basic info:
 		returnString += "----==Building: " + this.name + "==----\n";
+		if (!(owner.equals("")))
+			returnString += "Owned by " + owner + "\n";
 		if (!(Benefit.equals("N/A")))
 			returnString += "Benefit: " + Benefit + "\n";
 		returnString += "Description: " + Description + "\n";
@@ -364,6 +374,37 @@ public class Building
 		returnString += getKingdomDescriptions();
 		
 		return returnString;
+	}
+	
+	/**Determines if any of the rooms in the supplied array generate gold pieces for income*/
+	public boolean isGPEarnable()
+	{
+		return RoomUtilities.isGPEarnable(this.rooms);
+	}
+	/**Determines if any of the rooms in the supplied array generate goods for income*/
+	public boolean isGoodsEarnable()
+	{
+		return RoomUtilities.isGoodsEarnable(this.rooms);
+	}
+	/**Determines if any of the rooms in the supplied array generate labor for income*/
+	public boolean isLaborEarnable()
+	{
+		return RoomUtilities.isLaborEarnable(this.rooms);
+	}
+	/**Determines if any of the rooms in the supplied array generate influence for income*/
+	public boolean isInfluenceEarnable()
+	{
+		return RoomUtilities.isInfluenceEarnable(this.rooms);
+	}
+	/**Determines if any of the rooms in the supplied array generate magic for income*/
+	public boolean isMagicEarnable()
+	{
+		return RoomUtilities.isMagicEarnable(this.rooms);
+	}
+	/**Determines if any of the rooms in the supplied array generate capital for income*/
+	public boolean isCapitalEarnable()
+	{
+		return RoomUtilities.isCapitalEarnable(this.rooms);
 	}
 	
 	/**A helper method to get less verbose output*/
@@ -478,116 +519,21 @@ public class Building
 		
 		return returnString;
 	}
-	
-	/**Determines if any of the rooms in the supplied array generate gold pieces for income*/
-	static boolean isGPEarnable(Room[] array)
-	{
-		boolean found = false;
-		//Loop over array
-		for (int lcv = 0; lcv < array.length; lcv++)
-		{
-			if (array[lcv].GPEarnings > 0)
-			{
-				found = true;
-				return found;
-			}
-		}
-		
-		return found;
-	}
-	/**Determines if any of the rooms in the supplied array generate goods for income*/
-	static boolean isGoodsEarnable(Room[] array)
-	{
-		boolean found = false;
-		//Loop over array
-		for (int lcv = 0; lcv < array.length; lcv++)
-		{
-			if (array[lcv].GoodsEarnings > 0)
-			{
-				found = true;
-				return found;
-			}
-		}
-		
-		return found;
-	}
-	/**Determines if any of the rooms in the supplied array generate labor for income*/
-	static boolean isLaborEarnable(Room[] array)
-	{
-		boolean found = false;
-		//Loop over array
-		for (int lcv = 0; lcv < array.length; lcv++)
-		{
-			if (array[lcv].LaborEarnings > 0)
-			{
-				found = true;
-				return found;
-			}
-		}
-		
-		return found;
-	}
-	/**Determines if any of the rooms in the supplied array generate influence for income*/
-	static boolean isInfluenceEarnable(Room[] array)
-	{
-		boolean found = false;
-		//Loop over array
-		for (int lcv = 0; lcv < array.length; lcv++)
-		{
-			if (array[lcv].InfluenceEarnings > 0)
-			{
-				found = true;
-				return found;
-			}
-		}
-		
-		return found;
-	}
-	/**Determines if any of the rooms in the supplied array generate magic for income*/
-	static boolean isMagicEarnable(Room[] array)
-	{
-		boolean found = false;
-		//Loop over array
-		for (int lcv = 0; lcv < array.length; lcv++)
-		{
-			if (array[lcv].MagicEarnings > 0)
-			{
-				found = true;
-				return found;
-			}
-		}
-		
-		return found;
-	}
-	/**Determines if any of the rooms in the supplied array generate capital for income*/
-	static boolean isCapitalEarnable(Room[] array)
-	{
-		boolean found = false;
-		//Loop over array
-		for (int lcv = 0; lcv < array.length; lcv++)
-		{
-			if (array[lcv].CapitalEarnings > 0)
-			{
-				found = true;
-				return found;
-			}
-		}
-		
-		return found;
-	}
+
 	
 	/**Generates a BalanceSheet class that provides the sum total production of the room array provided*/
 	BalanceSheet generateBalanceSheet(String preferredIncome)
 	{
+		regenerateBalanceSheets();
 		BalanceSheet returnSheet = new BalanceSheet();
 		returnSheet.preferredIncome = preferredIncome;	//For toString purposes
 		
 		//Check overall potentials for capital derivation
-		boolean GPEarnableOverall = isGPEarnable(rooms);
-		boolean GoodsEarnableOverall = isGoodsEarnable(rooms);
-		boolean InfluenceEarnableOverall = isInfluenceEarnable(rooms);
-		boolean LaborEarnableOverall = isLaborEarnable(rooms);
-		boolean MagicEarnableOverall = isMagicEarnable(rooms);
+		boolean GPEarnableOverall = isGPEarnable();
+		boolean GoodsEarnableOverall = isGoodsEarnable();
+		boolean InfluenceEarnableOverall = isInfluenceEarnable();
+		boolean LaborEarnableOverall = isLaborEarnable();
+		boolean MagicEarnableOverall = isMagicEarnable();
 		
 		for (int lcv = 0; lcv < rooms.length; lcv++)
 		{
@@ -595,12 +541,12 @@ public class Building
 			Room[] tempArray = new Room[1];
 			tempArray[0] = rooms[lcv];
 			//Check the earning potential of this particular element
-			boolean GPEarnable = isGPEarnable(tempArray);
-			boolean GoodsEarnable = isGoodsEarnable(tempArray);
-			boolean InfluenceEarnable = isInfluenceEarnable(tempArray);
-			boolean LaborEarnable = isLaborEarnable(tempArray);
-			boolean MagicEarnable = isMagicEarnable(tempArray);
-			boolean CapitalEarnable = isCapitalEarnable(tempArray);
+			boolean GPEarnable = RoomUtilities.isGPEarnable(tempArray);
+			boolean GoodsEarnable = RoomUtilities.isGoodsEarnable(tempArray);
+			boolean InfluenceEarnable = RoomUtilities.isInfluenceEarnable(tempArray);
+			boolean LaborEarnable = RoomUtilities.isLaborEarnable(tempArray);
+			boolean MagicEarnable = RoomUtilities.isMagicEarnable(tempArray);
+			boolean CapitalEarnable = RoomUtilities.isCapitalEarnable(tempArray);
 			//Logic is the same, only the variables have been changed, to protect the innocent
 			//Check to see if prefferedIncome is available, if so, favor it. Capital, a special resource, can be used to produce any other type that building can produce
 			if (preferredIncome == "GP")
@@ -766,7 +712,7 @@ public class Building
 							toBeAdded = completeRoomList[roomIndex];
 							//Expand the array
 							//System.out.println("I'm about to add " + toBeAdded.Name + " to the room array! That will make rooms[] " + (returnRooms.length+1) + " elements long.");
-							returnRooms = expand(toBeAdded, returnRooms);
+							returnRooms = RoomUtilities.expand(toBeAdded, returnRooms);
 							returnRooms[returnRooms.length-1]= toBeAdded;
 											
 							//System.out.println("Yep, " + returnRooms[returnRooms.length-1].Name + "Is really in here");
@@ -776,25 +722,5 @@ public class Building
 			}
 		}
 		return returnRooms;
-	}
-	
-	/**Expand the array by one, adding our new element to the expanded array*/
-	private static Room[] expand(Room tempElement, Room[] oldArray)
-	{
-		Room[] newArray = new Room[oldArray.length+1];
-		
-		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
-		
-		return newArray;
-	}
-	
-	/**Expand the array by one, adding our new element to the expanded array*/
-	private static FurnishingsAndTraps[] expand(FurnishingsAndTraps tempElement, FurnishingsAndTraps[] oldArray)
-	{
-		FurnishingsAndTraps[] newArray = new FurnishingsAndTraps[oldArray.length+1];
-		
-		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
-		
-		return newArray;
 	}
 }

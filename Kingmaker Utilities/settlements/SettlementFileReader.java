@@ -33,7 +33,7 @@ public class SettlementFileReader
 	}
 	  
 	/** Read the contents of the given file. */
-	Settlement[] read(Building[] completeBuildings, Room[] completeRooms, FurnishingsAndTraps[] completeFurnishingList) throws IOException 
+	Settlement[] read(Building[] completeBuildings, Room[] completeRooms, FurnishingsAndTraps[] completeFurnishingList, Quality[] completeQualityList) throws IOException 
 	{
 		Settlement[] returnList = new Settlement[0];
 		
@@ -43,8 +43,8 @@ public class SettlementFileReader
 	      while (scanner.hasNextLine())
 	      {
 	    	String output = scanner.nextLine();
-	    	Settlement tempElement = new Settlement(output, completeBuildings, completeRooms, completeFurnishingList);
-	    	returnList = expand(tempElement, returnList);
+	    	Settlement tempElement = new Settlement(output, completeBuildings, completeRooms, completeFurnishingList, completeQualityList);
+	    	returnList = RoomUtilities.expand(tempElement, returnList);
 	    	returnList[returnList.length-1]= tempElement;
 	      }
 	    }
@@ -53,16 +53,6 @@ public class SettlementFileReader
 	    }
 	    //log("Text read in: " + text);
 	    return returnList;
-	}
-	
-	/**Expand the array by one, adding our new element to the expanded array*/
-	private Settlement[] expand(Settlement tempElement, Settlement[] oldArray)
-	{
-		Settlement[] newArray = new Settlement[oldArray.length+1];
-		
-		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
-		
-		return newArray;
 	}
 	
 	public String[] readTextFile() throws IOException
@@ -76,7 +66,7 @@ public class SettlementFileReader
 	      {
 	    	String output = scanner.nextLine();
 	    	//String tempElement = new String(output, completeRooms);
-	    	returnList = expandStringArray(output, returnList);
+	    	returnList = RoomUtilities.expandStringArray(output, returnList);
 	    	returnList[returnList.length-1]= output;
 	      }
 	    }
@@ -85,16 +75,6 @@ public class SettlementFileReader
 	    }
 	    //log("Text read in: " + text);
 	    return returnList;
-	}
-	
-	/**Expand the array by one, adding our new element to the expanded array*/
-	private String[] expandStringArray(String tempElement, String[] oldArray)
-	{
-		String[] newArray = new String[oldArray.length+1];
-		
-		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
-		
-		return newArray;
 	}
 	  
 	// PRIVATE 

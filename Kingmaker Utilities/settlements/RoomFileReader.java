@@ -44,7 +44,7 @@ public class RoomFileReader
 	        //text.append(scanner.nextLine() + NL);
 	    	//log(output);
 	    	Room tempElement = new Room(output);
-	    	returnList = expand(tempElement, returnList);
+	    	returnList = RoomUtilities.expand(tempElement, returnList);
 	    	returnList[returnList.length-1]= tempElement;
 	      }
 	    }
@@ -53,16 +53,6 @@ public class RoomFileReader
 	    }
 	    //log("Text read in: " + text);
 	    return returnList;
-	}
-	
-	/**Expand the array by one, adding our new element to the expanded array*/
-	private Room[] expand(Room tempElement, Room[] oldArray)
-	{
-		Room[] newArray = new Room[oldArray.length+1];
-		
-		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
-		
-		return newArray;
 	}
 	  
 	// PRIVATE 

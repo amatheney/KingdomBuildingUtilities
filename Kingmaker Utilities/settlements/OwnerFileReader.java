@@ -7,10 +7,11 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.Scanner;
 
-public class FurnishingsAndTrapsFileReader 
+
+public class OwnerFileReader 
 {
 	/** Constructor. */
-	FurnishingsAndTrapsFileReader(String aFileName, String aEncoding)
+	OwnerFileReader(String aFileName, String aEncoding)
 	{
 	    fEncoding = aEncoding;
 	    fFileName = aFileName;
@@ -32,9 +33,9 @@ public class FurnishingsAndTrapsFileReader
 	}
 	  
 	/** Read the contents of the given file. */
-	FurnishingsAndTraps[] read() throws IOException 
+	Owner[] read(Building[] completeBuildingList) throws IOException 
 	{
-		FurnishingsAndTraps[] returnList = new FurnishingsAndTraps[0];
+		Owner[] returnList = new Owner[0];
 		
 		log("Reading from " + fFileName);
 	    Scanner scanner = new Scanner(new FileInputStream(fFileName), fEncoding);
@@ -42,31 +43,10 @@ public class FurnishingsAndTrapsFileReader
 	      while (scanner.hasNextLine())
 	      {
 	    	String output = scanner.nextLine();
-	    	FurnishingsAndTraps tempElement = new FurnishingsAndTraps(output);
-	    	returnList = RoomUtilities.expand(tempElement, returnList);
+	    	//System.out.println("Now trying to parse the quality: " + output);
+	    	Owner tempElement = new Owner(output, completeBuildingList);
+	    	returnList = RoomUtilities.expand(returnList);
 	    	returnList[returnList.length-1]= tempElement;
-	      }
-	    }
-	    finally{
-	      scanner.close();
-	    }
-	    //log("Text read in: " + text);
-	    return returnList;
-	}
-	
-	public String[] readTextFile() throws IOException
-	{
-		String[] returnList = new String[0];
-		
-		log("Reading from " + fFileName);
-	    Scanner scanner = new Scanner(new FileInputStream(fFileName), fEncoding);
-	    try {
-	      while (scanner.hasNextLine())
-	      {
-	    	String output = scanner.nextLine();
-	    	//String tempElement = new String(output, completeRooms);
-	    	returnList = RoomUtilities.expandStringArray(output, returnList);
-	    	returnList[returnList.length-1]= output;
 	      }
 	    }
 	    finally{
@@ -85,4 +65,7 @@ public class FurnishingsAndTrapsFileReader
 	{
 		System.out.println(aMessage);
 	}
+
+
 }
+

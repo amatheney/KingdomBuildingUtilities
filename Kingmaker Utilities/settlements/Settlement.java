@@ -35,7 +35,7 @@ public class Settlement
 	}
 	
 	/*Constructor That builds a settlement out of a raw string*/
-	public Settlement(String rawCSV, Building[] completeBuildingList, Room[] completeRoomList, FurnishingsAndTraps[] completeFurnishingList)
+	public Settlement(String rawCSV, Building[] completeBuildingList, Room[] completeRoomList, FurnishingsAndTraps[] completeFurnishingList, Quality[] completeQualities)
 	{
 		//initializing
 		this.Districts = new District[0];
@@ -59,7 +59,7 @@ public class Settlement
 			if (propertyName.equals("Population"))		//Population
 				this.Population = Integer.parseInt(propertyValue);
 			if (propertyName.equals("Qualities"))		//Qualities - needs to be fleshed out
-				this.Qualities = DeriveQualities(RoomUtilities.snipQuotes(propertyValue));
+				this.Qualities = DeriveQualities(RoomUtilities.snipQuotes(propertyValue), completeQualities);
 			if (propertyName.equals("NotableNPCs"))		//Contains a list of NPCs that needs to be parsed further
 			{
 				propertyValue = RoomUtilities.snipQuotes(propertyValue);
@@ -74,17 +74,20 @@ public class Settlement
 			}
 			if (DistrictIndex == 0)						//Lots of work to parse in a district's buildings
 			{
-				District toBeAdded = new District();
 				
 				//Pull the list of buildings, qualify them, then add them to the building
 				propertyValue = RoomUtilities.snipQuotes(propertyValue);
 				String[] districtBuildingList = propertyValue.split("\\,");
+				Building[] toBeAdded = new Building[0];
 				for (int buildingLCV = 0; buildingLCV < districtBuildingList.length; buildingLCV++)
 				{
 					Building tempBuilding = new Building();
 					tempBuilding = completeBuildingList[RoomUtilities.indexOf(districtBuildingList[buildingLCV], completeBuildingList)];
-					toBeAdded.placeBuilding(tempBuilding);
+					toBeAdded = RoomUtilities.expand(toBeAdded);
+					toBeAdded[toBeAdded.length-1] = tempBuilding;
 				}
+				
+				this.Districts = BuildDistricts(toBeAdded, this.Districts);
 				
 				//Now pull the name, if supplied
 				int colonIndex = propertyName.indexOf(":");
@@ -93,13 +96,14 @@ public class Settlement
 				{
 					districtName = propertyName.substring(colonIndex+1);
 				}
-				if (!(districtName.equals("N/A")))
-					toBeAdded.nameOfDistrict = districtName;
+				for (int lcv = 0; lcv < this.Districts.length; lcv++)
+				{
+					if (this.Districts[lcv].nameOfDistrict.equals("Unnamed Rollover District"))
+						this.Districts[lcv].nameOfDistrict = districtName;
+				}
 				
-				//Finally, add this district to the list
-				this.Districts = expand(this.Districts);
-				this.Districts[this.Districts.length-1] = toBeAdded;
-				//System.out.println("Districts is now " + this.Districts.length + " elements long");
+				
+				System.out.println("Districts is now " + this.Districts.length + " elements long");
 			}			
 		}
 		
@@ -229,6 +233,36 @@ public class Settlement
 			this.Modifiers.settlementCorruptionModifier += 1;
 		if (goodOrEvil.equals("G"))
 			this.Modifiers.settlementSocietyModifier += 1;
+		
+		//Adjustment for settlement qualities
+		for (int lcv = 0; lcv < this.Qualities.length; lcv++)
+		{
+			this.Modifiers = this.Modifiers.combineSettlementMods(this.Qualities[lcv].modifiers);
+			if (this.Qualities[lcv].baseValuePercentageModifier > 0)
+				this.Modifiers.settlementBaseValueModifier *= this.Qualities[lcv].baseValuePercentageModifier;
+			if (this.Qualities[lcv].purchaseLimitPercentageModifier > 0)
+				this.PurchaseLimit *= this.Qualities[lcv].purchaseLimitPercentageModifier;
+			this.Spellcasting += this.Qualities[lcv].spellcastingModifier;
+			if (this.Qualities[lcv].magicItemModifier > 0)
+			{
+				if (this.MajorItems > 0)
+					this.MajorItems += this.Qualities[lcv].magicItemModifier;
+				else if (this.MediumItems > 0)
+					this.MediumItems += this.Qualities[lcv].magicItemModifier;
+				else if (this.MinorItems > 0)
+					this.MinorItems += this.Qualities[lcv].magicItemModifier;
+				else
+					this.MinorItems = 0;
+				
+				if (this.MajorItems < 0)
+					this.MajorItems = 0;
+				if (this.MediumItems < 0)
+					this.MediumItems = 0;
+				if (this.MinorItems < 0)
+					this.MinorItems = 0;
+				
+			}
+		}
 	}
 	
 	public String toString()
@@ -247,6 +281,11 @@ public class Settlement
 		returnString += "   75% of items " + this.Modifiers.settlementBaseValueModifier + " gp or lower are available for sale\n";
 		returnString += "   In addition, there are " + this.MinorItems + " minor items, " + this.MediumItems + " medium items, and " + this.MajorItems + " major items for sale.\n";
 		returnString += this.Modifiers.toString();
+		returnString += "\n--==Qualities (Non special bonuses already included in above modifiers)==--\n";
+		for (int lcv = 0; lcv < this.Qualities.length; lcv++)
+		{
+			returnString += this.Qualities[lcv].toString() + "\n";
+		}
 		returnString += "\n--==Notable NPCs==--\n";
 		for (int lcv = 0; lcv < this.notableNPCs.length; lcv++)
 		{
@@ -311,46 +350,33 @@ public class Settlement
 			return "Invalid";
 	}
 	
-	private Quality[] DeriveQualities(String qualityListing)
+	private Quality[] DeriveQualities(String qualityListing, Quality[] completeQualities)
 	{
-		//FLESH THIS OUT
-		return null;
+		if (qualityListing.equals("N/A"))
+			return null;
+		String[] tokens = qualityListing.split("\\,");
+		Quality[] returnList = new Quality[0];
+		
+		for (int lcv = 0; lcv < tokens.length; lcv++)
+		{
+			Quality toBeAdded = new Quality();
+			toBeAdded = completeQualities[RoomUtilities.indexOf(tokens[lcv], completeQualities)];
+			returnList = RoomUtilities.expand(returnList);
+			returnList[returnList.length-1] = toBeAdded;
+		}
+		
+		return returnList;
 	}
 	
 	private District[] BuildDistricts(Building[] Buildings, District[] Districts)
 	{
-		District toBeAdded = new District();						//Container for this iterations building allocations
+		District toBeAdded = new District("Unnamed Rollover District");						//Container for this iterations building allocations
 		Building[] remainder = toBeAdded.populateLots(Buildings);	//Place what buildings you can in this lot, and then return the remainder
-		Districts = expand(Districts);								//Expand the supplied districts array to hold the new district
+		Districts = RoomUtilities.expand(Districts);								//Expand the supplied districts array to hold the new district
 		Districts[Districts.length-1] = toBeAdded;					//Place this district container in the main array
 		if (remainder != null)										//If there were buildings returned:
 			Districts = BuildDistricts(remainder, Districts);			//Recursivly call this method, passing in the remainders and the constructed array
 		return Districts;											//Otherwise, return what we have built so far
-	}
-	
-	/**Expand the array by one, adding our new element to the expanded array*/
-	private District[] expand(District[] oldArray)
-	{
-		District[] newArray = new District[oldArray.length+1];
-		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
-		
-		return newArray;
-	}
-	
-	/**Inner class that stores all the qualities, disadvantages, and governments of the settlement, proving an easy-to-iterate structure for calculating total modifiers*/
-	private class Quality
-	{
-		SettlementMods modifiers;
-		String name;
-		String description;
-		
-		/**Generic constructor*/
-		private Quality()
-		{
-			this.modifiers = new SettlementMods();
-			this.name = "";
-			this.description = "";
-		}
 	}
 	
 	/**Inner class that stores a district's worth of buildings - typically a settlement only contains a single district*/
@@ -400,7 +426,7 @@ public class Settlement
 				{
 					remainder = new Building[Buildings.length-lcv];
 					int indexToGo = Buildings.length-lcv-1;
-					String output = "Debug String: \n\nBuildings has " + Buildings.length + " elements\nLCV is " + lcv + "\nremainder is ";
+					String output = "A new district is being created to house the excess buildings. \nDebug Information: \nBuildings has " + Buildings.length + " elements\nLCV is " + lcv + "\nremainder is ";
 					output += remainder.length + " elements long\nI'm going to loop from 0 to " + indexToGo + " now";
 					System.out.println(output);
 					
@@ -451,6 +477,7 @@ public class Settlement
 				Buildings[Buildings.length-1] = toBeAdded;
 				return true;
 			}
+			System.out.println("WARNING: a " + toBeAdded.name + " cannot be placed in this district (no more space)");
 			return false;
 		}
 		

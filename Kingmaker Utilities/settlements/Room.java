@@ -178,6 +178,23 @@ public class Room {
 		return completeList;
 	}
 	
+	/**Parses furnishings from a file, used to pull the compelte list of augmentations in*/
+	private static Quality[] getQualityDB(String filename)
+	{
+		QualityFileReader QualityReader = new QualityFileReader(filename, "UTF-8");
+		Quality[] completeList = new Quality[1];
+		try
+		{
+			completeList = QualityReader.read();
+		}
+		catch (Exception e)
+		{
+			System.out.println("Error: " + e.getMessage() + "\n" + e.toString());
+		}
+		System.out.println(completeList.length + " quality entries read");
+		return completeList;
+	}
+	
 	/**Parses Buildings from a file, used to pull the compelte list of Buildings in*/
 	private static Building[] getBuildingDB(String filename, Room[] completeList, FurnishingsAndTraps[] completeFurnishingList)
 	{
@@ -202,12 +219,16 @@ public class Room {
 		Room[] completeRoomList = getRoomDB("settlements\\roomCSV.txt");
 		FurnishingsAndTraps[] completeFurnishingList = getFurnishingsDB("settlements\\FurnishingsAndTrapsCSV.txt");
 		Building[] completeBuildingList = getBuildingDB("settlements\\buildingsCSV.txt", completeRoomList, completeFurnishingList);
+		Quality[] completeQualityList = getQualityDB("settlements\\QualitiesCSV.txt");
 		
 		//Settlement testSettlement = new Settlement("Wut", completeBuildingList, completeRoomList, completeFurnishingList);
-		Settlement testSettlement = new Settlement("Name=Coastal Cairns;Alignment=NN;Population=600;Qualities=N/A;NotableNPCs=\"Mayor Brodert Quink: CG Adept 3\"," +
-				"\"Balor Hemlock: LN Fighter 4/Rogue 1\";District:The Old Quarter=\"House,House,Castle,Cathedral\";District:Prison District=\"Jail,Jail,Jail,Jail\"",
-				completeBuildingList, completeRoomList, completeFurnishingList);
-		System.out.println("There are " + testSettlement.Districts.length + " districts in this settlement");
-		System.out.println(testSettlement.completeBuildingOutput());
+		Settlement testSettlement = new Settlement("Name=Coastal Cairns;Alignment=NN;Population=600;Qualities=Pious,Rural,Majestic,Decadent;NotableNPCs=\"Mayor Brodert Quink: CG Adept 3\"," +
+				"\"Balor Hemlock: LN Fighter 4/Rogue 1\";District:The Old Quarter=\"House,House,Castle,Cathedral,Casino (illegal),Casino (illegal),Casino (illegal),Casino (illegal),Casino (illegal),Casino (illegal),Casino (illegal),Casino (illegal),Castle,Castle,Castle,Castle\";District:Prison District=\"Jail,Jail,Jail,Jail\"",
+				completeBuildingList, completeRoomList, completeFurnishingList, completeQualityList);
+		//System.out.println("There are " + testSettlement.Districts.length + " districts in this settlement");
+		//System.out.println(testSettlement.completeBuildingOutput());
+		System.out.println("\nOutput: " + testSettlement.toString());
+		//testSettlement.Districts[0].Buildings[0].setOwnwer("Raymond Davis");
+		//System.out.println("\n\nBuilding Test: " + testSettlement.Districts[0].Buildings[0].toString());
 	}
 }

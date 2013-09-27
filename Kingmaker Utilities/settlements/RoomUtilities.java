@@ -1,8 +1,107 @@
 package settlements;
 
+import settlements.Settlement.District;
+
 
 public class RoomUtilities 
 {
+	/**Determines if any of the rooms in the supplied array generate gold pieces for income*/
+	static boolean isGPEarnable(Room[] array)
+	{
+		boolean found = false;
+		//Loop over array
+		for (int lcv = 0; lcv < array.length; lcv++)
+		{
+			if (array[lcv].GPEarnings > 0)
+			{
+				found = true;
+				return found;
+			}
+		}
+		
+		return found;
+	}
+	/**Determines if any of the rooms in the supplied array generate goods for income*/
+	static boolean isGoodsEarnable(Room[] array)
+	{
+		boolean found = false;
+		//Loop over array
+		for (int lcv = 0; lcv < array.length; lcv++)
+		{
+			if (array[lcv].GoodsEarnings > 0)
+			{
+				found = true;
+				return found;
+			}
+		}
+		
+		return found;
+	}
+	/**Determines if any of the rooms in the supplied array generate labor for income*/
+	static boolean isLaborEarnable(Room[] array)
+	{
+		boolean found = false;
+		//Loop over array
+		for (int lcv = 0; lcv < array.length; lcv++)
+		{
+			if (array[lcv].LaborEarnings > 0)
+			{
+				found = true;
+				return found;
+			}
+		}
+		
+		return found;
+	}
+	/**Determines if any of the rooms in the supplied array generate influence for income*/
+	static boolean isInfluenceEarnable(Room[] array)
+	{
+		boolean found = false;
+		//Loop over array
+		for (int lcv = 0; lcv < array.length; lcv++)
+		{
+			if (array[lcv].InfluenceEarnings > 0)
+			{
+				found = true;
+				return found;
+			}
+		}
+		
+		return found;
+	}
+	/**Determines if any of the rooms in the supplied array generate magic for income*/
+	static boolean isMagicEarnable(Room[] array)
+	{
+		boolean found = false;
+		//Loop over array
+		for (int lcv = 0; lcv < array.length; lcv++)
+		{
+			if (array[lcv].MagicEarnings > 0)
+			{
+				found = true;
+				return found;
+			}
+		}
+		
+		return found;
+	}
+	/**Determines if any of the rooms in the supplied array generate capital for income*/
+	static boolean isCapitalEarnable(Room[] array)
+	{
+		boolean found = false;
+		//Loop over array
+		for (int lcv = 0; lcv < array.length; lcv++)
+		{
+			if (array[lcv].CapitalEarnings > 0)
+			{
+				found = true;
+				return found;
+			}
+		}
+		
+		return found;
+	}
+	
 	/**Return the integrer index of the room with the given name within the supplied array*/
 	static int indexOf(String nameOfRoom, Room[] array)
 	{
@@ -27,6 +126,22 @@ public class RoomUtilities
 		for (int lcv = 0; lcv < array.length; lcv++)
 		{
 			if (array[lcv].name.equals(nameOfBuilding))
+			{
+				index = lcv;
+			}
+		}
+		
+		return index;
+	}
+	
+	/**Return the integrer index of the Quality with the given name within the supplied array*/
+	static int indexOf(String nameOfQuality, Quality[] array)
+	{
+		int index = -1;
+		//Loop over array
+		for (int lcv = 0; lcv < array.length; lcv++)
+		{
+			if (array[lcv].name.equals(nameOfQuality))
 			{
 				index = lcv;
 			}
@@ -77,5 +192,94 @@ public class RoomUtilities
 	{
 		toSnip = toSnip.replace("\"","");//that does not work because there is no such character
 		return toSnip;
+	}
+	
+	/**Expand the array by one, adding our new element to the expanded array*/
+	static Building[] expand(Building[] oldArray)
+	{
+		Building[] newArray = new Building[oldArray.length+1];
+		
+		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		
+		return newArray;
+	}
+	
+	/**Expand the array by one, adding our new element to the expanded array*/
+	static Owner[] expand(Owner[] oldArray)
+	{
+		Owner[] newArray = new Owner[oldArray.length+1];
+		
+		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		
+		return newArray;
+	}
+	
+	/**Expand the array by one, adding our new element to the expanded array*/
+	static Skill[] expand(Skill[] oldArray)
+	{
+		Skill[] newArray = new Skill[oldArray.length+1];
+		
+		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		
+		return newArray;
+	}
+	
+	/**Expand the array by one, adding our new element to the expanded array*/
+	static Room[] expand(Room tempElement, Room[] oldArray)
+	{
+		Room[] newArray = new Room[oldArray.length+1];
+		
+		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		
+		return newArray;
+	}
+	
+	/**Expand the array by one, adding our new element to the expanded array*/
+	static FurnishingsAndTraps[] expand(FurnishingsAndTraps tempElement, FurnishingsAndTraps[] oldArray)
+	{
+		FurnishingsAndTraps[] newArray = new FurnishingsAndTraps[oldArray.length+1];
+		
+		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		
+		return newArray;
+	}
+	
+	/**Expand the array by one, adding our new element to the expanded array*/
+	static String[] expandStringArray(String tempElement, String[] oldArray)
+	{
+		String[] newArray = new String[oldArray.length+1];
+		
+		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		
+		return newArray;
+	}
+	
+	/**Expand the array by one, adding our new element to the expanded array*/
+	static District[] expand(District[] oldArray)
+	{
+		District[] newArray = new District[oldArray.length+1];
+		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		
+		return newArray;
+	}
+	
+	/**Expand the array by one, adding our new element to the expanded array*/
+	static Settlement[] expand(Settlement tempElement, Settlement[] oldArray)
+	{
+		Settlement[] newArray = new Settlement[oldArray.length+1];
+		
+		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		
+		return newArray;
+	}
+	
+	/**Expand the array by one, adding our new element to the expanded array*/
+	static Quality[] expand(Quality[] oldArray)
+	{
+		Quality[] newArray = new Quality[oldArray.length+1];
+		
+		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		
+		return newArray;
 	}
 }

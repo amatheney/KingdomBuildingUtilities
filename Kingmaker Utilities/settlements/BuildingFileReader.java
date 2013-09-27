@@ -44,7 +44,7 @@ public class BuildingFileReader
 	      {
 	    	String output = scanner.nextLine();
 	    	Building tempElement = new Building(output, completeRooms, completeFurnishingList);
-	    	returnList = expand(tempElement, returnList);
+	    	returnList = RoomUtilities.expand(returnList);
 	    	returnList[returnList.length-1]= tempElement;
 	      }
 	    }
@@ -53,16 +53,6 @@ public class BuildingFileReader
 	    }
 	    //log("Text read in: " + text);
 	    return returnList;
-	}
-	
-	/**Expand the array by one, adding our new element to the expanded array*/
-	private Building[] expand(Building tempElement, Building[] oldArray)
-	{
-		Building[] newArray = new Building[oldArray.length+1];
-		
-		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
-		
-		return newArray;
 	}
 	
 	public String[] readTextFile() throws IOException
@@ -76,7 +66,7 @@ public class BuildingFileReader
 	      {
 	    	String output = scanner.nextLine();
 	    	//String tempElement = new String(output, completeRooms);
-	    	returnList = expandStringArray(output, returnList);
+	    	returnList = RoomUtilities.expandStringArray(output, returnList);
 	    	returnList[returnList.length-1]= output;
 	      }
 	    }
@@ -85,16 +75,6 @@ public class BuildingFileReader
 	    }
 	    //log("Text read in: " + text);
 	    return returnList;
-	}
-	
-	/**Expand the array by one, adding our new element to the expanded array*/
-	private String[] expandStringArray(String tempElement, String[] oldArray)
-	{
-		String[] newArray = new String[oldArray.length+1];
-		
-		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
-		
-		return newArray;
 	}
 	  
 	// PRIVATE 
