@@ -77,51 +77,42 @@ public class Building
 		this.Furnishings = new FurnishingsAndTraps[0];
 	}
 	
-	//Depricated constructor
-	/*public Building(String name, Room[] rooms)
+	public Building(Building that)
 	{
-		this.name = name;
-		this.rooms = rooms;
+		this.name = that.name;
+		this.owner = that.owner;
+		this.rooms = that.rooms;
 		
-		this.GPEarnable = new BalanceSheet();
-		this.GoodsEarnable = new BalanceSheet();
-		this.LaborEarnable = new BalanceSheet();
-		this.InfluenceEarnable = new BalanceSheet();
-		this.MagicEarnable = new BalanceSheet();
+		this.GPEarnable = that.GPEarnable;
+		this.GoodsEarnable = that.GoodsEarnable;
+		this.LaborEarnable = that.LaborEarnable;
+		this.InfluenceEarnable = that.InfluenceEarnable;
+		this.MagicEarnable = that.MagicEarnable;
 		
-		this.settlementCorruptionModifier = 0;
-		this.settlementCrimeModifier = 0;
-		this.settlementLawModifier = 0;
-		this.settlementLoreModifier = 0;
-		this.settlementProductivityModifier = 0;
-		this.settlementSocietyModifier = 0;
-		this.settlementDangerModifier = 0;
-		this.settlementBaseValueModifier = 0;
-		this.minorItemsProduced = 0;
-		this.majorItemsProduced = 0;
-		this.mediumItemsProduced = 0;
+		this.SettlementModifiers = that.SettlementModifiers;
 		
-		this.kingdomLoyaltyModifier = 0;
-		this.kingdomStabilityModifier = 0;
-		this.kingdomUnrestModifier = 0;
-		this.kingdomConsumptionModifier = 0;
-		this.kingdomgDefenseModifier = 0;
-		this.kingdomEconomyModifier = 0;
-		this.kingdomFameModifier = 0;
+		this.minorItemsProduced = that.minorItemsProduced;
+		this.majorItemsProduced = that.majorItemsProduced;
+		this.mediumItemsProduced = that.mediumItemsProduced;
 		
-		this.lotSize = 0;
-		this.BPCost = 0;
-		this.Discount = "N/A";
-		this.Limits = "N/A";
-		this.upgradesFrom = "N/A";
-		this.upgradesTo = "N/A";
-		this.Benefit = "N/A";
-		this.Description = "N/A";
-		this.Furnishings = "N/A";
+		this.kingdomLoyaltyModifier = that.kingdomLoyaltyModifier;
+		this.kingdomStabilityModifier = that.kingdomStabilityModifier;
+		this.kingdomUnrestModifier = that.kingdomUnrestModifier;
+		this.kingdomConsumptionModifier = that.kingdomConsumptionModifier;
+		this.kingdomgDefenseModifier = that.kingdomgDefenseModifier;
+		this.kingdomEconomyModifier = that.kingdomEconomyModifier;
+		this.kingdomFameModifier = that.kingdomFameModifier;
 		
-
-		
-	}*/
+		this.lotSize = that.lotSize;
+		this.BPCost = that.BPCost;
+		this.Discount = that.Discount;
+		this.Limits = that.Limits;
+		this.upgradesFrom = that.upgradesFrom;
+		this.upgradesTo = that.upgradesTo;
+		this.Benefit = that.Benefit;
+		this.Description = that.Description;
+		this.Furnishings = that.Furnishings;
+	}
 	
 	/**Constructor that takes a raw semicolon-delimited string, and populates the building with copies of rooms and furnishings found within.*/
 	public Building(String rawCSV, Room[] completeRoomList, FurnishingsAndTraps[] completeFurnishingList)
@@ -524,7 +515,6 @@ public class Building
 	/**Generates a BalanceSheet class that provides the sum total production of the room array provided*/
 	BalanceSheet generateBalanceSheet(String preferredIncome)
 	{
-		regenerateBalanceSheets();
 		BalanceSheet returnSheet = new BalanceSheet();
 		returnSheet.preferredIncome = preferredIncome;	//For toString purposes
 		

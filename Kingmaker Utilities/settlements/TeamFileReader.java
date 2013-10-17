@@ -8,10 +8,10 @@ import java.io.Writer;
 import java.util.Scanner;
 
 
-public class SettlementFileReader 
+public class TeamFileReader 
 {
 	/** Constructor. */
-	SettlementFileReader(String aFileName, String aEncoding)
+	TeamFileReader(String aFileName, String aEncoding)
 	{
 	    fEncoding = aEncoding;
 	    fFileName = aFileName;
@@ -33,9 +33,9 @@ public class SettlementFileReader
 	}
 	  
 	/** Read the contents of the given file. */
-	Settlement[] read(Building[] completeBuildings, Quality[] completeQualityList) throws IOException 
+	Team[] read() throws IOException 
 	{
-		Settlement[] returnList = new Settlement[0];
+		Team[] returnList = new Team[0];
 		
 		log("Reading from " + fFileName);
 	    Scanner scanner = new Scanner(new FileInputStream(fFileName), fEncoding);
@@ -43,31 +43,10 @@ public class SettlementFileReader
 	      while (scanner.hasNextLine())
 	      {
 	    	String output = scanner.nextLine();
-	    	Settlement tempElement = new Settlement(output, completeBuildings, completeQualityList);
-	    	returnList = RoomUtilities.expand(tempElement, returnList);
+	    	//System.out.println("Now trying to parse the quality: " + output);
+	    	Team tempElement = new Team(output);
+	    	returnList = RoomUtilities.expand(returnList);
 	    	returnList[returnList.length-1]= tempElement;
-	      }
-	    }
-	    finally{
-	      scanner.close();
-	    }
-	    //log("Text read in: " + text);
-	    return returnList;
-	}
-	
-	public String[] readTextFile() throws IOException
-	{
-		String[] returnList = new String[0];
-		
-		log("Reading from " + fFileName);
-	    Scanner scanner = new Scanner(new FileInputStream(fFileName), fEncoding);
-	    try {
-	      while (scanner.hasNextLine())
-	      {
-	    	String output = scanner.nextLine();
-	    	//String tempElement = new String(output, completeRooms);
-	    	returnList = RoomUtilities.expandStringArray(output, returnList);
-	    	returnList[returnList.length-1]= output;
 	      }
 	    }
 	    finally{

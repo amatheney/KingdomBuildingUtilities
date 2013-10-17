@@ -1,2 +1,2 @@
-Brodert Quink;DM;1200.3;12;3;8;Cathedral,Jail,Castle,House;Appraise:1,Climb:9,Diplomacy:2,Handle Animal:8,Heal:3,Knowledge:7,Perform:4,Profession:6,Stealth:5,Survival:5,Spellcraft:10
-Quink Brodert;DM;2100.7;21;7;2;Cathedral,Jail,Castle,House;Bluff:1,Craft:9,Disable Device:2,Intimidate:8,Linguistics:3,Sleight of Hand:7,Ride:4,Swim:6,Use Magic Device:5
+Brodert Quink;DM;1200.3;12;3;8;0;Guildhall,Luxury Store,Mansion;Appraise:1,Climb:9,Diplomacy:2,Handle Animal:8,Heal:3,Knowledge:7,Perform:4,Profession:6,Stealth:5,Survival:5,Spellcraft:10
+Quink Brodert;DM;2100.7;21;7;2;1;Magical Academy,Mint,Mansion;Bluff:1,Craft:9,Disable Device:2,Intimidate:8,Linguistics:3,Sleight of Hand:7,Ride:4,Swim:6,Use Magic Device:5

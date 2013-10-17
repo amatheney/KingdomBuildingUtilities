@@ -35,7 +35,7 @@ public class Settlement
 	}
 	
 	/*Constructor That builds a settlement out of a raw string*/
-	public Settlement(String rawCSV, Building[] completeBuildingList, Room[] completeRoomList, FurnishingsAndTraps[] completeFurnishingList, Quality[] completeQualities)
+	public Settlement(String rawCSV, Building[] completeBuildingList, Quality[] completeQualities)
 	{
 		//initializing
 		this.Districts = new District[0];
@@ -79,6 +79,7 @@ public class Settlement
 				propertyValue = RoomUtilities.snipQuotes(propertyValue);
 				String[] districtBuildingList = propertyValue.split("\\,");
 				Building[] toBeAdded = new Building[0];
+				//System.out.println(districtBuildingList.length + " buildings found in settlement " + this.Name);
 				for (int buildingLCV = 0; buildingLCV < districtBuildingList.length; buildingLCV++)
 				{
 					Building tempBuilding = new Building();
@@ -87,32 +88,32 @@ public class Settlement
 					toBeAdded[toBeAdded.length-1] = tempBuilding;
 				}
 				
-				this.Districts = BuildDistricts(toBeAdded, this.Districts);
-				
 				//Now pull the name, if supplied
 				int colonIndex = propertyName.indexOf(":");
-				String districtName = "N/A";
+				String districtName = "";
 				if (colonIndex > 0)
 				{
 					districtName = propertyName.substring(colonIndex+1);
 				}
+				
+				this.Districts = BuildDistricts(toBeAdded, this.Districts, districtName);
+				
 				for (int lcv = 0; lcv < this.Districts.length; lcv++)
 				{
 					if (this.Districts[lcv].nameOfDistrict.equals("Unnamed Rollover District"))
 						this.Districts[lcv].nameOfDistrict = districtName;
-				}
-				
-				
-				System.out.println("Districts is now " + this.Districts.length + " elements long");
+				}	
 			}			
 		}
+		System.out.println("---" + this.Districts.length + " District(s) built.");
 		
 		calculateModifiers();
 	}
 	
-	private void calculateModifiers()
+	public void calculateModifiers()
 	{
 		//Reset first, we're going to completely re-calculate these values
+		//System.out.println("---Calculating settlement modifiers...");
 		this.Modifiers = new SettlementMods();
 		this.PurchaseLimit = 0;
 		this.Spellcasting = 0;
@@ -127,6 +128,7 @@ public class Settlement
 		}*/
 		
 		//Loop over districts and combine where found
+		//System.out.println("---Totaling magic items and settlement mods...");
 		for (int lcv = 0; lcv < this.Districts.length; lcv++)
 		{
 			this.Modifiers = this.Modifiers.combineSettlementMods(this.Districts[lcv].getTotalModifiers());
@@ -136,6 +138,7 @@ public class Settlement
 		}
 		
 		//Apply some final modifiers based off size
+		//System.out.println("---Calculating population size...");
 		this.Size = getSize(this.Population);
 		if (this.Size.equals("Thorp"))
 		{
@@ -219,6 +222,7 @@ public class Settlement
 		}
 		
 		//Some final modifiers for alignment
+		//System.out.println("---Applying alignment modifiers...");
 		String lawOrChaos = this.Alignment.substring(0, 1);
 		String goodOrEvil = this.Alignment.substring(1);
 		if (lawOrChaos.equals("N"))
@@ -235,34 +239,42 @@ public class Settlement
 			this.Modifiers.settlementSocietyModifier += 1;
 		
 		//Adjustment for settlement qualities
-		for (int lcv = 0; lcv < this.Qualities.length; lcv++)
+		if (this.Qualities != null)
 		{
-			this.Modifiers = this.Modifiers.combineSettlementMods(this.Qualities[lcv].modifiers);
-			if (this.Qualities[lcv].baseValuePercentageModifier > 0)
-				this.Modifiers.settlementBaseValueModifier *= this.Qualities[lcv].baseValuePercentageModifier;
-			if (this.Qualities[lcv].purchaseLimitPercentageModifier > 0)
-				this.PurchaseLimit *= this.Qualities[lcv].purchaseLimitPercentageModifier;
-			this.Spellcasting += this.Qualities[lcv].spellcastingModifier;
-			if (this.Qualities[lcv].magicItemModifier > 0)
+			//System.out.println("---Consolidating Qualities... [" +this.Qualities.length + "] to resolve");
+			for (int lcv = 0; lcv < this.Qualities.length; lcv++)
 			{
-				if (this.MajorItems > 0)
-					this.MajorItems += this.Qualities[lcv].magicItemModifier;
-				else if (this.MediumItems > 0)
-					this.MediumItems += this.Qualities[lcv].magicItemModifier;
-				else if (this.MinorItems > 0)
-					this.MinorItems += this.Qualities[lcv].magicItemModifier;
-				else
-					this.MinorItems = 0;
-				
-				if (this.MajorItems < 0)
-					this.MajorItems = 0;
-				if (this.MediumItems < 0)
-					this.MediumItems = 0;
-				if (this.MinorItems < 0)
-					this.MinorItems = 0;
-				
+				//System.out.println("---|---Attempting to parse " + this.Qualities[lcv].name);
+				this.Modifiers = this.Modifiers.combineSettlementMods(this.Qualities[lcv].modifiers);
+				if (this.Qualities[lcv].baseValuePercentageModifier > 0)
+					this.Modifiers.settlementBaseValueModifier *= this.Qualities[lcv].baseValuePercentageModifier;
+				if (this.Qualities[lcv].purchaseLimitPercentageModifier > 0)
+					this.PurchaseLimit *= this.Qualities[lcv].purchaseLimitPercentageModifier;
+				this.Spellcasting += this.Qualities[lcv].spellcastingModifier;
+				if (this.Qualities[lcv].magicItemModifier > 0)
+				{
+					if (this.MajorItems > 0)
+						this.MajorItems += this.Qualities[lcv].magicItemModifier;
+					else if (this.MediumItems > 0)
+						this.MediumItems += this.Qualities[lcv].magicItemModifier;
+					else if (this.MinorItems > 0)
+						this.MinorItems += this.Qualities[lcv].magicItemModifier;
+					else
+						this.MinorItems = 0;
+					
+					if (this.MajorItems < 0)
+						this.MajorItems = 0;
+					if (this.MediumItems < 0)
+						this.MediumItems = 0;
+					if (this.MinorItems < 0)
+						this.MinorItems = 0;
+					
+				}
 			}
 		}
+		else
+			System.out.println("WARNING: no qualities found when regenerating settlement modifiers");
+		//System.out.println("---Done regenerating settlement.");
 	}
 	
 	public String toString()
@@ -282,9 +294,12 @@ public class Settlement
 		returnString += "   In addition, there are " + this.MinorItems + " minor items, " + this.MediumItems + " medium items, and " + this.MajorItems + " major items for sale.\n";
 		returnString += this.Modifiers.toString();
 		returnString += "\n--==Qualities (Non special bonuses already included in above modifiers)==--\n";
-		for (int lcv = 0; lcv < this.Qualities.length; lcv++)
+		if (this.Qualities != null)
 		{
-			returnString += this.Qualities[lcv].toString() + "\n";
+			for (int lcv = 0; lcv < this.Qualities.length; lcv++)
+			{
+				returnString += this.Qualities[lcv].toString() + "\n";
+			}
 		}
 		returnString += "\n--==Notable NPCs==--\n";
 		for (int lcv = 0; lcv < this.notableNPCs.length; lcv++)
@@ -294,9 +309,35 @@ public class Settlement
 		returnString += "\n-----=====Districts=====-----\n";
 		for (int lcv = 0; lcv < this.Districts.length; lcv++)
 		{
-			returnString += this.Districts[lcv].nameOfDistrict + ": " + this.Districts[lcv].remainingLotsAvailable() + " lots free\n";
+			if (this.Districts[lcv].nameOfDistrict.equals(""))
+				returnString += "<Rollover District>";
+			else
+				returnString += this.Districts[lcv].nameOfDistrict;
+			returnString += ": " + this.Districts[lcv].remainingLotsAvailable() + " lots free\n";
 		}
 				
+		return returnString;
+	}
+	
+	public String partialBuildingOutput()
+	{
+		String returnString = toString();
+		
+		returnString += "\n-----=====Districts (Partial Building Output)=====-----\n";
+		for (int lcv = 0; lcv < this.Districts.length; lcv++)
+		{
+			returnString += "   ---" + this.Districts[lcv].nameOfDistrict + "---   \n";
+			for (int i = 0; i < this.Districts[lcv].Buildings.length; i++)
+			{
+				returnString += this.Districts[lcv].Buildings[i].name;
+				if (this.Districts[lcv].Buildings[i].owner.equals(""))
+					returnString += " (government property)\n"; 
+				else
+					returnString += ", owned by " + this.Districts[lcv].Buildings[i].owner + "\n";
+						
+			}
+		}
+		
 		return returnString;
 	}
 	
@@ -352,6 +393,7 @@ public class Settlement
 	
 	private Quality[] DeriveQualities(String qualityListing, Quality[] completeQualities)
 	{
+		//System.out.println("***Derive Qualities: parsing '" + qualityListing + "'");
 		if (qualityListing.equals("N/A"))
 			return null;
 		String[] tokens = qualityListing.split("\\,");
@@ -359,6 +401,7 @@ public class Settlement
 		
 		for (int lcv = 0; lcv < tokens.length; lcv++)
 		{
+			//System.out.println("Token being parsed: '" + tokens[lcv] + "'");
 			Quality toBeAdded = new Quality();
 			toBeAdded = completeQualities[RoomUtilities.indexOf(tokens[lcv], completeQualities)];
 			returnList = RoomUtilities.expand(returnList);
@@ -368,15 +411,74 @@ public class Settlement
 		return returnList;
 	}
 	
-	private District[] BuildDistricts(Building[] Buildings, District[] Districts)
+	public District[] BuildDistricts(Building[] Buildings, District[] Districts, String districtName)
 	{
-		District toBeAdded = new District("Unnamed Rollover District");						//Container for this iterations building allocations
-		Building[] remainder = toBeAdded.populateLots(Buildings);	//Place what buildings you can in this lot, and then return the remainder
-		Districts = RoomUtilities.expand(Districts);								//Expand the supplied districts array to hold the new district
-		Districts[Districts.length-1] = toBeAdded;					//Place this district container in the main array
-		if (remainder != null)										//If there were buildings returned:
-			Districts = BuildDistricts(remainder, Districts);			//Recursivly call this method, passing in the remainders and the constructed array
-		return Districts;											//Otherwise, return what we have built so far
+		//System.out.println("At the start of BuildDistricts, there are " + Districts.length + " districts");
+		Building[] remainder = Buildings;
+		boolean nameApplied = false;
+		boolean iterationRequired = true;
+		
+		if (Districts.length == 0)
+		{
+			Districts = new District[1];
+			Districts[0] = new District();
+			//System.out.println("Before the loop, I had to add a new district. The new length is " + Districts.length);
+		}
+		else if (!(districtName.equals("")))
+		{
+			Districts = RoomUtilities.expand(Districts);
+			Districts[Districts.length-1] = new District(districtName);
+			nameApplied = true;
+			//System.out.println("I set the last district in the list to " + districtName);
+		}
+		
+		for (int districtLCV = 0; districtLCV < Districts.length; districtLCV++)
+		{
+			//System.out.println("At the start of the loop, there are " + Districts[districtLCV].remainingLotsAvailable() + " lots available in the " + Districts[districtLCV].nameOfDistrict + " district.");
+			//If the district is unnamed, and a string has been supplied, and we have not yet named a district in this iteration:
+			//System.out.println(Districts[districtLCV].nameOfDistrict + " is being looped over");
+			if (Districts[districtLCV].nameOfDistrict.equals("") && !(districtName.equals("")) && nameApplied == false)
+			{
+				Districts[districtLCV].nameOfDistrict = districtName;
+				nameApplied = true;
+				//System.out.println("I set district #" + districtLCV + " to " + districtName);
+			}
+			
+			if (Districts[districtLCV].nameOfDistrict.equals(districtName) || districtName.equals("") && iterationRequired)
+			{
+				iterationRequired = false;
+				for (int buildingLCV = 0; buildingLCV < remainder.length; buildingLCV++)
+				{
+					//System.out.println(remainder.length-buildingLCV + " buildings to place");
+					//System.out.println("Right now, I'm trying to add a " + Buildings[buildingLCV].name + ", owned by " + Buildings[buildingLCV].owner + " to district #" + districtLCV);
+					if (!Districts[districtLCV].placeBuilding(Buildings[buildingLCV]))
+					{
+						//System.out.println("...But the district was full!");
+						//If we've entered here, this district is full. This building, and all after it, become the only elements in remainder,
+						//and we're going to break out of the loop prematurely.
+						remainder = new Building[0];
+						for (int lcv = 0; lcv < Buildings.length-buildingLCV; lcv++)
+						{
+							remainder = RoomUtilities.expand(remainder);
+							remainder[lcv] = Buildings[buildingLCV+lcv];
+						}
+						buildingLCV = remainder.length+1;
+						Districts = RoomUtilities.expand(Districts);
+						Districts[Districts.length-1] = new District();
+						districtName = "";
+						//System.out.println("I had to add a new district. The new length is " + Districts.length);
+						iterationRequired = true;
+					}
+					//else
+						//districtLCV = Districts.length;
+				}
+			}
+			//else
+				//System.out.println("I'm skipping putting buildings in '" + Districts[districtLCV].nameOfDistrict + "' district because the name didn't match '" + districtName + "'" + " (" + Districts[districtLCV].equals(districtName) + ")");
+				//System.out.println("At the end of the loop, there are " + Districts[districtLCV].remainingLotsAvailable() + " lots available in the " + Districts[districtLCV].nameOfDistrict + " district.");
+				
+		}
+		return Districts;
 	}
 	
 	/**Inner class that stores a district's worth of buildings - typically a settlement only contains a single district*/

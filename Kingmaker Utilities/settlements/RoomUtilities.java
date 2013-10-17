@@ -102,6 +102,103 @@ public class RoomUtilities
 		return found;
 	}
 	
+	/**Determines if any of the rooms in the supplied array generate gold pieces for income*/
+	static boolean isGPEarnable(Team[] array)
+	{
+		boolean found = false;
+		//Loop over array
+		for (int lcv = 0; lcv < array.length; lcv++)
+		{
+			if (array[lcv].GPEarnings > 0)
+			{
+				found = true;
+				return found;
+			}
+		}
+		
+		return found;
+	}
+	/**Determines if any of the rooms in the supplied array generate goods for income*/
+	static boolean isGoodsEarnable(Team[] array)
+	{
+		boolean found = false;
+		//Loop over array
+		for (int lcv = 0; lcv < array.length; lcv++)
+		{
+			if (array[lcv].GoodsEarnings > 0)
+			{
+				found = true;
+				return found;
+			}
+		}
+		
+		return found;
+	}
+	/**Determines if any of the rooms in the supplied array generate labor for income*/
+	static boolean isLaborEarnable(Team[] array)
+	{
+		boolean found = false;
+		//Loop over array
+		for (int lcv = 0; lcv < array.length; lcv++)
+		{
+			if (array[lcv].LaborEarnings > 0)
+			{
+				found = true;
+				return found;
+			}
+		}
+		
+		return found;
+	}
+	/**Determines if any of the rooms in the supplied array generate influence for income*/
+	static boolean isInfluenceEarnable(Team[] array)
+	{
+		boolean found = false;
+		//Loop over array
+		for (int lcv = 0; lcv < array.length; lcv++)
+		{
+			if (array[lcv].InfluenceEarnings > 0)
+			{
+				found = true;
+				return found;
+			}
+		}
+		
+		return found;
+	}
+	/**Determines if any of the rooms in the supplied array generate magic for income*/
+	static boolean isMagicEarnable(Team[] array)
+	{
+		boolean found = false;
+		//Loop over array
+		for (int lcv = 0; lcv < array.length; lcv++)
+		{
+			if (array[lcv].MagicEarnings > 0)
+			{
+				found = true;
+				return found;
+			}
+		}
+		
+		return found;
+	}
+	/**Determines if any of the rooms in the supplied array generate capital for income*/
+	static boolean isCapitalEarnable(Team[] array)
+	{
+		boolean found = false;
+		//Loop over array
+		for (int lcv = 0; lcv < array.length; lcv++)
+		{
+			if (array[lcv].CapitalEarnings > 0)
+			{
+				found = true;
+				return found;
+			}
+		}
+		
+		return found;
+	}
+	
 	/**Return the integrer index of the room with the given name within the supplied array*/
 	static int indexOf(String nameOfRoom, Room[] array)
 	{
@@ -142,6 +239,22 @@ public class RoomUtilities
 		for (int lcv = 0; lcv < array.length; lcv++)
 		{
 			if (array[lcv].name.equals(nameOfQuality))
+			{
+				index = lcv;
+			}
+		}
+		
+		return index;
+	}
+	
+	/**Return the integrer index of the Team with the given name within the supplied array*/
+	static int indexOf(String nameOfTeam, Team[] array)
+	{
+		int index = -1;
+		//Loop over array
+		for (int lcv = 0; lcv < array.length; lcv++)
+		{
+			if (array[lcv].Name.equals(nameOfTeam))
 			{
 				index = lcv;
 			}
@@ -277,6 +390,26 @@ public class RoomUtilities
 	static Quality[] expand(Quality[] oldArray)
 	{
 		Quality[] newArray = new Quality[oldArray.length+1];
+		
+		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		
+		return newArray;
+	}
+	
+	/**Expand the array by one, adding our new element to the expanded array*/
+	static Manager[] expand(Manager[] oldArray)
+	{
+		Manager[] newArray = new Manager[oldArray.length+1];
+		
+		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		
+		return newArray;
+	}
+	
+	/**Expand the array by one, adding our new element to the expanded array*/
+	public static Team[] expand(Team[] oldArray) 
+	{
+		Team[] newArray = new Team[oldArray.length+1];
 		
 		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
 		

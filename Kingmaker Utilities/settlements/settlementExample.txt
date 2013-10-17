@@ -1,1 +1,1 @@
-Name=Coastal Cairns;Alignment=NN;Population=600;Qualities=N/A;NotableNPCs="Mayor Brodert Quink:Adept 3","Balor Hemlock:Fighter 4/Rogue 1";District:The Old Quarter="House,House,Castle,Cathedral";District:Prison District="Jail,Jail,Jail,Jail"
+Name=Coastal Cairns;Alignment=NN;Population=600;Qualities=Council,Abundant;NotableNPCs="Mayor Brodert Quink:Adept 3","Balor Hemlock:Fighter 4/Rogue 1";District:The Old Quarter="House,House,Castle,House,House";District:Prison District="Jail,Jail,Jail"
