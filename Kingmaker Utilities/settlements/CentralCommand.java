@@ -1,17 +1,23 @@
 package settlements;
 
-public class CentralCommand 
+public class CentralCommand
 {
 
 	private static Room[] completeRoomList;
 	private static FurnishingsAndTraps[] completeFurnishingList;
 	private static Building[] completeBuildingList;
 	private static Quality[] completeQualityList;
+	private static Team[] completeTeamList;
+	private static Organization[] completeOrganizationList;
+	private static Manager[] completeManagerList;
 	
 	private static final String completeRoomFilename = "settlements\\roomCSV.txt";
 	private static final String completeFurnishingFilename = "settlements\\FurnishingsAndTrapsCSV.txt";
 	private static final String completeBuildingFilename = "settlements\\buildingsCSV.txt";
 	private static final String completeQualityFilename = "settlements\\QualitiesCSV.txt";
+	private static final String completeTeamFilename = "settlements\\TeamCSV.txt";
+	private static final String completeOrganizationFilename = "settlements\\OrganizationCSV.txt";
+	private static final String completeManagerFilename = "settlements\\ManagerCSV.txt";
 	
 	private Landowners command;
 	
@@ -120,12 +126,68 @@ public class CentralCommand
 		return completeSettlementList;
 	}
 	
+	/**Parses a Team from a file, used to pull the compelte list of Team in*/
+	private static Team[] getTeamDB(String filename)
+	{
+		TeamFileReader TeamReader = new TeamFileReader(filename, "UTF-8");
+		Team[] completeTeam = new Team[0];
+		try
+		{
+			completeTeamList = TeamReader.read();
+		}
+		catch (Exception e)
+		{
+			System.out.println("Error: " + e.getMessage());
+		}
+		System.out.println(completeTeamList.length + " Team entries read");
+		return completeTeamList;
+	}
+	
+	/**Parses a Organization from a file, used to pull the compelte list of Organization in*/
+	private static Organization[] getOrganizationDB(String filename)
+	{
+		OrganizationFileReader OrganizationReader = new OrganizationFileReader(filename, "UTF-8");
+		Organization[] completeOrganizationList = new Organization[0];
+		try
+		{
+			completeOrganizationList = OrganizationReader.read(completeTeamList);
+			//System.out.println("In getSettlementDB, the first settlement has " + completeSettlementList[0].Districts.length + " districts.");
+		}
+		catch (Exception e)
+		{
+			System.out.println("Error: " + e.getMessage());
+		}
+		System.out.println(completeOrganizationList.length + " Organization entries read");
+		return completeOrganizationList;
+	}
+	
+	/**Parses a Manager from a file, used to pull the compelte list of Manager in*/
+	private static Manager[] getManagerDB(String filename)
+	{
+		ManagerFileReader ManagerReader = new ManagerFileReader(filename, "UTF-8");
+		Manager[] completeManagerList = new Manager[0];
+		try
+		{
+			completeManagerList = ManagerReader.read();
+			//System.out.println("In getSettlementDB, the first settlement has " + completeSettlementList[0].Districts.length + " districts.");
+		}
+		catch (Exception e)
+		{
+			System.out.println("Error: " + e.getMessage());
+		}
+		System.out.println(completeManagerList.length + " Manager entries read");
+		return completeManagerList;
+	}
+	
 	public CentralCommand(String ownerFilename, String settlementFilename)
 	{		
 		completeRoomList = getRoomDB(completeRoomFilename);
 		completeFurnishingList = getFurnishingsDB(completeFurnishingFilename);
 		completeBuildingList = getBuildingDB(completeBuildingFilename, completeRoomList, completeFurnishingList);
 		completeQualityList = getQualityDB(completeQualityFilename);
+		completeTeamList = getTeamDB(completeTeamFilename);
+		completeOrganizationList = getOrganizationDB(completeOrganizationFilename);
+		completeManagerList = getManagerDB(completeManagerFilename);
 		
 		Owner[] owners = getOwnerDB(ownerFilename);
 		Settlement[] settlement = getSettlementDB(settlementFilename);

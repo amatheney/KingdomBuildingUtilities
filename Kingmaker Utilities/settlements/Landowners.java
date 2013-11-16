@@ -58,8 +58,8 @@ public class Landowners
 		for (int lcv = 0; lcv < owners.length; lcv++)
 		{
 			//System.out.println("Adding buildings for " + owners[lcv].OwnerName);
-			Building[] toBeAdded = owners[lcv].properties;
-			derivedSettlement.Districts = derivedSettlement.BuildDistricts(toBeAdded, derivedSettlement.Districts, "");
+			//Building[] toBeAdded = owners[lcv].properties;
+			//derivedSettlement.Districts = derivedSettlement.BuildDistricts(toBeAdded, derivedSettlement.Districts, "");
 		}
 		//System.out.println("At the end of loadOwners, there are " + derivedSettlement.Districts.length + " districts.");
 		

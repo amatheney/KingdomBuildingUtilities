@@ -415,4 +415,14 @@ public class RoomUtilities
 		
 		return newArray;
 	}
+	
+	/**Expand the array by one, adding our new element to the expanded array*/
+	public static Organization[] expand(Organization[] oldArray) 
+	{
+		Organization[] newArray = new Organization[oldArray.length+1];
+		
+		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		
+		return newArray;
+	}
 }

@@ -26,6 +26,12 @@ public class Organization
 		BalanceSheet InfluenceEarnable = new BalanceSheet();
 		BalanceSheet MagicEarnable = new BalanceSheet();
 		
+		this.GPEarnable = GPEarnable;
+		this.GoodsEarnable = GoodsEarnable;
+		this.LaborEarnable = LaborEarnable;
+		this.InfluenceEarnable = InfluenceEarnable;
+		this.MagicEarnable = MagicEarnable;
+		
 		String Description = "";
 	}
 	
@@ -53,6 +59,12 @@ public class Organization
 		BalanceSheet LaborEarnable = new BalanceSheet();
 		BalanceSheet InfluenceEarnable = new BalanceSheet();
 		BalanceSheet MagicEarnable = new BalanceSheet();
+		
+		this.GPEarnable = GPEarnable;
+		this.GoodsEarnable = GoodsEarnable;
+		this.LaborEarnable = LaborEarnable;
+		this.InfluenceEarnable = InfluenceEarnable;
+		this.MagicEarnable = MagicEarnable;
 		
 		this.name = RoomUtilities.snipQuotes(tokens[0]);
 		this.Description = RoomUtilities.snipQuotes(tokens[1]);
@@ -295,5 +307,29 @@ public class Organization
 			}
 		}
 		return returnSheet;
+	}
+
+	public String toString()
+	{
+		String returnString = "";
+		
+		returnString += "----==Organization: " + name + " ==----\n";
+		returnString += "   Owned by: " + owner + "\n";
+		returnString += "--==--Team Composition:\n";
+		
+		for (int lcv = 0; lcv < teams.length; lcv++)
+		{
+			returnString += "   " + teams[lcv].Name + " (" + teams[lcv].conciseTeamOutput() + ")\n";
+		}
+		
+		BalanceSheet GPEarnable;
+		BalanceSheet GoodsEarnable;
+		BalanceSheet LaborEarnable;
+		BalanceSheet InfluenceEarnable;
+		BalanceSheet MagicEarnable;
+		
+		String Description;
+		
+		return returnString;
 	}
 }

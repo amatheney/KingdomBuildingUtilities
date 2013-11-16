@@ -132,4 +132,10 @@ public class Team
 		
 		return returnString;		
 	}
+
+	public String conciseTeamOutput() 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
