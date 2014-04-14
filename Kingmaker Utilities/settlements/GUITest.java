@@ -59,7 +59,7 @@ public class GUITest extends JFrame {
             Scanner in = new Scanner(f);
 
             while (in.hasNext()) {
-                String word = in.next();  // Read a "token".
+                string  word = in.next();  // Read a "token".
                 numberOfWords++;
             }
             in.close();        // Close Scanner's file.

@@ -13,7 +13,7 @@ public class FurnishingsAndTraps
 	int MagicCreate;
 	int DaysCreate;
 	
-	boolean trap;				//Always false, for now...
+	bool trap;				//Always false, for now...
 	String associatedRoom;
 	
 	/**Generic constructor*/
@@ -33,26 +33,26 @@ public class FurnishingsAndTraps
 		this.associatedRoom = "N/A";
 	}
 	
-	/**Takes a semicolon-delimited string, and parses it into into a room augmentation*/
+	/**Takes a semicolon-delimited string , and parses it into into a room augmentation*/
 	public FurnishingsAndTraps(String rawCSV)
 	{
-		String[] tokens = rawCSV.split("\\;");
+		String[] tokens = rawCSV.Split(';');
 		
 		this.Name = RoomUtilities.snipQuotes(tokens[0]);
 		this.Benefit = RoomUtilities.snipQuotes(tokens[1]);
 		this.Description = RoomUtilities.snipQuotes(tokens[2]);
-		this.GPCreate = Integer.parseInt(tokens[3]);
-		this.GoodsCreate = Integer.parseInt(tokens[4]);
-		this.InfluenceCreate = Integer.parseInt(tokens[5]);
-		this.LaborCreate = Integer.parseInt(tokens[6]);
-		this.MagicCreate = Integer.parseInt(tokens[7]);
-		this.DaysCreate = Integer.parseInt(tokens[8]);
+		this.GPCreate = Convert.ToInt32(tokens[3]);
+		this.GoodsCreate = Convert.ToInt32(tokens[4]);
+		this.InfluenceCreate = Convert.ToInt32(tokens[5]);
+		this.LaborCreate = Convert.ToInt32(tokens[6]);
+		this.MagicCreate = Convert.ToInt32(tokens[7]);
+		this.DaysCreate = Convert.ToInt32(tokens[8]);
 		
 		this.trap = false;
 		this.associatedRoom = "N/A";
 	}
 	
-	public String toString()
+	public string  toString()
 	{
 		String returnString = "\n----=Custom Furnishing=----\n";
 		String trapString = "";
@@ -60,12 +60,12 @@ public class FurnishingsAndTraps
 			trapString = "trap";
 		if (!trap)
 			trapString = "furnishing";
-		if (associatedRoom.equals("N/A"))
+		if (associatedRoom.Equals("N/A"))
 			returnString += "This " + trapString + " is not associated with a particular room.\n";
-		if (!(associatedRoom.equals("N/A")))
+		if (!(associatedRoom.Equals("N/A")))
 			returnString += "This " + trapString + " is associated with a " + associatedRoom + " in the building\n";
 		returnString += "Name: " + Name + "\n";
-		if (!(Benefit.equals("N/A")))
+		if (!(Benefit.Equals("N/A")))
 			returnString += "Benefit: " + Benefit + "\n";
 		returnString += "Description: " + Description + "\n";
 		returnString += "---Creation Costs---\n";

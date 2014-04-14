@@ -27,7 +27,7 @@ public class BalanceSheet
 		return this.GP + this.Goods + this.Influence + this.Labor + this.Magic;
 	}
 	
-	public String toString()
+	public string  toString()
 	{
 		String returnString = "";
 		returnString += "-------=== Balance Sheet: Max " + this.preferredIncome + " ===-------\n";

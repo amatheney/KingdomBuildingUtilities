@@ -167,7 +167,7 @@ public class GUI {
         }
     }
 
-	private static void addPopup(Component component, final JPopupMenu popup) {
+	private static void addPopup(Component component,JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				if (e.isPopupTrigger()) {

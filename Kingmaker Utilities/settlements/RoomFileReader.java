@@ -7,14 +7,14 @@ import java.util.Scanner;
 public class RoomFileReader 
 {
 	 /** Constructor. */
-	RoomFileReader(String aFileName, String aEncoding)
+	RoomFileReader(String aFileName, string  aEncoding)
 	{
 	    fEncoding = aEncoding;
 	    fFileName = aFileName;
 	}
 	  
 	/** Write fixed content to the given file. */
-	void write() throws IOException  
+	void write()  
 	{
 		log("Writing to file named " + fFileName + ". Encoding: " + fEncoding);
 		Writer out = new OutputStreamWriter(new FileOutputStream(fFileName), fEncoding);
@@ -29,12 +29,12 @@ public class RoomFileReader
 	}
 	  
 	/** Read the contents of the given file. */
-	Room[] read() throws IOException 
+	Room[] read() 
 	{
 		Room[] returnList = new Room[0];
 		
 		log("Reading from " + fFileName);
-	    //StringBuilder text = new StringBuilder();
+	    //StringBuilder text = new string Builder();
 	    //String NL = System.getProperty("line.separator");
 	    Scanner scanner = new Scanner(new FileInputStream(fFileName), fEncoding);
 	    try {
@@ -45,7 +45,7 @@ public class RoomFileReader
 	    	//log(output);
 	    	Room tempElement = new Room(output);
 	    	returnList = RoomUtilities.expand(tempElement, returnList);
-	    	returnList[returnList.length-1]= tempElement;
+	    	returnList[returnList.Length-1]= tempElement;
 	      }
 	    }
 	    finally{
@@ -56,12 +56,12 @@ public class RoomFileReader
 	}
 	  
 	// PRIVATE 
-	private final String fFileName;
-	private final String fEncoding;
-	private final String FIXED_TEXT = "But soft! what code in yonder program breaks?";
+	privateString fFileName;
+	privateString fEncoding;
+	privateString FIXED_TEXT = "But soft! what code in yonder program breaks?";
 	  
 	private void log(String aMessage)
 	{
-		System.out.println(aMessage);
+		Console.Out.WriteLine(aMessage);
 	}
 }

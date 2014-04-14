@@ -11,13 +11,13 @@ public class CentralCommand
 	private static Organization[] completeOrganizationList;
 	private static Manager[] completeManagerList;
 	
-	private static final String completeRoomFilename = "settlements\\roomCSV.txt";
-	private static final String completeFurnishingFilename = "settlements\\FurnishingsAndTrapsCSV.txt";
-	private static final String completeBuildingFilename = "settlements\\buildingsCSV.txt";
-	private static final String completeQualityFilename = "settlements\\QualitiesCSV.txt";
-	private static final String completeTeamFilename = "settlements\\TeamCSV.txt";
-	private static final String completeOrganizationFilename = "settlements\\OrganizationCSV.txt";
-	private static final String completeManagerFilename = "settlements\\ManagerCSV.txt";
+	private staticString completeRoomFilename = "settlements\\roomCSV.txt";
+	private staticString completeFurnishingFilename = "settlements\\FurnishingsAndTrapsCSV.txt";
+	private staticString completeBuildingFilename = "settlements\\buildingsCSV.txt";
+	private staticString completeQualityFilename = "settlements\\QualitiesCSV.txt";
+	private staticString completeTeamFilename = "settlements\\TeamCSV.txt";
+	private staticString completeOrganizationFilename = "settlements\\OrganizationCSV.txt";
+	private staticString completeManagerFilename = "settlements\\ManagerCSV.txt";
 	
 	private Landowners command;
 	
@@ -32,9 +32,9 @@ public class CentralCommand
 		}
 		catch (Exception e)
 		{
-			System.out.println("Error: " + e.getMessage());
+			Console.Out.WriteLine("Error: " + e.Message);
 		}
-		System.out.println(completeList.length + " room entries read");
+		Console.Out.WriteLine(completeList.Length + " room entries read");
 		return completeList;
 	}
 	
@@ -49,9 +49,9 @@ public class CentralCommand
 		}
 		catch (Exception e)
 		{
-			System.out.println("Error: " + e.getMessage());
+			Console.Out.WriteLine("Error: " + e.Message);
 		}
-		System.out.println(completeList.length + " furnishing/trap entries read");
+		Console.Out.WriteLine(completeList.Length + " furnishing/trap entries read");
 		return completeList;
 	}
 	
@@ -66,9 +66,9 @@ public class CentralCommand
 		}
 		catch (Exception e)
 		{
-			System.out.println("Error: " + e.getMessage() + "\n" + e.toString());
+			Console.Out.WriteLine("Error: " + e.Message + "\n" + e.toString());
 		}
-		System.out.println(completeList.length + " quality entries read");
+		Console.Out.WriteLine(completeList.Length + " quality entries read");
 		return completeList;
 	}
 	
@@ -83,9 +83,9 @@ public class CentralCommand
 		}
 		catch (Exception e)
 		{
-			System.out.println("Error: " + e.getMessage());
+			Console.Out.WriteLine("Error: " + e.Message);
 		}
-		System.out.println(completeBuildingList.length + " Building entries read");
+		Console.Out.WriteLine(completeBuildingList.Length + " Building entries read");
 		return completeBuildingList;
 	}
 	
@@ -100,11 +100,11 @@ public class CentralCommand
 		}
 		catch (Exception e)
 		{
-			System.out.println("***An exception has occured.***");
-			System.out.println("Error: " + e.getMessage());
+			Console.Out.WriteLine("***An exception has occured.***");
+			Console.Out.WriteLine("Error: " + e.Message);
 			e.printStackTrace();
 		}
-		System.out.println(completeOwnerList.length + " Owner entries read");
+		Console.Out.WriteLine(completeOwnerList.Length + " Owner entries read");
 		return completeOwnerList;
 	}
 	
@@ -116,13 +116,13 @@ public class CentralCommand
 		try
 		{
 			completeSettlementList = SettlementReader.read(completeBuildingList, completeQualityList);
-			//System.out.println("In getSettlementDB, the first settlement has " + completeSettlementList[0].Districts.length + " districts.");
+			//Console.Out.WriteLine("In getSettlementDB, the first settlement has " + completeSettlementList[0].Districts.Length + " districts.");
 		}
 		catch (Exception e)
 		{
-			System.out.println("Error: " + e.getMessage());
+			Console.Out.WriteLine("Error: " + e.Message);
 		}
-		System.out.println(completeSettlementList.length + " Settlement entries read");
+		Console.Out.WriteLine(completeSettlementList.Length + " Settlement entries read");
 		return completeSettlementList;
 	}
 	
@@ -137,9 +137,9 @@ public class CentralCommand
 		}
 		catch (Exception e)
 		{
-			System.out.println("Error: " + e.getMessage());
+			Console.Out.WriteLine("Error: " + e.Message);
 		}
-		System.out.println(completeTeamList.length + " Team entries read");
+		Console.Out.WriteLine(completeTeamList.Length + " Team entries read");
 		return completeTeamList;
 	}
 	
@@ -151,13 +151,13 @@ public class CentralCommand
 		try
 		{
 			completeOrganizationList = OrganizationReader.read(completeTeamList);
-			//System.out.println("In getSettlementDB, the first settlement has " + completeSettlementList[0].Districts.length + " districts.");
+			//Console.Out.WriteLine("In getSettlementDB, the first settlement has " + completeSettlementList[0].Districts.Length + " districts.");
 		}
 		catch (Exception e)
 		{
-			System.out.println("Error: " + e.getMessage());
+			Console.Out.WriteLine("Error: " + e.Message);
 		}
-		System.out.println(completeOrganizationList.length + " Organization entries read");
+		Console.Out.WriteLine(completeOrganizationList.Length + " Organization entries read");
 		return completeOrganizationList;
 	}
 	
@@ -169,17 +169,17 @@ public class CentralCommand
 		try
 		{
 			completeManagerList = ManagerReader.read();
-			//System.out.println("In getSettlementDB, the first settlement has " + completeSettlementList[0].Districts.length + " districts.");
+			//Console.Out.WriteLine("In getSettlementDB, the first settlement has " + completeSettlementList[0].Districts.Length + " districts.");
 		}
 		catch (Exception e)
 		{
-			System.out.println("Error: " + e.getMessage());
+			Console.Out.WriteLine("Error: " + e.Message);
 		}
-		System.out.println(completeManagerList.length + " Manager entries read");
+		Console.Out.WriteLine(completeManagerList.Length + " Manager entries read");
 		return completeManagerList;
 	}
 	
-	public CentralCommand(String ownerFilename, String settlementFilename)
+	public CentralCommand(String ownerFilename, string  settlementFilename)
 	{		
 		completeRoomList = getRoomDB(completeRoomFilename);
 		completeFurnishingList = getFurnishingsDB(completeFurnishingFilename);
@@ -191,24 +191,24 @@ public class CentralCommand
 		
 		Owner[] owners = getOwnerDB(ownerFilename);
 		Settlement[] settlement = getSettlementDB(settlementFilename);
-		System.out.println(settlement.length + " settlements produced");
+		Console.Out.WriteLine(settlement.Length + " settlements produced");
 		
 		//Remove this
 		/*
-		for (int lcv = 0; lcv < settlement[0].Districts.length; lcv++)
+		for (int lcv = 0; lcv < settlement[0].Districts.Length; lcv++)
 		{
-			//System.out.println("looping through district #" + lcv);
-			for (int i = 0; i < settlement[0].Districts[lcv].Buildings.length; i++)
+			//Console.Out.WriteLine("looping through district #" + lcv);
+			for (int i = 0; i < settlement[0].Districts[lcv].Buildings.Length; i++)
 			{
-				System.out.println(settlement[0].Districts[lcv].Buildings[i].name + " is owned by " + settlement[0].Districts[lcv].Buildings[i].owner);
+				Console.Out.WriteLine(settlement[0].Districts[lcv].Buildings[i].name + " is owned by " + settlement[0].Districts[lcv].Buildings[i].owner);
 			}
 		}*/
 		
 		command = new Landowners(owners, settlement[0]);
-		//System.out.println("In central command constructor, Landowers has " + command.derivedSettlement.Districts.length + " districts in the settlement");
+		//Console.Out.WriteLine("In central command constructor, Landowers has " + command.derivedSettlement.Districts.Length + " districts in the settlement");
 	}
 	
-	public String basicCommandInfo()
+	public string  basicCommandInfo()
 	{
 		String returnString = "\n----List of Property Owners & Basic Settlement information----";
 		
@@ -216,7 +216,7 @@ public class CentralCommand
 		returnString += this.command.derivedSettlement.toString();	//Eventually this will be an array, and we're going to put kingdom information here
 		
 		returnString += "\n----===Landowers===----\n";
-		for (int lcv = 0; lcv < this.command.owners.length; lcv++)
+		for (int lcv = 0; lcv < this.command.owners.Length; lcv++)
 		{
 			returnString += this.command.owners[lcv].toString() + "\n";
 		}
@@ -227,7 +227,7 @@ public class CentralCommand
 	public static void main(String[] args) 
 	{
 		CentralCommand base = new CentralCommand("settlements\\OwnersCSV.txt", "settlements\\settlementExample.txt");
-		System.out.println(base.command.derivedSettlement.partialBuildingOutput());
-		//System.out.println(base.basicCommandInfo());
+		Console.Out.WriteLine(base.command.derivedSettlement.partialBuildingOutput());
+		//Console.Out.WriteLine(base.basicCommandInfo());
 	}
 }

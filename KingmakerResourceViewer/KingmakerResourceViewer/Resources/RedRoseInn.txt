@@ -1,0 +1,10 @@
+Bar
+Bath
+Bedroom
+Common Room
+Kitchen
+Lavatory
+Lodging
+Stall
+Storefront
+Game Room (illegal)

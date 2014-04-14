@@ -71,36 +71,36 @@ public class Team
 	
 	public Team(String rawCSV)
 	{	
-		String[] tokens = rawCSV.split("\\;");
+		String[] tokens = rawCSV.Split(';');
 		
 		this.Name = RoomUtilities.snipQuotes(tokens[0]);
-		this.GPEarnings = Integer.parseInt(tokens[1]);
-		this.GoodsEarnings = Integer.parseInt(tokens[2]);
-		this.InfluenceEarnings = Integer.parseInt(tokens[3]); 
-		this.LaborEarnings = Integer.parseInt(tokens[4]);
-		this.MagicEarnings = Integer.parseInt(tokens[5]);
-		this.CapitalEarnings = Integer.parseInt(tokens[6]);
+		this.GPEarnings = Convert.ToInt32(tokens[1]);
+		this.GoodsEarnings = Convert.ToInt32(tokens[2]);
+		this.InfluenceEarnings = Convert.ToInt32(tokens[3]); 
+		this.LaborEarnings = Convert.ToInt32(tokens[4]);
+		this.MagicEarnings = Convert.ToInt32(tokens[5]);
+		this.CapitalEarnings = Convert.ToInt32(tokens[6]);
 		this.Benefit = RoomUtilities.snipQuotes(tokens[7]);
-		this.GPCreate = Integer.parseInt(tokens[8]);
-		this.GoodsCreate = Integer.parseInt(tokens[9]); 
-		this.InfluenceCreate = Integer.parseInt(tokens[10]); 
-		this.LaborCreate = Integer.parseInt(tokens[11]);
-		this.MagicCreate = Integer.parseInt(tokens[12]);
-		this.DaysCreate = Integer.parseInt(tokens[13]);
-		this.MinSize = Integer.parseInt(tokens[14]);
-		this.MaxSize = Integer.parseInt(tokens[15]);
+		this.GPCreate = Convert.ToInt32(tokens[8]);
+		this.GoodsCreate = Convert.ToInt32(tokens[9]); 
+		this.InfluenceCreate = Convert.ToInt32(tokens[10]); 
+		this.LaborCreate = Convert.ToInt32(tokens[11]);
+		this.MagicCreate = Convert.ToInt32(tokens[12]);
+		this.DaysCreate = Convert.ToInt32(tokens[13]);
+		this.MinSize = Convert.ToInt32(tokens[14]);
+		this.MaxSize = Convert.ToInt32(tokens[15]);
 		this.UpgradeFrom = RoomUtilities.snipQuotes(tokens[16]);
 		this.UpgradeTo = RoomUtilities.snipQuotes(tokens[17]);
 		this.Description = RoomUtilities.snipQuotes(tokens[18]);
 	}
 	
 	/**Override method to return formatted description of the room*/
-	public String toString()
+	public string  toString()
 	{
 		String returnString = "\n";
 		
 		returnString += "**Name: " + this.Name + "**\n";
-		if (!(Benefit.equals("N/A")))
+		if (!(Benefit.Equals("N/A")))
 			returnString += "  Benefit: " + this.Benefit + "\n";
 		returnString += "  ---------Creation Costs---------\n";
 		returnString += "    Create Cost (GP): " + this.GPCreate + "\n";
@@ -124,16 +124,16 @@ public class Team
 		returnString += "  Days to build: " + this.DaysCreate + "\n";
 		returnString += "  Minimum Room Size: " + this.MinSize + "\n";
 		returnString += "  Maximum Room Size: " + this.MaxSize + "\n";
-		if (!(UpgradeFrom.equals("N/A")))
+		if (!(UpgradeFrom.Equals("N/A")))
 			returnString += "  Upgrades from: " + this.UpgradeFrom + "\n";
-		if (!(UpgradeTo.equals("N/A")))
+		if (!(UpgradeTo.Equals("N/A")))
 			returnString += "  Upgrades to: " + this.UpgradeTo + "\n";
 		returnString += "  Description: " + this.Description + "\n";
 		
 		return returnString;		
 	}
 
-	public String conciseTeamOutput() 
+	public string  conciseTeamOutput() 
 	{
 		// TODO Auto-generated method stub
 		return null;

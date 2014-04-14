@@ -1,0 +1,61 @@
+Altar
+Ballroom
+Bar
+Bath
+Bath
+Bedroom
+Bedroom
+Bedroom
+Bedroom
+Bedroom
+Bedroom
+Bunks
+Cell
+Common Room
+Courtyard
+Courtyard
+Crypt
+Defensive Wall
+Defensive Wall
+Defensive Wall
+Defensive Wall
+Defensive Wall
+Defensive Wall
+Escape Route
+Garden
+Gatehouse
+Kitchen
+Kitchen
+Labrynth
+Laundry
+Lavatory
+Lavatory
+Lodging
+Lodging
+Office
+Office
+Sanctum
+Secret Room
+Secret Room
+Secret Room
+Sitting Room
+Sitting Room
+Sitting Room
+Sports Field
+Stall
+Stall
+Stall
+Stall
+Statue
+Statue
+Storage
+Storage
+Storage
+Storage
+Storage
+Storage
+Throne Room
+Trophy Room
+Vault
+Vault
+War Room

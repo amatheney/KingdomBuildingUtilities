@@ -55,7 +55,7 @@ public class SettlementMods
 		return toBeReturned;
 	}
 	
-	public String toString()
+	public string  toString()
 	{
 		String returnString = "\n----===Settlement Modifiers===----\n";
 		

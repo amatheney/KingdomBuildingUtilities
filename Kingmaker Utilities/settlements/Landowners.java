@@ -20,12 +20,12 @@ public class Landowners
 	}
 	
 	//Constructor that takes a set of filenames and builds an array of owners, storing them in a settlement (also loaded from the file)
-	public Landowners(String[] ownerCSVStrings, String settlementCSV, Building[] completeBuildingList, Quality[] completeQualityList)
+	public Landowners(String[] ownerCSVStrings, string  settlementCSV, Building[] completeBuildingList, Quality[] completeQualityList)
 	{
 		derivedSettlement = new Settlement(settlementCSV, completeBuildingList, completeQualityList);
 		
-		owners = new Owner[ownerCSVStrings.length];
-		for (int lcv = 0; lcv < owners.length; lcv++)
+		owners = new Owner[ownerCSVStrings.Length];
+		for (int lcv = 0; lcv < owners.Length; lcv++)
 		{
 			owners[lcv] = new Owner(ownerCSVStrings[lcv], completeBuildingList);
 		}
@@ -38,30 +38,30 @@ public class Landowners
 	{
 		//First, remove all buildings from the settlement that are owned
 		Building[] replacementList = new Building[0];
-		//System.out.println("At the start of loadOwners, there are " + derivedSettlement.Districts.length + " districts.");
-		for (int districtIndex = 0; districtIndex < derivedSettlement.Districts.length; districtIndex++)
+		//Console.Out.WriteLine("At the start of loadOwners, there are " + derivedSettlement.Districts.Length + " districts.");
+		for (int districtIndex = 0; districtIndex < derivedSettlement.Districts.Length; districtIndex++)
 		{
-			for (int buildingIndex = 0; buildingIndex < derivedSettlement.Districts[districtIndex].Buildings.length; buildingIndex++)
+			for (int buildingIndex = 0; buildingIndex < derivedSettlement.Districts[districtIndex].Buildings.Length; buildingIndex++)
 			{
-				if(!derivedSettlement.Districts[districtIndex].Buildings[buildingIndex].owner.equals(""))
+				if(!derivedSettlement.Districts[districtIndex].Buildings[buildingIndex].owner.Equals(""))
 				{
-					//System.out.println("The building " + derivedSettlement.Districts[districtIndex].Buildings[buildingIndex].name + " is owned by '" + derivedSettlement.Districts[districtIndex].Buildings[buildingIndex].owner + "'");
+					//Console.Out.WriteLine("The building " + derivedSettlement.Districts[districtIndex].Buildings[buildingIndex].name + " is owned by '" + derivedSettlement.Districts[districtIndex].Buildings[buildingIndex].owner + "'");
 					replacementList = RoomUtilities.expand(replacementList);
-					//System.out.println("The length of replacementList is " + (replacementList.length) + "");
-					replacementList[replacementList.length-1] = derivedSettlement.Districts[districtIndex].Buildings[buildingIndex];
+					//Console.Out.WriteLine("The length of replacementList is " + (replacementList.Length) + "");
+					replacementList[replacementList.Length-1] = derivedSettlement.Districts[districtIndex].Buildings[buildingIndex];
 				}
 			}
 		}
-		//System.out.println("At the middle of loadOwners, there are " + derivedSettlement.Districts.length + " districts.");
+		//Console.Out.WriteLine("At the middle of loadOwners, there are " + derivedSettlement.Districts.Length + " districts.");
 		
 		//Now, loop through the owners and place their buildings
-		for (int lcv = 0; lcv < owners.length; lcv++)
+		for (int lcv = 0; lcv < owners.Length; lcv++)
 		{
-			//System.out.println("Adding buildings for " + owners[lcv].OwnerName);
+			//Console.Out.WriteLine("Adding buildings for " + owners[lcv].OwnerName);
 			//Building[] toBeAdded = owners[lcv].properties;
 			//derivedSettlement.Districts = derivedSettlement.BuildDistricts(toBeAdded, derivedSettlement.Districts, "");
 		}
-		//System.out.println("At the end of loadOwners, there are " + derivedSettlement.Districts.length + " districts.");
+		//Console.Out.WriteLine("At the end of loadOwners, there are " + derivedSettlement.Districts.Length + " districts.");
 		
 		//Regnerate all the attributes of the settlement when done
 		derivedSettlement.calculateModifiers();

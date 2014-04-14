@@ -11,14 +11,14 @@ import java.util.Scanner;
 public class SettlementFileReader 
 {
 	/** Constructor. */
-	SettlementFileReader(String aFileName, String aEncoding)
+	SettlementFileReader(String aFileName, string  aEncoding)
 	{
 	    fEncoding = aEncoding;
 	    fFileName = aFileName;
 	}
 	  
 	/** Write fixed content to the given file. */
-	void write() throws IOException  
+	void write()  
 	{
 		log("Writing to file named " + fFileName + ". Encoding: " + fEncoding);
 		Writer out = new OutputStreamWriter(new FileOutputStream(fFileName), fEncoding);
@@ -33,7 +33,7 @@ public class SettlementFileReader
 	}
 	  
 	/** Read the contents of the given file. */
-	Settlement[] read(Building[] completeBuildings, Quality[] completeQualityList) throws IOException 
+	Settlement[] read(Building[] completeBuildings, Quality[] completeQualityList) 
 	{
 		Settlement[] returnList = new Settlement[0];
 		
@@ -45,7 +45,7 @@ public class SettlementFileReader
 	    	String output = scanner.nextLine();
 	    	Settlement tempElement = new Settlement(output, completeBuildings, completeQualityList);
 	    	returnList = RoomUtilities.expand(tempElement, returnList);
-	    	returnList[returnList.length-1]= tempElement;
+	    	returnList[returnList.Length-1]= tempElement;
 	      }
 	    }
 	    finally{
@@ -55,9 +55,9 @@ public class SettlementFileReader
 	    return returnList;
 	}
 	
-	public String[] readTextFile() throws IOException
+	public string [] readTextFile()
 	{
-		String[] returnList = new String[0];
+		String[] returnList = new string [0];
 		
 		log("Reading from " + fFileName);
 	    Scanner scanner = new Scanner(new FileInputStream(fFileName), fEncoding);
@@ -65,9 +65,9 @@ public class SettlementFileReader
 	      while (scanner.hasNextLine())
 	      {
 	    	String output = scanner.nextLine();
-	    	//String tempElement = new String(output, completeRooms);
+	    	//String tempElement = new string (output, completeRooms);
 	    	returnList = RoomUtilities.expandStringArray(output, returnList);
-	    	returnList[returnList.length-1]= output;
+	    	returnList[returnList.Length-1]= output;
 	      }
 	    }
 	    finally{
@@ -78,13 +78,13 @@ public class SettlementFileReader
 	}
 	  
 	// PRIVATE 
-	private final String fFileName;
-	private final String fEncoding;
-	private final String FIXED_TEXT = "But soft! what code in yonder program breaks?";
+	privateString fFileName;
+	privateString fEncoding;
+	privateString FIXED_TEXT = "But soft! what code in yonder program breaks?";
 	  
 	private void log(String aMessage)
 	{
-		System.out.println(aMessage);
+		Console.Out.WriteLine(aMessage);
 	}
 
 

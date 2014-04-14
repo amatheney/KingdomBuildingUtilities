@@ -17,7 +17,7 @@ public class Skill
 		this.Value = Value;
 	}
 	
-	public String toString()
+	public string  toString()
 	{
 		String returnString = "";
 		

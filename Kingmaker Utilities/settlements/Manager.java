@@ -23,14 +23,14 @@ public class Manager
 		Skills = new Skill[0];
 		Description = "";
 		
-		String[] tokens = rawCSV.split("\\;");
+		String[] tokens = rawCSV.Split(';');
 		this.Name = RoomUtilities.snipQuotes(tokens[0]);
-		this.Wage = Integer.parseInt(tokens[1]);
+		this.Wage = Convert.ToInt32(tokens[1]);
 		
 		//Set skills
 		String[] SkillStrings = RoomUtilities.snipQuotes(tokens[2]).split(",");
-		this.Skills = new Skill[SkillStrings.length];
-		for (int lcv = 0; lcv < SkillStrings.length; lcv++)
+		this.Skills = new Skill[SkillStrings.Length];
+		for (int lcv = 0; lcv < SkillStrings.Length; lcv++)
 		{
 			this.Skills[lcv] = new Skill(SkillStrings[lcv], 10);
 		}
@@ -54,16 +54,16 @@ public class Manager
 		this.Description = "Personally managed by " + input.OwnerName + " (" + input.PlayerName + ")";
 	}
 	
-	public String toString()
+	public string  toString()
 	{
 		String returnString = "";
 		
 		returnString += "   ---Manager: " + this.Name + "---\n";
 		returnString += "      Skills: ";
-		for (int lcv = 0; lcv < this.Skills.length; lcv++)
+		for (int lcv = 0; lcv < this.Skills.Length; lcv++)
 		{
 			returnString += this.Skills[lcv].Name;
-			if (lcv < this.Skills.length-1)
+			if (lcv < this.Skills.Length-1)
 				returnString += ", ";
 		}
 		returnString += "\n      Wage: " + this.Wage + " gp\\day\n";

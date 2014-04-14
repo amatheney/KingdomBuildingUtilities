@@ -10,14 +10,14 @@ import java.util.Scanner;
 public class FurnishingsAndTrapsFileReader 
 {
 	/** Constructor. */
-	FurnishingsAndTrapsFileReader(String aFileName, String aEncoding)
+	FurnishingsAndTrapsFileReader(String aFileName, string  aEncoding)
 	{
 	    fEncoding = aEncoding;
 	    fFileName = aFileName;
 	}
 	  
 	/** Write fixed content to the given file. */
-	void write() throws IOException  
+	void write()  
 	{
 		log("Writing to file named " + fFileName + ". Encoding: " + fEncoding);
 		Writer out = new OutputStreamWriter(new FileOutputStream(fFileName), fEncoding);
@@ -32,7 +32,7 @@ public class FurnishingsAndTrapsFileReader
 	}
 	  
 	/** Read the contents of the given file. */
-	FurnishingsAndTraps[] read() throws IOException 
+	FurnishingsAndTraps[] read() 
 	{
 		FurnishingsAndTraps[] returnList = new FurnishingsAndTraps[0];
 		
@@ -44,7 +44,7 @@ public class FurnishingsAndTrapsFileReader
 	    	String output = scanner.nextLine();
 	    	FurnishingsAndTraps tempElement = new FurnishingsAndTraps(output);
 	    	returnList = RoomUtilities.expand(tempElement, returnList);
-	    	returnList[returnList.length-1]= tempElement;
+	    	returnList[returnList.Length-1]= tempElement;
 	      }
 	    }
 	    finally{
@@ -54,9 +54,9 @@ public class FurnishingsAndTrapsFileReader
 	    return returnList;
 	}
 	
-	public String[] readTextFile() throws IOException
+	public string [] readTextFile()
 	{
-		String[] returnList = new String[0];
+		String[] returnList = new string [0];
 		
 		log("Reading from " + fFileName);
 	    Scanner scanner = new Scanner(new FileInputStream(fFileName), fEncoding);
@@ -64,9 +64,9 @@ public class FurnishingsAndTrapsFileReader
 	      while (scanner.hasNextLine())
 	      {
 	    	String output = scanner.nextLine();
-	    	//String tempElement = new String(output, completeRooms);
+	    	//String tempElement = new string (output, completeRooms);
 	    	returnList = RoomUtilities.expandStringArray(output, returnList);
-	    	returnList[returnList.length-1]= output;
+	    	returnList[returnList.Length-1]= output;
 	      }
 	    }
 	    finally{
@@ -77,12 +77,12 @@ public class FurnishingsAndTrapsFileReader
 	}
 	  
 	// PRIVATE 
-	private final String fFileName;
-	private final String fEncoding;
-	private final String FIXED_TEXT = "But soft! what code in yonder program breaks?";
+	privateString fFileName;
+	privateString fEncoding;
+	privateString FIXED_TEXT = "But soft! what code in yonder program breaks?";
 	  
 	private void log(String aMessage)
 	{
-		System.out.println(aMessage);
+		Console.Out.WriteLine(aMessage);
 	}
 }

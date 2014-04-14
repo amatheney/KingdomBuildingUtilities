@@ -26,24 +26,24 @@ public class Room {
 	/**Constructor takes in a raw semicolon-seperated values line, converts it into a room class*/
 	Room(String rawCSV)
 	{
-	    String[] tokens = rawCSV.split("\\;");
+	    string [] tokens = rawCSV.Split(';');
 	    
 		this.Name = RoomUtilities.snipQuotes(tokens[0]);
-		this.GPEarnings = Float.parseFloat(tokens[1]);
-		this.GoodsEarnings = Float.parseFloat(tokens[2]);
-		this.InfluenceEarnings = Float.parseFloat(tokens[3]);
-		this.LaborEarnings = Float.parseFloat(tokens[4]);
-		this.MagicEarnings = Float.parseFloat(tokens[5]);
-		this.CapitalEarnings = Float.parseFloat(tokens[6]);
+		this.GPEarnings = float.Parse(tokens[1]);
+		this.GoodsEarnings = float.Parse(tokens[2]);
+		this.InfluenceEarnings = float.Parse(tokens[3]);
+		this.LaborEarnings = float.Parse(tokens[4]);
+		this.MagicEarnings = float.Parse(tokens[5]);
+		this.CapitalEarnings = float.Parse(tokens[6]);
 		this.Benefit = RoomUtilities.snipQuotes(tokens[7]);
-		this.GPCreate = Float.parseFloat(tokens[8]);
-		this.GoodsCreate = Float.parseFloat(tokens[9]);
-		this.InfluenceCreate = Float.parseFloat(tokens[10]);
-		this.LaborCreate = Float.parseFloat(tokens[11]);
-		this.MagicCreate = Float.parseFloat(tokens[12]);
-		this.DaysCreate = Float.parseFloat(tokens[13]);
-		this.MinSize = Float.parseFloat(tokens[14]);
-		this.MaxSize = Float.parseFloat(tokens[15]);
+		this.GPCreate = float.Parse(tokens[8]);
+		this.GoodsCreate = float.Parse(tokens[9]);
+		this.InfluenceCreate = float.Parse(tokens[10]);
+		this.LaborCreate = float.Parse(tokens[11]);
+		this.MagicCreate = float.Parse(tokens[12]);
+		this.DaysCreate = float.Parse(tokens[13]);
+		this.MinSize = float.Parse(tokens[14]);
+		this.MaxSize = float.Parse(tokens[15]);
 		this.UpgradeFrom = RoomUtilities.snipQuotes(tokens[16]);
 		this.UpgradeTo = RoomUtilities.snipQuotes(tokens[17]);
 		this.Description = RoomUtilities.snipQuotes(tokens[18]);
@@ -76,12 +76,12 @@ public class Room {
 	}
 	
 	/**Override method to return formatted description of the room*/
-	public String toString()
+	public string  toString()
 	{
 		String returnString = "\n";
 		
 		returnString += "**Name: " + this.Name + "**\n";
-		if (!(Benefit.equals("N/A")))
+		if (!(Benefit.Equals("N/A")))
 			returnString += "  Benefit: " + this.Benefit + "\n";
 		returnString += "  ---------Creation Costs---------\n";
 		returnString += "    Create Cost (GP): " + this.GPCreate + "\n";
@@ -105,9 +105,9 @@ public class Room {
 		returnString += "  Days to build: " + this.DaysCreate + "\n";
 		returnString += "  Minimum Room Size: " + this.MinSize + "\n";
 		returnString += "  Maximum Room Size: " + this.MaxSize + "\n";
-		if (!(UpgradeFrom.equals("N/A")))
+		if (!(UpgradeFrom.Equals("N/A")))
 			returnString += "  Upgrades from: " + this.UpgradeFrom + "\n";
-		if (!(UpgradeTo.equals("N/A")))
+		if (!(UpgradeTo.Equals("N/A")))
 			returnString += "  Upgrades to: " + this.UpgradeTo + "\n";
 		returnString += "  Description: " + this.Description + "\n";
 		returnString += "  Settlement Modifiers: " + this.SettlementMods + "\n";

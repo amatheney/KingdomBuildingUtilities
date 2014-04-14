@@ -6,11 +6,11 @@ import settlements.Settlement.District;
 public class RoomUtilities 
 {
 	/**Determines if any of the rooms in the supplied array generate gold pieces for income*/
-	static boolean isGPEarnable(Room[] array)
+	static bool isGPEarnable(Room[] array)
 	{
-		boolean found = false;
+		bool found = false;
 		//Loop over array
-		for (int lcv = 0; lcv < array.length; lcv++)
+		for (int lcv = 0; lcv < array.Length; lcv++)
 		{
 			if (array[lcv].GPEarnings > 0)
 			{
@@ -22,11 +22,11 @@ public class RoomUtilities
 		return found;
 	}
 	/**Determines if any of the rooms in the supplied array generate goods for income*/
-	static boolean isGoodsEarnable(Room[] array)
+	static bool isGoodsEarnable(Room[] array)
 	{
-		boolean found = false;
+		bool found = false;
 		//Loop over array
-		for (int lcv = 0; lcv < array.length; lcv++)
+		for (int lcv = 0; lcv < array.Length; lcv++)
 		{
 			if (array[lcv].GoodsEarnings > 0)
 			{
@@ -38,11 +38,11 @@ public class RoomUtilities
 		return found;
 	}
 	/**Determines if any of the rooms in the supplied array generate labor for income*/
-	static boolean isLaborEarnable(Room[] array)
+	static bool isLaborEarnable(Room[] array)
 	{
-		boolean found = false;
+		bool found = false;
 		//Loop over array
-		for (int lcv = 0; lcv < array.length; lcv++)
+		for (int lcv = 0; lcv < array.Length; lcv++)
 		{
 			if (array[lcv].LaborEarnings > 0)
 			{
@@ -54,11 +54,11 @@ public class RoomUtilities
 		return found;
 	}
 	/**Determines if any of the rooms in the supplied array generate influence for income*/
-	static boolean isInfluenceEarnable(Room[] array)
+	static bool isInfluenceEarnable(Room[] array)
 	{
-		boolean found = false;
+		bool found = false;
 		//Loop over array
-		for (int lcv = 0; lcv < array.length; lcv++)
+		for (int lcv = 0; lcv < array.Length; lcv++)
 		{
 			if (array[lcv].InfluenceEarnings > 0)
 			{
@@ -70,11 +70,11 @@ public class RoomUtilities
 		return found;
 	}
 	/**Determines if any of the rooms in the supplied array generate magic for income*/
-	static boolean isMagicEarnable(Room[] array)
+	static bool isMagicEarnable(Room[] array)
 	{
-		boolean found = false;
+		bool found = false;
 		//Loop over array
-		for (int lcv = 0; lcv < array.length; lcv++)
+		for (int lcv = 0; lcv < array.Length; lcv++)
 		{
 			if (array[lcv].MagicEarnings > 0)
 			{
@@ -86,11 +86,11 @@ public class RoomUtilities
 		return found;
 	}
 	/**Determines if any of the rooms in the supplied array generate capital for income*/
-	static boolean isCapitalEarnable(Room[] array)
+	static bool isCapitalEarnable(Room[] array)
 	{
-		boolean found = false;
+		bool found = false;
 		//Loop over array
-		for (int lcv = 0; lcv < array.length; lcv++)
+		for (int lcv = 0; lcv < array.Length; lcv++)
 		{
 			if (array[lcv].CapitalEarnings > 0)
 			{
@@ -103,11 +103,11 @@ public class RoomUtilities
 	}
 	
 	/**Determines if any of the rooms in the supplied array generate gold pieces for income*/
-	static boolean isGPEarnable(Team[] array)
+	static bool isGPEarnable(Team[] array)
 	{
-		boolean found = false;
+		bool found = false;
 		//Loop over array
-		for (int lcv = 0; lcv < array.length; lcv++)
+		for (int lcv = 0; lcv < array.Length; lcv++)
 		{
 			if (array[lcv].GPEarnings > 0)
 			{
@@ -119,11 +119,11 @@ public class RoomUtilities
 		return found;
 	}
 	/**Determines if any of the rooms in the supplied array generate goods for income*/
-	static boolean isGoodsEarnable(Team[] array)
+	static bool isGoodsEarnable(Team[] array)
 	{
-		boolean found = false;
+		bool found = false;
 		//Loop over array
-		for (int lcv = 0; lcv < array.length; lcv++)
+		for (int lcv = 0; lcv < array.Length; lcv++)
 		{
 			if (array[lcv].GoodsEarnings > 0)
 			{
@@ -135,11 +135,11 @@ public class RoomUtilities
 		return found;
 	}
 	/**Determines if any of the rooms in the supplied array generate labor for income*/
-	static boolean isLaborEarnable(Team[] array)
+	static bool isLaborEarnable(Team[] array)
 	{
-		boolean found = false;
+		bool found = false;
 		//Loop over array
-		for (int lcv = 0; lcv < array.length; lcv++)
+		for (int lcv = 0; lcv < array.Length; lcv++)
 		{
 			if (array[lcv].LaborEarnings > 0)
 			{
@@ -151,11 +151,11 @@ public class RoomUtilities
 		return found;
 	}
 	/**Determines if any of the rooms in the supplied array generate influence for income*/
-	static boolean isInfluenceEarnable(Team[] array)
+	static bool isInfluenceEarnable(Team[] array)
 	{
-		boolean found = false;
+		bool found = false;
 		//Loop over array
-		for (int lcv = 0; lcv < array.length; lcv++)
+		for (int lcv = 0; lcv < array.Length; lcv++)
 		{
 			if (array[lcv].InfluenceEarnings > 0)
 			{
@@ -167,11 +167,11 @@ public class RoomUtilities
 		return found;
 	}
 	/**Determines if any of the rooms in the supplied array generate magic for income*/
-	static boolean isMagicEarnable(Team[] array)
+	static bool isMagicEarnable(Team[] array)
 	{
-		boolean found = false;
+		bool found = false;
 		//Loop over array
-		for (int lcv = 0; lcv < array.length; lcv++)
+		for (int lcv = 0; lcv < array.Length; lcv++)
 		{
 			if (array[lcv].MagicEarnings > 0)
 			{
@@ -183,11 +183,11 @@ public class RoomUtilities
 		return found;
 	}
 	/**Determines if any of the rooms in the supplied array generate capital for income*/
-	static boolean isCapitalEarnable(Team[] array)
+	static bool isCapitalEarnable(Team[] array)
 	{
-		boolean found = false;
+		bool found = false;
 		//Loop over array
-		for (int lcv = 0; lcv < array.length; lcv++)
+		for (int lcv = 0; lcv < array.Length; lcv++)
 		{
 			if (array[lcv].CapitalEarnings > 0)
 			{
@@ -204,9 +204,9 @@ public class RoomUtilities
 	{
 		int index = -1;
 		//Loop over array
-		for (int lcv = 0; lcv < array.length; lcv++)
+		for (int lcv = 0; lcv < array.Length; lcv++)
 		{
-			if (array[lcv].Name.equals(nameOfRoom))
+			if (array[lcv].Name.Equals(nameOfRoom))
 			{
 				index = lcv;
 			}
@@ -220,9 +220,9 @@ public class RoomUtilities
 	{
 		int index = -1;
 		//Loop over array
-		for (int lcv = 0; lcv < array.length; lcv++)
+		for (int lcv = 0; lcv < array.Length; lcv++)
 		{
-			if (array[lcv].name.equals(nameOfBuilding))
+			if (array[lcv].name.Equals(nameOfBuilding))
 			{
 				index = lcv;
 			}
@@ -236,9 +236,9 @@ public class RoomUtilities
 	{
 		int index = -1;
 		//Loop over array
-		for (int lcv = 0; lcv < array.length; lcv++)
+		for (int lcv = 0; lcv < array.Length; lcv++)
 		{
-			if (array[lcv].name.equals(nameOfQuality))
+			if (array[lcv].name.Equals(nameOfQuality))
 			{
 				index = lcv;
 			}
@@ -252,9 +252,9 @@ public class RoomUtilities
 	{
 		int index = -1;
 		//Loop over array
-		for (int lcv = 0; lcv < array.length; lcv++)
+		for (int lcv = 0; lcv < array.Length; lcv++)
 		{
-			if (array[lcv].Name.equals(nameOfTeam))
+			if (array[lcv].Name.Equals(nameOfTeam))
 			{
 				index = lcv;
 			}
@@ -266,18 +266,18 @@ public class RoomUtilities
 	/**Generate an array of Rooms that represent a building*/
 	static Room[] populateBuilding(String[] listOfRooms, Room[] completeRoomList)
 	{
-		Room[] returnRooms = new Room[listOfRooms.length];
-		//System.out.println("Length of returnRooms: " + returnRooms.length);
-		//System.out.println("Length of ListOfRooms: " + listOfRooms.length);
-		//System.out.println("Name of index 20: " + completeRoomList[20].Name);
-		for (int lcv = 0; lcv < listOfRooms.length; lcv++)
+		Room[] returnRooms = new Room[listOfRooms.Length];
+		//Console.Out.WriteLine("Length of returnRooms: " + returnRooms.Length);
+		//Console.Out.WriteLine("Length of ListOfRooms: " + listOfRooms.Length);
+		//Console.Out.WriteLine("Name of index 20: " + completeRoomList[20].Name);
+		for (int lcv = 0; lcv < listOfRooms.Length; lcv++)
 		{
 			int RoomListIndex = indexOf(listOfRooms[lcv], completeRoomList);
 			if (RoomListIndex == -1)
 			{
-				System.out.println("ERROR: the room \"" + listOfRooms[lcv] + "\" was not found in the Room DB");
+				Console.Out.WriteLine("ERROR: the room \"" + listOfRooms[lcv] + "\" was not found in the Room DB");
 			}
-			//System.out.println("Index of " + listOfRooms[lcv] + ": " + RoomListIndex);
+			//Console.Out.WriteLine("Index of " + listOfRooms[lcv] + ": " + RoomListIndex);
 			returnRooms[lcv] = completeRoomList[RoomListIndex];
 		}
 		
@@ -288,20 +288,20 @@ public class RoomUtilities
 	static Room[] populateCustomBuildingFromFile(String filename, Room[] completeRoomList)
 	{
 		BuildingFileReader building = new BuildingFileReader("settlements\\" + filename, "UTF-8");
-		String[] roomList = new String[1];
+		String[] roomList = new string [1];
 		try
 		{
 			roomList = building.readTextFile();
 		}
 		catch (Exception e)
 		{
-			System.out.println("Error: " + e.getMessage());
+			Console.Out.WriteLine("Error: " + e.Message);
 		}
 		return populateBuilding(roomList, completeRoomList);
 	}
 	
-	/**Remove quotes from a string*/
-	static String snipQuotes(String toSnip)
+	/**Remove quotes from a string */
+	static string  snipQuotes(String toSnip)
 	{
 		toSnip = toSnip.replace("\"","");//that does not work because there is no such character
 		return toSnip;
@@ -310,9 +310,9 @@ public class RoomUtilities
 	/**Expand the array by one, adding our new element to the expanded array*/
 	static Building[] expand(Building[] oldArray)
 	{
-		Building[] newArray = new Building[oldArray.length+1];
+		Building[] newArray = new Building[oldArray.Length+1];
 		
-		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		Array.Copy(oldArray, 0, newArray, 0, oldArray.Length);
 		
 		return newArray;
 	}
@@ -320,9 +320,9 @@ public class RoomUtilities
 	/**Expand the array by one, adding our new element to the expanded array*/
 	static Owner[] expand(Owner[] oldArray)
 	{
-		Owner[] newArray = new Owner[oldArray.length+1];
+		Owner[] newArray = new Owner[oldArray.Length+1];
 		
-		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		Array.Copy(oldArray, 0, newArray, 0, oldArray.Length);
 		
 		return newArray;
 	}
@@ -330,9 +330,9 @@ public class RoomUtilities
 	/**Expand the array by one, adding our new element to the expanded array*/
 	static Skill[] expand(Skill[] oldArray)
 	{
-		Skill[] newArray = new Skill[oldArray.length+1];
+		Skill[] newArray = new Skill[oldArray.Length+1];
 		
-		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		Array.Copy(oldArray, 0, newArray, 0, oldArray.Length);
 		
 		return newArray;
 	}
@@ -340,9 +340,9 @@ public class RoomUtilities
 	/**Expand the array by one, adding our new element to the expanded array*/
 	static Room[] expand(Room tempElement, Room[] oldArray)
 	{
-		Room[] newArray = new Room[oldArray.length+1];
+		Room[] newArray = new Room[oldArray.Length+1];
 		
-		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		Array.Copy(oldArray, 0, newArray, 0, oldArray.Length);
 		
 		return newArray;
 	}
@@ -350,19 +350,19 @@ public class RoomUtilities
 	/**Expand the array by one, adding our new element to the expanded array*/
 	static FurnishingsAndTraps[] expand(FurnishingsAndTraps tempElement, FurnishingsAndTraps[] oldArray)
 	{
-		FurnishingsAndTraps[] newArray = new FurnishingsAndTraps[oldArray.length+1];
+		FurnishingsAndTraps[] newArray = new FurnishingsAndTraps[oldArray.Length+1];
 		
-		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		Array.Copy(oldArray, 0, newArray, 0, oldArray.Length);
 		
 		return newArray;
 	}
 	
 	/**Expand the array by one, adding our new element to the expanded array*/
-	static String[] expandStringArray(String tempElement, String[] oldArray)
+	static string [] expandStringArray(String tempElement, string [] oldArray)
 	{
-		String[] newArray = new String[oldArray.length+1];
+		String[] newArray = new string [oldArray.Length+1];
 		
-		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		Array.Copy(oldArray, 0, newArray, 0, oldArray.Length);
 		
 		return newArray;
 	}
@@ -370,8 +370,8 @@ public class RoomUtilities
 	/**Expand the array by one, adding our new element to the expanded array*/
 	static District[] expand(District[] oldArray)
 	{
-		District[] newArray = new District[oldArray.length+1];
-		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		District[] newArray = new District[oldArray.Length+1];
+		Array.Copy(oldArray, 0, newArray, 0, oldArray.Length);
 		
 		return newArray;
 	}
@@ -379,9 +379,9 @@ public class RoomUtilities
 	/**Expand the array by one, adding our new element to the expanded array*/
 	static Settlement[] expand(Settlement tempElement, Settlement[] oldArray)
 	{
-		Settlement[] newArray = new Settlement[oldArray.length+1];
+		Settlement[] newArray = new Settlement[oldArray.Length+1];
 		
-		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		Array.Copy(oldArray, 0, newArray, 0, oldArray.Length);
 		
 		return newArray;
 	}
@@ -389,9 +389,9 @@ public class RoomUtilities
 	/**Expand the array by one, adding our new element to the expanded array*/
 	static Quality[] expand(Quality[] oldArray)
 	{
-		Quality[] newArray = new Quality[oldArray.length+1];
+		Quality[] newArray = new Quality[oldArray.Length+1];
 		
-		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		Array.Copy(oldArray, 0, newArray, 0, oldArray.Length);
 		
 		return newArray;
 	}
@@ -399,9 +399,9 @@ public class RoomUtilities
 	/**Expand the array by one, adding our new element to the expanded array*/
 	static Manager[] expand(Manager[] oldArray)
 	{
-		Manager[] newArray = new Manager[oldArray.length+1];
+		Manager[] newArray = new Manager[oldArray.Length+1];
 		
-		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		Array.Copy(oldArray, 0, newArray, 0, oldArray.Length);
 		
 		return newArray;
 	}
@@ -409,9 +409,9 @@ public class RoomUtilities
 	/**Expand the array by one, adding our new element to the expanded array*/
 	public static Team[] expand(Team[] oldArray) 
 	{
-		Team[] newArray = new Team[oldArray.length+1];
+		Team[] newArray = new Team[oldArray.Length+1];
 		
-		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		Array.Copy(oldArray, 0, newArray, 0, oldArray.Length);
 		
 		return newArray;
 	}
@@ -419,9 +419,9 @@ public class RoomUtilities
 	/**Expand the array by one, adding our new element to the expanded array*/
 	public static Organization[] expand(Organization[] oldArray) 
 	{
-		Organization[] newArray = new Organization[oldArray.length+1];
+		Organization[] newArray = new Organization[oldArray.Length+1];
 		
-		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+		Array.Copy(oldArray, 0, newArray, 0, oldArray.Length);
 		
 		return newArray;
 	}

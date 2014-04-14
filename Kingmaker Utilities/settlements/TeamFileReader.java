@@ -11,14 +11,14 @@ import java.util.Scanner;
 public class TeamFileReader 
 {
 	/** Constructor. */
-	TeamFileReader(String aFileName, String aEncoding)
+	TeamFileReader(String aFileName, string  aEncoding)
 	{
 	    fEncoding = aEncoding;
 	    fFileName = aFileName;
 	}
 	  
 	/** Write fixed content to the given file. */
-	void write() throws IOException  
+	void write()  
 	{
 		log("Writing to file named " + fFileName + ". Encoding: " + fEncoding);
 		Writer out = new OutputStreamWriter(new FileOutputStream(fFileName), fEncoding);
@@ -33,7 +33,7 @@ public class TeamFileReader
 	}
 	  
 	/** Read the contents of the given file. */
-	Team[] read() throws IOException 
+	Team[] read() 
 	{
 		Team[] returnList = new Team[0];
 		
@@ -43,10 +43,10 @@ public class TeamFileReader
 	      while (scanner.hasNextLine())
 	      {
 	    	String output = scanner.nextLine();
-	    	//System.out.println("Now trying to parse the quality: " + output);
+	    	//Console.Out.WriteLine("Now trying to parse the quality: " + output);
 	    	Team tempElement = new Team(output);
 	    	returnList = RoomUtilities.expand(returnList);
-	    	returnList[returnList.length-1]= tempElement;
+	    	returnList[returnList.Length-1]= tempElement;
 	      }
 	    }
 	    finally{
@@ -57,13 +57,13 @@ public class TeamFileReader
 	}
 	  
 	// PRIVATE 
-	private final String fFileName;
-	private final String fEncoding;
-	private final String FIXED_TEXT = "But soft! what code in yonder program breaks?";
+	privateString fFileName;
+	privateString fEncoding;
+	privateString FIXED_TEXT = "But soft! what code in yonder program breaks?";
 	  
 	private void log(String aMessage)
 	{
-		System.out.println(aMessage);
+		Console.Out.WriteLine(aMessage);
 	}
 
 

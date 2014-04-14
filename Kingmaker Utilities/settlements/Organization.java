@@ -52,7 +52,7 @@ public class Organization
 	
 	public Organization(String rawCSV, Team[] completeTeamList)
 	{
-		String[] tokens = rawCSV.split("\\;");
+		String[] tokens = rawCSV.Split(';');
 		
 		BalanceSheet GPEarnable = new BalanceSheet();
 		BalanceSheet GoodsEarnable = new BalanceSheet();
@@ -69,24 +69,24 @@ public class Organization
 		this.name = RoomUtilities.snipQuotes(tokens[0]);
 		this.Description = RoomUtilities.snipQuotes(tokens[1]);
 		String[] rawTeamList = tokens[2].split(",");
-		for (int lcv = 0; lcv < rawTeamList.length; lcv++)
+		for (int lcv = 0; lcv < rawTeamList.Length; lcv++)
 		{
-			int spaceIndex = rawTeamList[lcv].indexOf(" ");
+			int spaceIndex = rawTeamList[lcv].IndexOf(" ");
 			if (spaceIndex == -1)
 			{
-				System.out.println("Error in Organization Constructor: no space found for quantity of team [" + rawTeamList[lcv] + "]");
+				Console.Out.WriteLine("Error in Organization Constructor: no space found for quantity of team [" + rawTeamList[lcv] + "]");
 			}
 			else
 			{
-				int quantity = Integer.parseInt(rawTeamList[lcv].substring(0, spaceIndex));
-				String value = rawTeamList[lcv].substring(spaceIndex);
-				int location = RoomUtilities.indexOf(value, completeTeamList);
+				int quantity = Convert.ToInt32(rawTeamList[lcv].Substring(0, spaceIndex));
+				String value = rawTeamList[lcv].Substring(spaceIndex);
+				int location = RoomUtilities.IndexOf(value, completeTeamList);
 				if (location == -1)
-					System.out.println("Error in Organization Constructor: entyry [" + rawTeamList[lcv] + "]");
+					Console.Out.WriteLine("Error in Organization Constructor: entyry [" + rawTeamList[lcv] + "]");
 				for (int i = 0; i <= quantity; i++)
 				{
 					this.teams = RoomUtilities.expand(this.teams);
-					this.teams[this.teams.length-1] = new Team(completeTeamList[location]);
+					this.teams[this.teams.Length-1] = new Team(completeTeamList[location]);
 				}
 			}	
 		}
@@ -102,38 +102,38 @@ public class Organization
 	}
 	
 	/**Determines if any of the rooms in the supplied array generate gold pieces for income*/
-	public boolean isGPEarnable()
+	public bool isGPEarnable()
 	{
 		return RoomUtilities.isGPEarnable(this.teams);
 	}
 	/**Determines if any of the rooms in the supplied array generate goods for income*/
-	public boolean isGoodsEarnable()
+	public bool isGoodsEarnable()
 	{
 		return RoomUtilities.isGoodsEarnable(this.teams);
 	}
 	/**Determines if any of the rooms in the supplied array generate labor for income*/
-	public boolean isLaborEarnable()
+	public bool isLaborEarnable()
 	{
 		return RoomUtilities.isLaborEarnable(this.teams);
 	}
 	/**Determines if any of the rooms in the supplied array generate influence for income*/
-	public boolean isInfluenceEarnable()
+	public bool isInfluenceEarnable()
 	{
 		return RoomUtilities.isInfluenceEarnable(this.teams);
 	}
 	/**Determines if any of the rooms in the supplied array generate magic for income*/
-	public boolean isMagicEarnable()
+	public bool isMagicEarnable()
 	{
 		return RoomUtilities.isMagicEarnable(this.teams);
 	}
 	/**Determines if any of the rooms in the supplied array generate capital for income*/
-	public boolean isCapitalEarnable()
+	public bool isCapitalEarnable()
 	{
 		return RoomUtilities.isCapitalEarnable(this.teams);
 	}
 	
 	/**A helper method to get less verbose output*/
-	public String getBalanceSheetDescriptions()
+	public string  getBalanceSheetDescriptions()
 	{
 		regenerateBalanceSheets();		//Regenerate in case of changes
 		String returnString = "";
@@ -165,24 +165,24 @@ public class Organization
 		returnSheet.preferredIncome = preferredIncome;	//For toString purposes
 		
 		//Check overall potentials for capital derivation
-		boolean GPEarnableOverall = isGPEarnable();
-		boolean GoodsEarnableOverall = isGoodsEarnable();
-		boolean InfluenceEarnableOverall = isInfluenceEarnable();
-		boolean LaborEarnableOverall = isLaborEarnable();
-		boolean MagicEarnableOverall = isMagicEarnable();
+		bool GPEarnableOverall = isGPEarnable();
+		bool GoodsEarnableOverall = isGoodsEarnable();
+		bool InfluenceEarnableOverall = isInfluenceEarnable();
+		bool LaborEarnableOverall = isLaborEarnable();
+		bool MagicEarnableOverall = isMagicEarnable();
 		
-		for (int lcv = 0; lcv < teams.length; lcv++)
+		for (int lcv = 0; lcv < teams.Length; lcv++)
 		{
 			//Create a temporary 1-element array
 			Team[] tempArray = new Team[1];
 			tempArray[0] = teams[lcv];
 			//Check the earning potential of this particular element
-			boolean GPEarnable = RoomUtilities.isGPEarnable(tempArray);
-			boolean GoodsEarnable = RoomUtilities.isGoodsEarnable(tempArray);
-			boolean InfluenceEarnable = RoomUtilities.isInfluenceEarnable(tempArray);
-			boolean LaborEarnable = RoomUtilities.isLaborEarnable(tempArray);
-			boolean MagicEarnable = RoomUtilities.isMagicEarnable(tempArray);
-			boolean CapitalEarnable = RoomUtilities.isCapitalEarnable(tempArray);
+			bool GPEarnable = RoomUtilities.isGPEarnable(tempArray);
+			bool GoodsEarnable = RoomUtilities.isGoodsEarnable(tempArray);
+			bool InfluenceEarnable = RoomUtilities.isInfluenceEarnable(tempArray);
+			bool LaborEarnable = RoomUtilities.isLaborEarnable(tempArray);
+			bool MagicEarnable = RoomUtilities.isMagicEarnable(tempArray);
+			bool CapitalEarnable = RoomUtilities.isCapitalEarnable(tempArray);
 			//Logic is the same, only the variables have been changed, to protect the innocent
 			//Check to see if prefferedIncome is available, if so, favor it. Capital, a special resource, can be used to produce any other type that building can produce
 			if (preferredIncome == "GP")
@@ -194,7 +194,7 @@ public class Organization
 					if (GPEarnableOverall)
 						returnSheet.GP += teams[lcv].CapitalEarnings;
 					else
-						System.out.println("Error found: For the Room \"" + teams[lcv].Name + "\", GP not earnable for available captial on GP-only request: does this building not generate anything but capital?");
+						Console.Out.WriteLine("Error found: For the Room \"" + teams[lcv].Name + "\", GP not earnable for available captial on GP-only request: does this building not generate anything but capital?");
 				}
 				else if (LaborEarnable)
 					returnSheet.Labor += teams[lcv].LaborEarnings;
@@ -218,7 +218,7 @@ public class Organization
 					else if (GPEarnableOverall)
 						returnSheet.GP += teams[lcv].CapitalEarnings;
 					else
-						System.out.println("Error found: For the Room \"" + teams[lcv].Name + "\", GP & Goods not earnable for available captial: does this building not generate anything but capital?");
+						Console.Out.WriteLine("Error found: For the Room \"" + teams[lcv].Name + "\", GP & Goods not earnable for available captial: does this building not generate anything but capital?");
 				}
 				else if (GPEarnable)
 					returnSheet.GP += teams[lcv].GPEarnings;
@@ -242,7 +242,7 @@ public class Organization
 					else if (GPEarnableOverall)
 						returnSheet.GP += teams[lcv].CapitalEarnings;
 					else
-						System.out.println("Error found: For the Room \"" + teams[lcv].Name + "\", GP & Labor not earnable for available captial: does this building not generate anything but capital?");
+						Console.Out.WriteLine("Error found: For the Room \"" + teams[lcv].Name + "\", GP & Labor not earnable for available captial: does this building not generate anything but capital?");
 				}
 				else if (GPEarnable)
 					returnSheet.GP += teams[lcv].GPEarnings;
@@ -264,7 +264,7 @@ public class Organization
 					else if (GPEarnableOverall)
 						returnSheet.GP += teams[lcv].CapitalEarnings;
 					else
-						System.out.println("Error found: For the Room \"" + teams[lcv].Name + "\", GP & Influence not earnable for available captial: does this building not generate anything but capital?");
+						Console.Out.WriteLine("Error found: For the Room \"" + teams[lcv].Name + "\", GP & Influence not earnable for available captial: does this building not generate anything but capital?");
 				}
 				else if (GPEarnable)
 					returnSheet.GP += teams[lcv].GPEarnings;
@@ -288,7 +288,7 @@ public class Organization
 					else if (GPEarnableOverall)
 						returnSheet.GP += teams[lcv].CapitalEarnings;
 					else
-						System.out.println("Error found: For the Room \"" + teams[lcv].Name + "\", GP & Magic not earnable for available captial: does this building not generate anything but capital?");
+						Console.Out.WriteLine("Error found: For the Room \"" + teams[lcv].Name + "\", GP & Magic not earnable for available captial: does this building not generate anything but capital?");
 				}
 				else if (GPEarnable)
 					returnSheet.GP += teams[lcv].GPEarnings;
@@ -303,13 +303,13 @@ public class Organization
 			}
 			else
 			{
-				System.out.println("Error: Invalid preferred input provided");
+				Console.Out.WriteLine("Error: Invalid preferred input provided");
 			}
 		}
 		return returnSheet;
 	}
 
-	public String toString()
+	public string  toString()
 	{
 		String returnString = "";
 		
@@ -317,7 +317,7 @@ public class Organization
 		returnString += "   Owned by: " + owner + "\n";
 		returnString += "--==--Team Composition:\n";
 		
-		for (int lcv = 0; lcv < teams.length; lcv++)
+		for (int lcv = 0; lcv < teams.Length; lcv++)
 		{
 			returnString += "   " + teams[lcv].Name + " (" + teams[lcv].conciseTeamOutput() + ")\n";
 		}

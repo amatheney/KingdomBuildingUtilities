@@ -114,7 +114,7 @@ public class Building
 		this.Furnishings = that.Furnishings;
 	}
 	
-	/**Constructor that takes a raw semicolon-delimited string, and populates the building with copies of rooms and furnishings found within.*/
+	/**Constructor that takes a raw semicolon-delimited string , and populates the building with copies of rooms and furnishings found within.*/
 	public Building(String rawCSV, Room[] completeRoomList, FurnishingsAndTraps[] completeFurnishingList)
 	{
 		this.GPEarnable = new BalanceSheet();				//Derived
@@ -123,7 +123,7 @@ public class Building
 		this.InfluenceEarnable = new BalanceSheet();		//Derived
 		this.MagicEarnable = new BalanceSheet();			//Derived
 		
-		String[] tokens = rawCSV.split("\\;");
+		String[] tokens = rawCSV.Split(';');
 		
 		this.name = RoomUtilities.snipQuotes(tokens[0]);										//BuildingName 	[0]
 		this.owner = "";
@@ -131,34 +131,34 @@ public class Building
 		this.Description = RoomUtilities.snipQuotes(tokens[2]);									//Description	[2]
 		String rawRooms = RoomUtilities.snipQuotes(tokens[25]);
 		this.rooms = populateBuildingFromRawString(rawRooms, completeRoomList);					//Rooms			[25]
-		//System.out.println("Now we're back in the constructor, and rooms is " + this.rooms.length + " elements long");
+		//Console.Out.WriteLine("Now we're back in the constructor, and rooms is " + this.rooms.Length + " elements long");
 		
-		int settlementCorruptionModifier = Integer.parseInt(tokens[3]);							//Corruption	[3]
-		int settlementCrimeModifier  = Integer.parseInt(tokens[4]);								//Crime			[4]
-		int settlementLawModifier = Integer.parseInt(tokens[6]);								//Law			[6]
-		int settlementLoreModifier  = Integer.parseInt(tokens[7]);								//Lore			[7]
-		int settlementProductivityModifier = Integer.parseInt(tokens[8]);						//Productivity	[8]
-		int settlementSocietyModifier  = Integer.parseInt(tokens[9]);							//Society		[9]		
-		int settlementDangerModifier  = Integer.parseInt(tokens[10]);							//Danger		[10]
-		int settlementBaseValueModifier  = Integer.parseInt(tokens[17]);						//BaseValue		[17]
+		int settlementCorruptionModifier = Convert.ToInt32(tokens[3]);							//Corruption	[3]
+		int settlementCrimeModifier  = Convert.ToInt32(tokens[4]);								//Crime			[4]
+		int settlementLawModifier = Convert.ToInt32(tokens[6]);								//Law			[6]
+		int settlementLoreModifier  = Convert.ToInt32(tokens[7]);								//Lore			[7]
+		int settlementProductivityModifier = Convert.ToInt32(tokens[8]);						//Productivity	[8]
+		int settlementSocietyModifier  = Convert.ToInt32(tokens[9]);							//Society		[9]		
+		int settlementDangerModifier  = Convert.ToInt32(tokens[10]);							//Danger		[10]
+		int settlementBaseValueModifier  = Convert.ToInt32(tokens[17]);						//BaseValue		[17]
 		
 		SettlementModifiers = new SettlementMods(settlementCorruptionModifier,settlementCrimeModifier,settlementLawModifier,settlementLoreModifier, 
 				settlementSocietyModifier,settlementDangerModifier,settlementProductivityModifier,settlementBaseValueModifier);
 		
-		this.minorItemsProduced  = Integer.parseInt(tokens[18]);								//MinorItems	[18]
-		this.majorItemsProduced  = Integer.parseInt(tokens[20]);								//MajorItems	[20]
-		this.mediumItemsProduced  = Integer.parseInt(tokens[19]);								//MediumItems	[19]
+		this.minorItemsProduced  = Convert.ToInt32(tokens[18]);								//MinorItems	[18]
+		this.majorItemsProduced  = Convert.ToInt32(tokens[20]);								//MajorItems	[20]
+		this.mediumItemsProduced  = Convert.ToInt32(tokens[19]);								//MediumItems	[19]
 		
-		this.kingdomLoyaltyModifier  = Integer.parseInt(tokens[12]);							//Loyalty		[12]
-		this.kingdomStabilityModifier  = Integer.parseInt(tokens[13]);							//Stability		[13]
-		this.kingdomUnrestModifier  = Integer.parseInt(tokens[14]);								//Unrest		[14]
-		this.kingdomConsumptionModifier  = Integer.parseInt(tokens[15]);						//Consumption	[15]
-		this.kingdomgDefenseModifier  = Integer.parseInt(tokens[16]);							//Defense		[16]
-		this.kingdomEconomyModifier  = Integer.parseInt(tokens[5]);								//Economy		[5]
-		this.kingdomFameModifier = Integer.parseInt(tokens[11]);								//Fame			[11]
+		this.kingdomLoyaltyModifier  = Convert.ToInt32(tokens[12]);							//Loyalty		[12]
+		this.kingdomStabilityModifier  = Convert.ToInt32(tokens[13]);							//Stability		[13]
+		this.kingdomUnrestModifier  = Convert.ToInt32(tokens[14]);								//Unrest		[14]
+		this.kingdomConsumptionModifier  = Convert.ToInt32(tokens[15]);						//Consumption	[15]
+		this.kingdomgDefenseModifier  = Convert.ToInt32(tokens[16]);							//Defense		[16]
+		this.kingdomEconomyModifier  = Convert.ToInt32(tokens[5]);								//Economy		[5]
+		this.kingdomFameModifier = Convert.ToInt32(tokens[11]);								//Fame			[11]
 		
-		this.lotSize  = Integer.parseInt(tokens[27]);											//Lot Size		[27]
-		this.BPCost  = Integer.parseInt(tokens[28]);											//BP Cost		[28]
+		this.lotSize  = Convert.ToInt32(tokens[27]);											//Lot Size		[27]
+		this.BPCost  = Convert.ToInt32(tokens[28]);											//BP Cost		[28]
 		this.Discount = RoomUtilities.snipQuotes(tokens[23]);									//Discount		[23]
 		this.Limits = RoomUtilities.snipQuotes(tokens[24]);										//Limit			[24]
 		this.upgradesFrom = RoomUtilities.snipQuotes(tokens[21]);								//UpgradesFrom	[21]
@@ -176,37 +176,37 @@ public class Building
 	{
 		//Create return array
 		FurnishingsAndTraps[] returnList = new FurnishingsAndTraps[0];
-		if (!(rawCSV.equals("N/A")))									//Only proceed if there are items to parse through
+		if (!(rawCSV.Equals("N/A")))									//Only proceed if there are items to parse through
 		{
 			//A tuple is a matched pair of variables - in this case, it is a Type:Associated Room matching
 			String[] tuples = rawCSV.split("\\/");
 			//Loop over matched pair, calling generic constructor. In this case, the format is <Type>:<Associated Room>/<Type>:<Associated Room>/etc...
 			FurnishingsAndTraps toBeAdded;								//Throwaway object to populate and then add to array
-			for (int lcv = 0; lcv < tuples.length; lcv++)				//For every furnishing parsed (the /'s)
+			for (int lcv = 0; lcv < tuples.Length; lcv++)				//For every furnishing parsed (the /'s)
 			{
-				String[] tuple = rawCSV.split("\\:");					//Split into types and associated rooms
+				String[] tuple = rawCSV.Split(':');					//Split into types and associated rooms
 				String type = tuple[0];
 				String associatedRoom = tuple[1];
 				//We need to remove extraneous /'s from the array, due to wierd split logic
-				int indexOfSlash = associatedRoom.indexOf("/");			
-				if (indexOfSlash > 0)									//Only remove /'s if they're actually found in the string
-					associatedRoom = associatedRoom.substring(0, indexOfSlash);
+				int indexOfSlash = associatedRoom.IndexOf("/");			
+				if (indexOfSlash > 0)									//Only remove /'s if they're actually found in the string 
+					associatedRoom = associatedRoom.Substring(0, indexOfSlash);
 				toBeAdded = new FurnishingsAndTraps();					//Reset placeholder
 				
 				//Now we'll loop over the already-qualified list of furnishings				
-				for (int innerlcv = 0; innerlcv < completeFurnishingList.length; innerlcv++)
+				for (int innerlcv = 0; innerlcv < completeFurnishingList.Length; innerlcv++)
 				{
-					//Compare complete furnishing list with our string name, a match means we're done.
-					if (completeFurnishingList[innerlcv].Name.equals(type))
+					//Compare complete furnishing list with our string  name, a match means we're done.
+					if (completeFurnishingList[innerlcv].Name.Equals(type))
 					{
 						toBeAdded = completeFurnishingList[innerlcv];	//Map over basic elements
 						toBeAdded.associatedRoom = associatedRoom;		//Set associated room value
 					}
 				}
-				if (!(toBeAdded.Name.equals("")))		//If NOT blank (element found in completeFurnishingList
+				if (!(toBeAdded.Name.Equals("")))		//If NOT blank (element found in completeFurnishingList
 				{
 					returnList = RoomUtilities.expand(toBeAdded, returnList);
-					returnList[returnList.length-1] = toBeAdded;
+					returnList[returnList.Length-1] = toBeAdded;
 				}
 			}
 		}
@@ -237,35 +237,35 @@ public class Building
 		int settlementBaseValueModifier = SettlementModifiers.settlementBaseValueModifier;
 		
 		//Now pull the settlement mods, if any
-		for (int lcv = 0; lcv < rooms.length; lcv++)
+		for (int lcv = 0; lcv < rooms.Length; lcv++)
 		{
-			//System.out.println("LCV = " + lcv);
-			//System.out.println("Rooms Length is " + rooms.length);
-			//System.out.println("For the following room: " + rooms[lcv].Name);
-			//System.out.println(rooms[lcv].toString());
+			//Console.Out.WriteLine("LCV = " + lcv);
+			//Console.Out.WriteLine("Rooms Length is " + rooms.Length);
+			//Console.Out.WriteLine("For the following room: " + rooms[lcv].Name);
+			//Console.Out.WriteLine(rooms[lcv].toString());
 			
 			String settlementMods = rooms[lcv].SettlementMods;
 			settlementMods = RoomUtilities.snipQuotes(settlementMods);
-			if (!settlementMods.equals("N/A"))
+			if (!settlementMods.Equals("N/A"))
 			{
-				String[] tokens = settlementMods.split("\\,");
-				for (int innerLCV = 0; innerLCV < tokens.length; innerLCV++)
+				String[] tokens = settlementMods.Split(',');
+				for (int innerLCV = 0; innerLCV < tokens.Length; innerLCV++)
 				{
 					//Initial declarations
 					int indexValue;
 					String settlementModifier = "";
 					String modifierValue = "";
-					boolean negativeValue = false;
+					bool negativeValue = false;
 					
 					//Check for positive modifiers
-					indexValue = tokens[innerLCV].indexOf("+"); //find index of +
+					indexValue = tokens[innerLCV].IndexOf("+"); //find index of +
 					if (indexValue < 0)
 					{
 						//That failed, so lets check for negative modifiers:
-						indexValue = tokens[innerLCV].indexOf("-"); //find index of -
+						indexValue = tokens[innerLCV].IndexOf("-"); //find index of -
 						if (indexValue < 0)
 						{
-							System.out.println("Error encountered in Building Constructor: settlement modifiers cannot be parsed for the following entry: " + settlementMods);
+							Console.Out.WriteLine("Error encountered in Building Constructor: settlement modifiers cannot be parsed for the following entry: " + settlementMods);
 						}
 						else
 						{
@@ -276,33 +276,33 @@ public class Building
 					//Now pull the values
 					if (indexValue > 0)
 					{
-						settlementModifier = tokens[innerLCV].substring(0, indexValue);
-						modifierValue = tokens[innerLCV].substring(indexValue);
+						settlementModifier = tokens[innerLCV].Substring(0, indexValue);
+						modifierValue = tokens[innerLCV].Substring(indexValue);
 						//remove whitespace
 						settlementModifier = settlementModifier.replaceAll("\\s+","");
 						modifierValue = modifierValue.replaceAll("\\s+","");
 						//Now we need to set the appropriate modifier
-						modifierValue = modifierValue.substring(1); //Snip the leading symbol, we should know its sign by now.
-						int modValue = Integer.parseInt(modifierValue);
+						modifierValue = modifierValue.Substring(1); //Snip the leading symbol, we should know its sign by now.
+						int modValue = Convert.ToInt32(modifierValue);
 						if (negativeValue)
 							modValue = modValue * -1;	//Flip if negative
-						if (settlementModifier.equals("Corruption")) 
+						if (settlementModifier.Equals("Corruption")) 
 							settlementCorruptionModifier += modValue;
-						else if (settlementModifier.equals("Crime")) 
+						else if (settlementModifier.Equals("Crime")) 
 				            settlementCrimeModifier += modValue;
-						else if (settlementModifier.equals("Productivity")) 
+						else if (settlementModifier.Equals("Productivity")) 
 				            settlementProductivityModifier += modValue;
-						else if (settlementModifier.equals("Law")) 
+						else if (settlementModifier.Equals("Law")) 
 				            settlementLawModifier += modValue;
-						else if (settlementModifier.equals("Lore")) 
+						else if (settlementModifier.Equals("Lore")) 
 				            settlementLoreModifier += modValue;
-						else if (settlementModifier.equals("Society")) 
+						else if (settlementModifier.Equals("Society")) 
 				            settlementSocietyModifier += modValue;
-						else if (settlementModifier.equals("Danger"))
+						else if (settlementModifier.Equals("Danger"))
 				            settlementDangerModifier += modValue;
 						else
 						{
-							System.out.println("Error Encountered: settlement modifier \"" + settlementModifier + "\" could not be resolved.");
+							Console.Out.WriteLine("Error Encountered: settlement modifier \"" + settlementModifier + "\" could not be resolved.");
 						} 
 					}
 				}
@@ -318,20 +318,20 @@ public class Building
 		this.owner = name;
 	}
 	
-	public String toString()
+	public string  toString()
 	{
 		String returnString = "\n";
 		
 		//First, some basic info:
 		returnString += "----==Building: " + this.name + "==----\n";
-		if (!(owner.equals("")))
+		if (!(owner.Equals("")))
 			returnString += "Owned by " + owner + "\n";
-		if (!(Benefit.equals("N/A")))
+		if (!(Benefit.Equals("N/A")))
 			returnString += "Benefit: " + Benefit + "\n";
 		returnString += "Description: " + Description + "\n";
-		if (!(upgradesFrom.equals("N/A")))
+		if (!(upgradesFrom.Equals("N/A")))
 			returnString += "Upgrades From: " + upgradesFrom + "\n";
-		if (!(upgradesTo.equals("N/A")))
+		if (!(upgradesTo.Equals("N/A")))
 			returnString += "Upgrades To: " + upgradesTo + "\n";
 
 		//Helper methods for selective & more cogent output later
@@ -345,18 +345,18 @@ public class Building
 	}
 	
 	/**A helper method to get less verbose output*/
-	public String limitedBuildingDescription()
+	public string  limitedBuildingDescription()
 	{
 		String returnString = "\n";
 		
 		//First, some basic info:
 		returnString += "----==Building: " + this.name + "==----\n";
-		if (!(Benefit.equals("N/A")))
+		if (!(Benefit.Equals("N/A")))
 			returnString += "Benefit: " + Benefit + "\n";
 		returnString += "Description: " + Description + "\n";
-		if (!(upgradesFrom.equals("N/A")))
+		if (!(upgradesFrom.Equals("N/A")))
 			returnString += "Upgrades From: " + upgradesFrom + "\n";
-		if (!(upgradesTo.equals("N/A")))
+		if (!(upgradesTo.Equals("N/A")))
 			returnString += "Upgrades To: " + upgradesTo + "\n";
 		
 		//Helper methods for selective & more cogent output later
@@ -368,38 +368,38 @@ public class Building
 	}
 	
 	/**Determines if any of the rooms in the supplied array generate gold pieces for income*/
-	public boolean isGPEarnable()
+	public bool isGPEarnable()
 	{
 		return RoomUtilities.isGPEarnable(this.rooms);
 	}
 	/**Determines if any of the rooms in the supplied array generate goods for income*/
-	public boolean isGoodsEarnable()
+	public bool isGoodsEarnable()
 	{
 		return RoomUtilities.isGoodsEarnable(this.rooms);
 	}
 	/**Determines if any of the rooms in the supplied array generate labor for income*/
-	public boolean isLaborEarnable()
+	public bool isLaborEarnable()
 	{
 		return RoomUtilities.isLaborEarnable(this.rooms);
 	}
 	/**Determines if any of the rooms in the supplied array generate influence for income*/
-	public boolean isInfluenceEarnable()
+	public bool isInfluenceEarnable()
 	{
 		return RoomUtilities.isInfluenceEarnable(this.rooms);
 	}
 	/**Determines if any of the rooms in the supplied array generate magic for income*/
-	public boolean isMagicEarnable()
+	public bool isMagicEarnable()
 	{
 		return RoomUtilities.isMagicEarnable(this.rooms);
 	}
 	/**Determines if any of the rooms in the supplied array generate capital for income*/
-	public boolean isCapitalEarnable()
+	public bool isCapitalEarnable()
 	{
 		return RoomUtilities.isCapitalEarnable(this.rooms);
 	}
 	
 	/**A helper method to get less verbose output*/
-	public String getBalanceSheetDescriptions()
+	public string  getBalanceSheetDescriptions()
 	{
 		regenerateBalanceSheets();		//Regenerate in case of changes
 		String returnString = "";
@@ -415,7 +415,7 @@ public class Building
 	}
 	
 	/**A helper method to get less verbose output*/
-	public String getSettlementDescriptions()
+	public string  getSettlementDescriptions()
 	{
 		SettlementMods tempMods = regenerateSettlementMods();		//Regenerate in case of changes, including room bonuses
 		String returnString = "";
@@ -452,7 +452,7 @@ public class Building
 	}
 	
 	/**A helper method to get less verbose output*/
-	public String getKingdomDescriptions()
+	public string  getKingdomDescriptions()
 	{
 		String returnString = "";
 		
@@ -473,22 +473,22 @@ public class Building
 			returnString += "Economy: " + kingdomEconomyModifier + "\n";
 		if (kingdomFameModifier != 0)
 			returnString += "Fame: " + kingdomFameModifier + "\n";
-		if (!(Discount.equals("N/A")))
+		if (!(Discount.Equals("N/A")))
 			returnString += "Provides a discount for building: " + Discount + "\n";
-		if (!(Limits.equals("N/A")))
+		if (!(Limits.Equals("N/A")))
 			returnString += "Limits on the creation of this building: " + Limits + "\n";
 		
 		return returnString;
 	}
 	
 	/**A helper method to get less verbose output*/
-	public String getRoomDescriptions()
+	public string  getRoomDescriptions()
 	{
 		String returnString = "";
 		
 		returnString += "\n----==Detailed Room Description==----";
 		//Output every room in room[]
-		for (int lcv = 0; lcv < this.rooms.length; lcv++)
+		for (int lcv = 0; lcv < this.rooms.Length; lcv++)
 		{
 			returnString += this.rooms[lcv].toString();
 		}
@@ -497,13 +497,13 @@ public class Building
 	}
 	
 	/**A helper method to get less verbose output*/
-	public String getFurnishingsDescriptions()
+	public string  getFurnishingsDescriptions()
 	{
 		String returnString = "";
 		
 		returnString += "\n----==Detailed Furnishing\\Trap Description==----\n";
 		//Output every furnishing in furnishings[]
-		for (int lcv = 0; lcv < this.Furnishings.length; lcv++)
+		for (int lcv = 0; lcv < this.Furnishings.Length; lcv++)
 		{
 			returnString += this.Furnishings[lcv].toString();
 		}
@@ -519,24 +519,24 @@ public class Building
 		returnSheet.preferredIncome = preferredIncome;	//For toString purposes
 		
 		//Check overall potentials for capital derivation
-		boolean GPEarnableOverall = isGPEarnable();
-		boolean GoodsEarnableOverall = isGoodsEarnable();
-		boolean InfluenceEarnableOverall = isInfluenceEarnable();
-		boolean LaborEarnableOverall = isLaborEarnable();
-		boolean MagicEarnableOverall = isMagicEarnable();
+		bool GPEarnableOverall = isGPEarnable();
+		bool GoodsEarnableOverall = isGoodsEarnable();
+		bool InfluenceEarnableOverall = isInfluenceEarnable();
+		bool LaborEarnableOverall = isLaborEarnable();
+		bool MagicEarnableOverall = isMagicEarnable();
 		
-		for (int lcv = 0; lcv < rooms.length; lcv++)
+		for (int lcv = 0; lcv < rooms.Length; lcv++)
 		{
 			//Create a temporary 1-element array
 			Room[] tempArray = new Room[1];
 			tempArray[0] = rooms[lcv];
 			//Check the earning potential of this particular element
-			boolean GPEarnable = RoomUtilities.isGPEarnable(tempArray);
-			boolean GoodsEarnable = RoomUtilities.isGoodsEarnable(tempArray);
-			boolean InfluenceEarnable = RoomUtilities.isInfluenceEarnable(tempArray);
-			boolean LaborEarnable = RoomUtilities.isLaborEarnable(tempArray);
-			boolean MagicEarnable = RoomUtilities.isMagicEarnable(tempArray);
-			boolean CapitalEarnable = RoomUtilities.isCapitalEarnable(tempArray);
+			bool GPEarnable = RoomUtilities.isGPEarnable(tempArray);
+			bool GoodsEarnable = RoomUtilities.isGoodsEarnable(tempArray);
+			bool InfluenceEarnable = RoomUtilities.isInfluenceEarnable(tempArray);
+			bool LaborEarnable = RoomUtilities.isLaborEarnable(tempArray);
+			bool MagicEarnable = RoomUtilities.isMagicEarnable(tempArray);
+			bool CapitalEarnable = RoomUtilities.isCapitalEarnable(tempArray);
 			//Logic is the same, only the variables have been changed, to protect the innocent
 			//Check to see if prefferedIncome is available, if so, favor it. Capital, a special resource, can be used to produce any other type that building can produce
 			if (preferredIncome == "GP")
@@ -548,7 +548,7 @@ public class Building
 					if (GPEarnableOverall)
 						returnSheet.GP += rooms[lcv].CapitalEarnings;
 					else
-						System.out.println("Error found: For the Room \"" + rooms[lcv].Name + "\", GP not earnable for available captial on GP-only request: does this building not generate anything but capital?");
+						Console.Out.WriteLine("Error found: For the Room \"" + rooms[lcv].Name + "\", GP not earnable for available captial on GP-only request: does this building not generate anything but capital?");
 				}
 				else if (LaborEarnable)
 					returnSheet.Labor += rooms[lcv].LaborEarnings;
@@ -572,7 +572,7 @@ public class Building
 					else if (GPEarnableOverall)
 						returnSheet.GP += rooms[lcv].CapitalEarnings;
 					else
-						System.out.println("Error found: For the Room \"" + rooms[lcv].Name + "\", GP & Goods not earnable for available captial: does this building not generate anything but capital?");
+						Console.Out.WriteLine("Error found: For the Room \"" + rooms[lcv].Name + "\", GP & Goods not earnable for available captial: does this building not generate anything but capital?");
 				}
 				else if (GPEarnable)
 					returnSheet.GP += rooms[lcv].GPEarnings;
@@ -596,7 +596,7 @@ public class Building
 					else if (GPEarnableOverall)
 						returnSheet.GP += rooms[lcv].CapitalEarnings;
 					else
-						System.out.println("Error found: For the Room \"" + rooms[lcv].Name + "\", GP & Labor not earnable for available captial: does this building not generate anything but capital?");
+						Console.Out.WriteLine("Error found: For the Room \"" + rooms[lcv].Name + "\", GP & Labor not earnable for available captial: does this building not generate anything but capital?");
 				}
 				else if (GPEarnable)
 					returnSheet.GP += rooms[lcv].GPEarnings;
@@ -618,7 +618,7 @@ public class Building
 					else if (GPEarnableOverall)
 						returnSheet.GP += rooms[lcv].CapitalEarnings;
 					else
-						System.out.println("Error found: For the Room \"" + rooms[lcv].Name + "\", GP & Influence not earnable for available captial: does this building not generate anything but capital?");
+						Console.Out.WriteLine("Error found: For the Room \"" + rooms[lcv].Name + "\", GP & Influence not earnable for available captial: does this building not generate anything but capital?");
 				}
 				else if (GPEarnable)
 					returnSheet.GP += rooms[lcv].GPEarnings;
@@ -642,7 +642,7 @@ public class Building
 					else if (GPEarnableOverall)
 						returnSheet.GP += rooms[lcv].CapitalEarnings;
 					else
-						System.out.println("Error found: For the Room \"" + rooms[lcv].Name + "\", GP & Magic not earnable for available captial: does this building not generate anything but capital?");
+						Console.Out.WriteLine("Error found: For the Room \"" + rooms[lcv].Name + "\", GP & Magic not earnable for available captial: does this building not generate anything but capital?");
 				}
 				else if (GPEarnable)
 					returnSheet.GP += rooms[lcv].GPEarnings;
@@ -657,55 +657,55 @@ public class Building
 			}
 			else
 			{
-				System.out.println("Error: Invalid preferred input provided");
+				Console.Out.WriteLine("Error: Invalid preferred input provided");
 			}
 		}
 		return returnSheet;
 	}
 	
-	/**Take in a raw slash ('/') delimited string and parse it into a list of Room objects*/
+	/**Take in a raw slash ('/') delimited string  and parse it into a list of Room objects*/
 	static Room[] populateBuildingFromRawString(String rawRoomListing, Room[] completeRoomList)
 	{
 		Room[] returnRooms = new Room[0];
 		//Only proceed if there are rooms to parse
-		if (!(rawRoomListing.equals("N/A")))
+		if (!(rawRoomListing.Equals("N/A")))
 		{
 			String[] tokens = rawRoomListing.split("\\/");				//Split into array
-			for (int lcv = 0; lcv < tokens.length; lcv++)				//For every element in tokens[]
+			for (int lcv = 0; lcv < tokens.Length; lcv++)				//For every element in tokens[]
 			{
-				int spaceIndex = tokens[lcv].indexOf(" "); 				//Find the white space, for special formatting
+				int spaceIndex = tokens[lcv].IndexOf(" "); 				//Find the white space, for special formatting
 				if (spaceIndex == -1)
 				{
-					System.out.println("Error encountered in populateBuildingFromRawString: \"" + tokens[lcv] + "\" is not a valid room definition");
+					Console.Out.WriteLine("Error encountered in populateBuildingFromRawString: \"" + tokens[lcv] + "\" is not a valid room definition");
 				}
 				else
 				{
-					String quantityString = tokens[lcv].substring(0, spaceIndex);
-					String roomName = tokens[lcv].substring(spaceIndex);
+					String quantityString = tokens[lcv].Substring(0, spaceIndex);
+					String roomName = tokens[lcv].Substring(spaceIndex);
 					//remove whitespace
-					int quantity = Integer.parseInt(quantityString);
-					roomName = roomName.replaceAll("^\\s+","");			//Remove whitespace from the front of the string
-					roomName = roomName.replaceAll("\\s+$",""); 		//Remove whitepsace from the back of the string
-					//System.out.println("Quantity: " + quantity);
-					//System.out.println("Room Name: " + roomName);
+					int quantity = Convert.ToInt32(quantityString);
+					roomName = roomName.replaceAll("^\\s+","");			//Remove whitespace from the front of the string 
+					roomName = roomName.replaceAll("\\s+$",""); 		//Remove whitepsace from the back of the string 
+					//Console.Out.WriteLine("Quantity: " + quantity);
+					//Console.Out.WriteLine("Room Name: " + roomName);
 					//Now we have the room name, and it's quantity, so we'll progressively add rooms until we've gone through the list
 					for (int i = 0; i < quantity; i++)
 					{
 						Room toBeAdded = new Room();
-						int roomIndex = RoomUtilities.indexOf(roomName, completeRoomList);
+						int roomIndex = RoomUtilities.IndexOf(roomName, completeRoomList);
 						if (roomIndex == -1)
 						{
-							System.out.println("Error: \"" + roomName + "\" was not found in the complete room list.");
+							Console.Out.WriteLine("Error: \"" + roomName + "\" was not found in the complete room list.");
 						}
 						else
 						{
 							toBeAdded = completeRoomList[roomIndex];
 							//Expand the array
-							//System.out.println("I'm about to add " + toBeAdded.Name + " to the room array! That will make rooms[] " + (returnRooms.length+1) + " elements long.");
+							//Console.Out.WriteLine("I'm about to add " + toBeAdded.Name + " to the room array! That will make rooms[] " + (returnRooms.Length+1) + " elements long.");
 							returnRooms = RoomUtilities.expand(toBeAdded, returnRooms);
-							returnRooms[returnRooms.length-1]= toBeAdded;
+							returnRooms[returnRooms.Length-1]= toBeAdded;
 											
-							//System.out.println("Yep, " + returnRooms[returnRooms.length-1].Name + "Is really in here");
+							//Console.Out.WriteLine("Yep, " + returnRooms[returnRooms.Length-1].Name + "Is really in here");
 						}
 					}
 				}

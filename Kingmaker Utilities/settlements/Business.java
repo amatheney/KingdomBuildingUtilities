@@ -45,7 +45,7 @@ public class Business
 	public void assignBuildings(Building[] properties)
 	{
 		this.properties = properties;
-		for (int lcv = 0; lcv < properties.length; lcv++)
+		for (int lcv = 0; lcv < properties.Length; lcv++)
 		{
 			this.properties[lcv] = new Building(properties[lcv]);
 		}
@@ -54,7 +54,7 @@ public class Business
 	
 	public void assignOwner()
 	{
-		for (int lcv = 0; lcv < properties.length; lcv++)
+		for (int lcv = 0; lcv < properties.Length; lcv++)
 		{
 			properties[lcv].owner = owner.OwnerName;
 		}
@@ -62,20 +62,20 @@ public class Business
 
 /*
  * 		//Split buildings, build array, buildings are fully-qualified copies
-		String[] rawBuildingList = tokens[7].split("\\,");
-		//System.out.println("---RawBuildingList is " + rawBuildingList.length + " elements long");
-		for (int lcv = 0; lcv < rawBuildingList.length; lcv++)
+		String[] rawBuildingList = tokens[7].Split(',');
+		//Console.Out.WriteLine("---RawBuildingList is " + rawBuildingList.Length + " elements long");
+		for (int lcv = 0; lcv < rawBuildingList.Length; lcv++)
 		{
 			this.properties = RoomUtilities.expand(this.properties);
-			Building toBeAdded = new Building(completeBuildingList[RoomUtilities.indexOf(rawBuildingList[lcv], completeBuildingList)]);
+			Building toBeAdded = new Building(completeBuildingList[RoomUtilities.IndexOf(rawBuildingList[lcv], completeBuildingList)]);
 			//Set the owner
 			toBeAdded.owner = OwnerName;
-			//System.out.println("Data integrity has been lost, maybe: " + completeBuildingList[RoomUtilities.indexOf(rawBuildingList[lcv], completeBuildingList)].owner);
-			this.properties[this.properties.length-1] = toBeAdded;		                
+			//Console.Out.WriteLine("Data integrity has been lost, maybe: " + completeBuildingList[RoomUtilities.IndexOf(rawBuildingList[lcv], completeBuildingList)].owner);
+			this.properties[this.properties.Length-1] = toBeAdded;		                
 		}
 		*/
 
-	public String getHoldings()
+	public string  getHoldings()
 	{
 		String returnString = "\n";
 		
@@ -84,14 +84,14 @@ public class Business
 		returnString += "      ---Liquid Assets---\n";
 		returnString += this.owner.balance.getTotals();
 		returnString += "      ---Capital Assets---\n";
-		for (int lcv = 0; lcv < properties.length; lcv++)
+		for (int lcv = 0; lcv < properties.Length; lcv++)
 		{
 			returnString += "         " + properties[lcv].name + "\n"; 
 		}
 		if (manager != null)
 			returnString += "      ---Manager: " + manager.Name + "---\n";
 		returnString += "      ---Organization: " + personnel.name + "---\n";
-		for (int lcv = 0; lcv < personnel.teams.length; lcv++)
+		for (int lcv = 0; lcv < personnel.teams.Length; lcv++)
 		{
 			returnString += "         " + personnel.teams[lcv].Name + "\n";
 		}
@@ -99,7 +99,7 @@ public class Business
 		return returnString;
 	}
 	
-	private int getUsableSkillValue(boolean UseManager, String earningsDesired)
+	private int getUsableSkillValue(bool UseManager, string  earningsDesired)
 	{
 		int returnValue = 0;
 		
@@ -109,9 +109,9 @@ public class Business
 		else
 			validList = owner.skills;
 		
-		for (int lcv = 0; lcv < validList.length; lcv++)
+		for (int lcv = 0; lcv < validList.Length; lcv++)
 		{
-			if (earningsDesired.equals("GP"))
+			if (earningsDesired.Equals("GP"))
 			{
 				if (SKILL_ENUM.existsInGPSkillList(validList[lcv].Name))
 				{
@@ -119,7 +119,7 @@ public class Business
 						returnValue = validList[lcv].Value;
 				}
 			}
-			if (earningsDesired.equals("GOODS"))
+			if (earningsDesired.Equals("GOODS"))
 			{
 				if (SKILL_ENUM.existsInGoodsSkillList(validList[lcv].Name))
 				{
@@ -127,7 +127,7 @@ public class Business
 						returnValue = validList[lcv].Value;
 				}
 			}
-			if (earningsDesired.equals("LABOR"))
+			if (earningsDesired.Equals("LABOR"))
 			{
 				if (SKILL_ENUM.existsInLaborSkillList(validList[lcv].Name))
 				{
@@ -135,7 +135,7 @@ public class Business
 						returnValue = validList[lcv].Value;
 				}
 			}
-			if (earningsDesired.equals("INFLUENCE"))
+			if (earningsDesired.Equals("INFLUENCE"))
 			{
 				if (SKILL_ENUM.existsInInfluenceSkillList(validList[lcv].Name))
 				{
@@ -143,7 +143,7 @@ public class Business
 						returnValue = validList[lcv].Value;
 				}
 			}
-			if (earningsDesired.equals("MAGIC"))
+			if (earningsDesired.Equals("MAGIC"))
 			{
 				if (SKILL_ENUM.existsInMagicSkillList(validList[lcv].Name))
 				{
@@ -156,11 +156,11 @@ public class Business
 		return returnValue;
 	}
 	
-	public Account generateDailyIncome(String PreferredIncome, boolean UseManager)
+	public Account generateDailyIncome(String PreferredIncome, bool UseManager)
 	{
 		Account returnAccount = new Account();
 		
-		for (int lcv = 0; lcv < this.properties.length; lcv++)
+		for (int lcv = 0; lcv < this.properties.Length; lcv++)
 		{
 			BalanceSheet tempTotals = this.properties[lcv].generateBalanceSheet(PreferredIncome);
 			if (this.properties[lcv].isGPEarnable())
@@ -196,7 +196,7 @@ public class Business
 	}
 	
 	/**A workweek in pathfinder is 6 days - no one works 7 days a week, nor is a business open 7 days a week*/
-	public Account generateMultiDayIncome(String PreferredIncome, int numDays, boolean attended)
+	public Account generateMultiDayIncome(String PreferredIncome, int numDays, bool attended)
 	{
 		Account returnAccount = new Account();
 		for (int lcv = 0; lcv < numDays; lcv++)
@@ -239,7 +239,7 @@ public class Business
 		return returnAccount;
 	}
 
-	public String earningsReport(String PreferredIncome, int numDays, boolean attended)
+	public string  earningsReport(String PreferredIncome, int numDays, bool attended)
 	{
 		String returnString = "";
 		

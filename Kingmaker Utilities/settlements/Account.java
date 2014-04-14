@@ -26,7 +26,7 @@ public class Account
 		this.Magic = Magic;
 	}
 	
-	public String getTotals()
+	public string  getTotals()
 	{
 		String returnString = "";
 		

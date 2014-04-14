@@ -1,25 +1,25 @@
-System.out.println("I want to find a Castle: ");
+Console.Out.WriteLine("I want to find a Castle: ");
 		String buildingToSearchFor = "Castle";
-		System.out.println("There are " + completeBuildingList[RoomUtilities.indexOf(buildingToSearchFor, completeBuildingList)].Furnishings.length + " furnishings in a " + buildingToSearchFor);
-		System.out.println(completeBuildingList[RoomUtilities.indexOf(buildingToSearchFor, completeBuildingList)].toString());
+		Console.Out.WriteLine("There are " + completeBuildingList[RoomUtilities.indexOf(buildingToSearchFor, completeBuildingList)].Furnishings.Length + " furnishings in a " + buildingToSearchFor);
+		Console.Out.WriteLine(completeBuildingList[RoomUtilities.indexOf(buildingToSearchFor, completeBuildingList)].toString());
 
 
-		/*System.out.println("Mic Check");
+		/*Console.Out.WriteLine("Mic Check");
 		Room myRoom = new Room("Alchemy Lab;10;10;0;0;10;0;Counts as an alchemist's laboratory (equipment);390;8;1;5;1;16;8;16;N/A;N/A;" +
 				"\"This room aids you when you're attempting Craft (Alchemy) checks, researching new alchemist's forumulae, and performing similar tasks. " +
 				"Up to three people can use the room at a time.\";N/A");
-		System.out.println(myRoom.toString());
+		Console.Out.WriteLine(myRoom.toString());
 		
 		Room modifiedRoom = myRoom.getModifiedCost(.5f);
-		System.out.println(modifiedRoom.toString());*/
+		Console.Out.WriteLine(modifiedRoom.toString());*/
 		
-		//System.out.println("I want to find a Casino (legal): ");
+		//Console.Out.WriteLine("I want to find a Casino (legal): ");
 		String buildingToSearchFor = "Casino (illegal)";
-		System.out.println(completeBuildingList[RoomUtilities.indexOf(buildingToSearchFor, completeBuildingList)].limitedBuildingDescription());
+		Console.Out.WriteLine(completeBuildingList[RoomUtilities.indexOf(buildingToSearchFor, completeBuildingList)].limitedBuildingDescription());
 		
 		//int testIndex = RoomUtilities.indexOf("Clockwork Shop", completeList);
-		//System.out.println("Index of Clockwork Shop: " + testIndex);
-		//System.out.println("\n" + completeList[testIndex].toString());
+		//Console.Out.WriteLine("Index of Clockwork Shop: " + testIndex);
+		//Console.Out.WriteLine("\n" + completeList[testIndex].toString());
 		
 		/*Room[] sampleInn = new Room[9];
 		sampleInn[0] = completeList[RoomUtilities.indexOf("Bar", completeList)];
@@ -35,33 +35,33 @@ System.out.println("I want to find a Castle: ");
 		/*BalanceSheet totals = new BalanceSheet();
 		totals.preferredIncome = "GP";
 		totals = RoomUtilities.generateBalanceSheet(sampleInn, "GP");
-		System.out.println("Totals: GP ");
-		System.out.println(totals.toString());
+		Console.Out.WriteLine("Totals: GP ");
+		Console.Out.WriteLine(totals.toString());
 		
 		totals.preferredIncome = "Influence";
 		totals = RoomUtilities.generateBalanceSheet(sampleInn, "Influence");
-		System.out.println("Totals: Influence ");
-		System.out.println(totals.toString());
+		Console.Out.WriteLine("Totals: Influence ");
+		Console.Out.WriteLine(totals.toString());
 		
 		totals.preferredIncome = "Goods";
 		totals = RoomUtilities.generateBalanceSheet(sampleInn, "Goods");
-		System.out.println("Totals: Goods ");
-		System.out.println(totals.toString());
+		Console.Out.WriteLine("Totals: Goods ");
+		Console.Out.WriteLine(totals.toString());
 		
 		totals.preferredIncome = "Labor";
 		totals = RoomUtilities.generateBalanceSheet(sampleInn, "Labor");
-		System.out.println("Totals: Labor ");
-		System.out.println(totals.toString());
+		Console.Out.WriteLine("Totals: Labor ");
+		Console.Out.WriteLine(totals.toString());
 		
 		totals.preferredIncome = "Magic";
 		totals = RoomUtilities.generateBalanceSheet(sampleInn, "Magic");
-		System.out.println("Totals: Magic ");
-		System.out.println(totals.toString());*/
+		Console.Out.WriteLine("Totals: Magic ");
+		Console.Out.WriteLine(totals.toString());*/
 		
 		/*Room[] redRoseRooms = RoomUtilities.populateBuildingFromFile("FortRannick.txt", completeList);
 		Building redRoseInn = new Building("Fort Rannick", redRoseRooms);
 		String buildingOutput = redRoseInn.toString();
-		System.out.println(buildingOutput);*/
+		Console.Out.WriteLine(buildingOutput);*/
 		/*String temp = "Arena;N/A;A large public structure for competitions and team sports.;0;1;0;0;0;0;0;0;1;0;4;0;0;0;0;0;0;0;N/A;Theater;\"Brothel, Garrison, Inn, Stable, Theater\";1 Per Settlement;1 Bar/1 Bath/4 Battle Ring/1 Game Room (legal)/1 Infirmary/1 Lavatory/1 Office/1 Storage/1 Storefront;N/A;4;40";
 		Building fromFileTest = new Building(temp, completeList);
-		System.out.println(fromFileTest.limitedBuildingDescription());*/
+		Console.Out.WriteLine(fromFileTest.limitedBuildingDescription());*/

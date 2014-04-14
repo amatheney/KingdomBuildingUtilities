@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AD52D212-8A47-4486-939C-0461A8A13ADD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KingmakerResourceViewer</RootNamespace>
+    <AssemblyName>KingmakerResourceViewer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SubForms\BuildingPickerWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\BuildingPickerWindow.Designer.cs">
+      <DependentUpon>BuildingPickerWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessCreationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessCreationForm.Designer.cs">
+      <DependentUpon>BusinessCreationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\OrganizationPickerWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\OrganizationPickerWindow.Designer.cs">
+      <DependentUpon>OrganizationPickerWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHelpers.cs" />
+    <Compile Include="InternalClasses\Account.cs" />
+    <Compile Include="InternalClasses\BalanceSheet.cs" />
+    <Compile Include="InternalClasses\Building.cs" />
+    <Compile Include="InternalClasses\BuildingFileReader.cs" />
+    <Compile Include="InternalClasses\Business.cs" />
+    <Compile Include="InternalClasses\CentralCommand.cs" />
+    <Compile Include="InternalClasses\FurnishingsAndTraps.cs" />
+    <Compile Include="InternalClasses\FurnishingsAndTrapsFileReader.cs" />
+    <Compile Include="InternalClasses\Landowners.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InternalClasses\Manager.cs" />
+    <Compile Include="InternalClasses\ManagerFileReader.cs" />
+    <Compile Include="InternalClasses\Organization.cs" />
+    <Compile Include="InternalClasses\OrganizationFileReader.cs" />
+    <Compile Include="InternalClasses\Owner.cs" />
+    <Compile Include="InternalClasses\OwnerFileReader.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="InternalClasses\Quality.cs" />
+    <Compile Include="InternalClasses\QualityFileReader.cs" />
+    <Compile Include="InternalClasses\Room.cs" />
+    <Compile Include="InternalClasses\RoomFileReader.cs" />
+    <Compile Include="InternalClasses\RoomUtilities.cs" />
+    <Compile Include="InternalClasses\Settlement.cs" />
+    <Compile Include="InternalClasses\SettlementFileReader.cs" />
+    <Compile Include="InternalClasses\SettlementMods.cs" />
+    <Compile Include="InternalClasses\Skill.cs" />
+    <Compile Include="InternalClasses\SKILL_ENUM.cs" />
+    <Compile Include="InternalClasses\Team.cs" />
+    <Compile Include="InternalClasses\TeamFileReader.cs" />
+    <Compile Include="SubForms\RoomPickerWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\RoomPickerWindow.Designer.cs">
+      <DependentUpon>RoomPickerWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\TeamPickerWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\TeamPickerWindow.Designer.cs">
+      <DependentUpon>TeamPickerWindow.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="SubForms\BuildingPickerWindow.resx">
+      <DependentUpon>BuildingPickerWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessCreationForm.resx">
+      <DependentUpon>BusinessCreationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\OrganizationPickerWindow.resx">
+      <DependentUpon>OrganizationPickerWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="SubForms\RoomPickerWindow.resx">
+      <DependentUpon>RoomPickerWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\TeamPickerWindow.resx">
+      <DependentUpon>TeamPickerWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\buildingsCSV.txt" />
+    <Content Include="Resources\FortRannick.txt" />
+    <Content Include="Resources\FurnishingsAndTrapsCSV.txt" />
+    <Content Include="Resources\ManagersCSV.txt" />
+    <Content Include="Resources\OrganizationsCSV.txt" />
+    <Content Include="Resources\OwnersCSV.txt" />
+    <Content Include="Resources\QualitiesCSV.txt" />
+    <Content Include="Resources\RedRoseInn.txt" />
+    <Content Include="Resources\roomCSV.txt" />
+    <Content Include="Resources\SamplePalace.txt" />
+    <Content Include="Resources\settlementExample.txt" />
+    <Content Include="Resources\TeamsCSV.txt" />
+    <Content Include="Resources\TempleOfIomede.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
