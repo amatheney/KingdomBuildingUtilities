@@ -5,6 +5,7 @@ using System.Text;
 
 namespace KingmakerResourceViewer
 {
+    [Serializable()]
     public class Room
     {
         /**Attributes of the room*/

@@ -45,6 +45,8 @@
             this.EditOrganizationButton = new System.Windows.Forms.Button();
             this.NewBusinessTabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.PlayerNameTextBox = new System.Windows.Forms.TextBox();
+            this.PlayerNameLabel = new System.Windows.Forms.Label();
             this.GeneralDescriptionTextBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.OptionalFieldTextBox = new System.Windows.Forms.TextBox();
@@ -102,8 +104,6 @@
             this.AppraiseLabel = new System.Windows.Forms.Label();
             this.SaveChangesButton = new System.Windows.Forms.Button();
             this.CancelFormButton = new System.Windows.Forms.Button();
-            this.PlayerNameLabel = new System.Windows.Forms.Label();
-            this.PlayerNameTextBox = new System.Windows.Forms.TextBox();
             this.NewBusinessTabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -306,6 +306,22 @@
             this.tabPage1.Text = "Core Fields";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // PlayerNameTextBox
+            // 
+            this.PlayerNameTextBox.Location = new System.Drawing.Point(153, 51);
+            this.PlayerNameTextBox.Name = "PlayerNameTextBox";
+            this.PlayerNameTextBox.Size = new System.Drawing.Size(159, 20);
+            this.PlayerNameTextBox.TabIndex = 17;
+            // 
+            // PlayerNameLabel
+            // 
+            this.PlayerNameLabel.AutoSize = true;
+            this.PlayerNameLabel.Location = new System.Drawing.Point(6, 54);
+            this.PlayerNameLabel.Name = "PlayerNameLabel";
+            this.PlayerNameLabel.Size = new System.Drawing.Size(101, 13);
+            this.PlayerNameLabel.TabIndex = 16;
+            this.PlayerNameLabel.Text = "Your (Player) Name:";
+            // 
             // GeneralDescriptionTextBox
             // 
             this.GeneralDescriptionTextBox.Location = new System.Drawing.Point(9, 419);
@@ -330,7 +346,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(322, 551);
+            this.tabPage2.Size = new System.Drawing.Size(322, 593);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "OptionalFields";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -382,6 +398,7 @@
             this.AddEmployeeButton.TabIndex = 22;
             this.AddEmployeeButton.Text = "Add Employee";
             this.AddEmployeeButton.UseVisualStyleBackColor = true;
+            this.AddEmployeeButton.Click += new System.EventHandler(this.AddEmployeeButton_Click);
             // 
             // RoomsField
             // 
@@ -837,22 +854,6 @@
             this.CancelFormButton.Text = "Abandon changes... forever.";
             this.CancelFormButton.UseVisualStyleBackColor = true;
             this.CancelFormButton.Click += new System.EventHandler(this.CancelFormButton_Click);
-            // 
-            // PlayerNameLabel
-            // 
-            this.PlayerNameLabel.AutoSize = true;
-            this.PlayerNameLabel.Location = new System.Drawing.Point(6, 54);
-            this.PlayerNameLabel.Name = "PlayerNameLabel";
-            this.PlayerNameLabel.Size = new System.Drawing.Size(101, 13);
-            this.PlayerNameLabel.TabIndex = 16;
-            this.PlayerNameLabel.Text = "Your (Player) Name:";
-            // 
-            // PlayerNameTextBox
-            // 
-            this.PlayerNameTextBox.Location = new System.Drawing.Point(153, 51);
-            this.PlayerNameTextBox.Name = "PlayerNameTextBox";
-            this.PlayerNameTextBox.Size = new System.Drawing.Size(159, 20);
-            this.PlayerNameTextBox.TabIndex = 17;
             // 
             // BusinessCreationForm
             // 

@@ -184,6 +184,18 @@
             this.DefenseUpDown = new System.Windows.Forms.NumericUpDown();
             this.KingdomModsLabel = new System.Windows.Forms.Label();
             this.FlagsTab = new System.Windows.Forms.TabPage();
+            this.GoldFlagCostLabel = new System.Windows.Forms.Label();
+            this.BuildingFlagsCostMagicLabel = new System.Windows.Forms.Label();
+            this.BuildingFlagsCostMagicUpDown = new System.Windows.Forms.NumericUpDown();
+            this.BuildingFlagsCostDaysCreateLabel = new System.Windows.Forms.Label();
+            this.BuildingFlagsCostInfluenceUpDown = new System.Windows.Forms.NumericUpDown();
+            this.BuildingFlagsCostGoldUpDown = new System.Windows.Forms.NumericUpDown();
+            this.BuildingFlagsCostInfluenceLabel = new System.Windows.Forms.Label();
+            this.BuildingFlagsCostGoodsLabel = new System.Windows.Forms.Label();
+            this.BuildingFlagsCostGoodsUpDown = new System.Windows.Forms.NumericUpDown();
+            this.BuildingFlagsCostLaborLabel = new System.Windows.Forms.Label();
+            this.BuildingFlagsCostLaborUpDown = new System.Windows.Forms.NumericUpDown();
+            this.BuildingFlagsCostLabel = new System.Windows.Forms.Label();
             this.CostDiscountUpDown = new System.Windows.Forms.NumericUpDown();
             this.BrokenBuildingCheckbox = new System.Windows.Forms.CheckBox();
             this.CostDiscountLabel = new System.Windows.Forms.Label();
@@ -307,17 +319,9 @@
             this.OrganizationEditCheckbox = new System.Windows.Forms.CheckBox();
             this.OrganizationListBox = new System.Windows.Forms.ListBox();
             this.TeamsTab = new System.Windows.Forms.TabPage();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.InformationToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.TeamListBoxLabel = new System.Windows.Forms.Label();
+            this.TeamDeleteButton = new System.Windows.Forms.Button();
+            this.TeamCheckBox = new System.Windows.Forms.CheckBox();
             this.TeamGroupBox = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -325,10 +329,10 @@
             this.TeamCostMagicUpDown = new System.Windows.Forms.NumericUpDown();
             this.TeamEarnableMagicIncomeLabel = new System.Windows.Forms.Label();
             this.TeamEarnableMagicIncomeUpDown = new System.Windows.Forms.NumericUpDown();
-            this.TeamDaysCreateLabel = new System.Windows.Forms.Label();
-            this.TeamCostInfluenceUpDown = new System.Windows.Forms.NumericUpDown();
             this.TeamCostGoldLabel = new System.Windows.Forms.Label();
+            this.TeamDaysCreateLabel = new System.Windows.Forms.Label();
             this.TeamCostGoldUpDown = new System.Windows.Forms.NumericUpDown();
+            this.TeamCostInfluenceUpDown = new System.Windows.Forms.NumericUpDown();
             this.TeamCostInfluenceLabel = new System.Windows.Forms.Label();
             this.TeamCostGoodsLabel = new System.Windows.Forms.Label();
             this.TeamCostGoodsUpDown = new System.Windows.Forms.NumericUpDown();
@@ -377,10 +381,92 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.TeamDeleteButton = new System.Windows.Forms.Button();
-            this.TeamCheckBox = new System.Windows.Forms.CheckBox();
-            this.TeamListBoxLabel = new System.Windows.Forms.Label();
             this.TeamListBox = new System.Windows.Forms.ListBox();
+            this.SettlementTab = new System.Windows.Forms.TabPage();
+            this.PlayerWideGroupBox = new System.Windows.Forms.GroupBox();
+            this.KingdomPlayerLabel = new System.Windows.Forms.Label();
+            this.LoyaltyPlayerUpDown = new System.Windows.Forms.NumericUpDown();
+            this.FamePlayerLabel = new System.Windows.Forms.Label();
+            this.FamePlayerUpDown = new System.Windows.Forms.NumericUpDown();
+            this.LoyaltyPlayerLabel = new System.Windows.Forms.Label();
+            this.EconomyPlayerLabel = new System.Windows.Forms.Label();
+            this.EconomyPlayerUpDown = new System.Windows.Forms.NumericUpDown();
+            this.StabilityPlayerLabel = new System.Windows.Forms.Label();
+            this.StabilityPlayerUpDown = new System.Windows.Forms.NumericUpDown();
+            this.UnrestPlayerLabel = new System.Windows.Forms.Label();
+            this.UnrestPlayerUpDown = new System.Windows.Forms.NumericUpDown();
+            this.DefensePlayerLabel = new System.Windows.Forms.Label();
+            this.DefensePlayerUpDown = new System.Windows.Forms.NumericUpDown();
+            this.PlayerDerivedWarningLabel = new System.Windows.Forms.Label();
+            this.PlayerListLabel = new System.Windows.Forms.Label();
+            this.PlayerListBox = new System.Windows.Forms.ListBox();
+            this.SettlementPlayerLabel = new System.Windows.Forms.Label();
+            this.CrimePlayerUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CorruptionPlayerLabel = new System.Windows.Forms.Label();
+            this.CorruptionPlayerUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CrimePlayerLabel = new System.Windows.Forms.Label();
+            this.ProductivityPlayerLabel = new System.Windows.Forms.Label();
+            this.ProductivityPlayerUpDown = new System.Windows.Forms.NumericUpDown();
+            this.LawPlayerLabel = new System.Windows.Forms.Label();
+            this.LawPlayerUpDown = new System.Windows.Forms.NumericUpDown();
+            this.LorePlayerLabel = new System.Windows.Forms.Label();
+            this.LorePlayerUpDown = new System.Windows.Forms.NumericUpDown();
+            this.SocietyPlayerLabel = new System.Windows.Forms.Label();
+            this.SocietyPlayerUpDown = new System.Windows.Forms.NumericUpDown();
+            this.SettlementWideGroupBox = new System.Windows.Forms.GroupBox();
+            this.SizeLabel = new System.Windows.Forms.Label();
+            this.AlignmentLabel = new System.Windows.Forms.Label();
+            this.DistrictsWithinTextBox = new System.Windows.Forms.TextBox();
+            this.DistrictsWithinLabel = new System.Windows.Forms.Label();
+            this.CoreStatsLabel = new System.Windows.Forms.Label();
+            this.MagicItemsProducedLabel = new System.Windows.Forms.Label();
+            this.MinorItemsLabel = new System.Windows.Forms.Label();
+            this.MajorItemsLabel = new System.Windows.Forms.Label();
+            this.MediumItemsLabel = new System.Windows.Forms.Label();
+            this.SpellcastingLabel = new System.Windows.Forms.Label();
+            this.PurchaseLimitLabel = new System.Windows.Forms.Label();
+            this.SettlementPopulationLabel = new System.Windows.Forms.Label();
+            this.KingdomWideLabel = new System.Windows.Forms.Label();
+            this.LoyaltyWideUpDown = new System.Windows.Forms.NumericUpDown();
+            this.FameWideLabel = new System.Windows.Forms.Label();
+            this.FameWideUpDown = new System.Windows.Forms.NumericUpDown();
+            this.LoyaltyWideLabel = new System.Windows.Forms.Label();
+            this.EconomyWideLabel = new System.Windows.Forms.Label();
+            this.EconomyWideUpDown = new System.Windows.Forms.NumericUpDown();
+            this.StabilityWideLabel = new System.Windows.Forms.Label();
+            this.StabilityWideUpDown = new System.Windows.Forms.NumericUpDown();
+            this.UnrestWideLabel = new System.Windows.Forms.Label();
+            this.UnrestWideUpDown = new System.Windows.Forms.NumericUpDown();
+            this.DefenseWideLabel = new System.Windows.Forms.Label();
+            this.DefenseWideUpDown = new System.Windows.Forms.NumericUpDown();
+            this.SettlementWideLabel = new System.Windows.Forms.Label();
+            this.CrimeWideUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CorruptionWideLabel = new System.Windows.Forms.Label();
+            this.CorruptionWideUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CrimeWideLabel = new System.Windows.Forms.Label();
+            this.ProductivityWideLabel = new System.Windows.Forms.Label();
+            this.ProductivityWideUpDown = new System.Windows.Forms.NumericUpDown();
+            this.LawWideLabel = new System.Windows.Forms.Label();
+            this.LawWideUpDown = new System.Windows.Forms.NumericUpDown();
+            this.LoreWideLabel = new System.Windows.Forms.Label();
+            this.LoreWideUpDown = new System.Windows.Forms.NumericUpDown();
+            this.SocietyWideLabel = new System.Windows.Forms.Label();
+            this.SocietyWideUpDown = new System.Windows.Forms.NumericUpDown();
+            this.NewSettlementButton = new System.Windows.Forms.Button();
+            this.DeleteSettlementButton = new System.Windows.Forms.Button();
+            this.SettlementSelectorComboBox = new System.Windows.Forms.ComboBox();
+            this.SettlementSelectorLabel = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.InformationToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.MainTabControl.SuspendLayout();
             this.BusinessTab.SuspendLayout();
             this.BusinessGroupBox.SuspendLayout();
@@ -444,6 +530,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.UnrestUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DefenseUpDown)).BeginInit();
             this.FlagsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BuildingFlagsCostMagicUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BuildingFlagsCostInfluenceUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BuildingFlagsCostGoldUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BuildingFlagsCostGoodsUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BuildingFlagsCostLaborUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CostDiscountUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedProductionUpDown)).BeginInit();
             this.ChangeLogTabindex.SuspendLayout();
@@ -487,14 +578,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown20)).BeginInit();
             this.OrganizationChangelogTab.SuspendLayout();
             this.TeamsTab.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.TeamGroupBox.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TeamCostMagicUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TeamEarnableMagicIncomeUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TeamCostInfluenceUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TeamCostGoldUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TeamCostInfluenceUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TeamCostGoodsUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TeamCostLaborUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TeamEarnableInfluenceIncomeUpDown)).BeginInit();
@@ -511,6 +601,34 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown18)).BeginInit();
             this.tabPage6.SuspendLayout();
+            this.SettlementTab.SuspendLayout();
+            this.PlayerWideGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LoyaltyPlayerUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FamePlayerUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EconomyPlayerUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StabilityPlayerUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UnrestPlayerUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DefensePlayerUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CrimePlayerUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CorruptionPlayerUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductivityPlayerUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LawPlayerUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LorePlayerUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SocietyPlayerUpDown)).BeginInit();
+            this.SettlementWideGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LoyaltyWideUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FameWideUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EconomyWideUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StabilityWideUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UnrestWideUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DefenseWideUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CrimeWideUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CorruptionWideUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductivityWideUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LawWideUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LoreWideUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SocietyWideUpDown)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainTabControl
@@ -522,6 +640,7 @@
             this.MainTabControl.Controls.Add(this.RoomsTab);
             this.MainTabControl.Controls.Add(this.OrganizationsTab);
             this.MainTabControl.Controls.Add(this.TeamsTab);
+            this.MainTabControl.Controls.Add(this.SettlementTab);
             this.MainTabControl.Location = new System.Drawing.Point(12, 27);
             this.MainTabControl.Name = "MainTabControl";
             this.MainTabControl.SelectedIndex = 0;
@@ -583,6 +702,7 @@
                         | System.Windows.Forms.AnchorStyles.Left)));
             this.BusinessGroupBox.Controls.Add(this.BusinessTabControl);
             this.BusinessGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.BusinessGroupBox.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.BusinessGroupBox.Location = new System.Drawing.Point(3, 34);
             this.BusinessGroupBox.Name = "BusinessGroupBox";
             this.BusinessGroupBox.Size = new System.Drawing.Size(572, 508);
@@ -1144,7 +1264,7 @@
             this.OrganizationTab.Name = "OrganizationTab";
             this.OrganizationTab.Size = new System.Drawing.Size(552, 457);
             this.OrganizationTab.TabIndex = 2;
-            this.OrganizationTab.Text = "Organization";
+            this.OrganizationTab.Text = "Organizations";
             this.OrganizationTab.UseVisualStyleBackColor = true;
             // 
             // BusinessOrganizationTextBox
@@ -2537,6 +2657,18 @@
             // 
             // FlagsTab
             // 
+            this.FlagsTab.Controls.Add(this.GoldFlagCostLabel);
+            this.FlagsTab.Controls.Add(this.BuildingFlagsCostMagicLabel);
+            this.FlagsTab.Controls.Add(this.BuildingFlagsCostMagicUpDown);
+            this.FlagsTab.Controls.Add(this.BuildingFlagsCostDaysCreateLabel);
+            this.FlagsTab.Controls.Add(this.BuildingFlagsCostInfluenceUpDown);
+            this.FlagsTab.Controls.Add(this.BuildingFlagsCostGoldUpDown);
+            this.FlagsTab.Controls.Add(this.BuildingFlagsCostInfluenceLabel);
+            this.FlagsTab.Controls.Add(this.BuildingFlagsCostGoodsLabel);
+            this.FlagsTab.Controls.Add(this.BuildingFlagsCostGoodsUpDown);
+            this.FlagsTab.Controls.Add(this.BuildingFlagsCostLaborLabel);
+            this.FlagsTab.Controls.Add(this.BuildingFlagsCostLaborUpDown);
+            this.FlagsTab.Controls.Add(this.BuildingFlagsCostLabel);
             this.FlagsTab.Controls.Add(this.CostDiscountUpDown);
             this.FlagsTab.Controls.Add(this.BrokenBuildingCheckbox);
             this.FlagsTab.Controls.Add(this.CostDiscountLabel);
@@ -2548,6 +2680,166 @@
             this.FlagsTab.TabIndex = 3;
             this.FlagsTab.Text = "Flags and Options";
             this.FlagsTab.UseVisualStyleBackColor = true;
+            // 
+            // GoldFlagCostLabel
+            // 
+            this.GoldFlagCostLabel.AutoSize = true;
+            this.GoldFlagCostLabel.Location = new System.Drawing.Point(6, 122);
+            this.GoldFlagCostLabel.Name = "GoldFlagCostLabel";
+            this.GoldFlagCostLabel.Size = new System.Drawing.Size(35, 13);
+            this.GoldFlagCostLabel.TabIndex = 60;
+            this.GoldFlagCostLabel.Text = "Gold: ";
+            // 
+            // BuildingFlagsCostMagicLabel
+            // 
+            this.BuildingFlagsCostMagicLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.BuildingFlagsCostMagicLabel.AutoSize = true;
+            this.BuildingFlagsCostMagicLabel.Location = new System.Drawing.Point(193, 172);
+            this.BuildingFlagsCostMagicLabel.Name = "BuildingFlagsCostMagicLabel";
+            this.BuildingFlagsCostMagicLabel.Size = new System.Drawing.Size(39, 13);
+            this.BuildingFlagsCostMagicLabel.TabIndex = 58;
+            this.BuildingFlagsCostMagicLabel.Text = "Magic:";
+            // 
+            // BuildingFlagsCostMagicUpDown
+            // 
+            this.BuildingFlagsCostMagicUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.BuildingFlagsCostMagicUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.BuildingFlagsCostMagicUpDown.Location = new System.Drawing.Point(257, 170);
+            this.BuildingFlagsCostMagicUpDown.Name = "BuildingFlagsCostMagicUpDown";
+            this.BuildingFlagsCostMagicUpDown.ReadOnly = true;
+            this.BuildingFlagsCostMagicUpDown.Size = new System.Drawing.Size(53, 20);
+            this.BuildingFlagsCostMagicUpDown.TabIndex = 59;
+            this.BuildingFlagsCostMagicUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // BuildingFlagsCostDaysCreateLabel
+            // 
+            this.BuildingFlagsCostDaysCreateLabel.AutoSize = true;
+            this.BuildingFlagsCostDaysCreateLabel.Location = new System.Drawing.Point(6, 209);
+            this.BuildingFlagsCostDaysCreateLabel.Name = "BuildingFlagsCostDaysCreateLabel";
+            this.BuildingFlagsCostDaysCreateLabel.Size = new System.Drawing.Size(99, 13);
+            this.BuildingFlagsCostDaysCreateLabel.TabIndex = 57;
+            this.BuildingFlagsCostDaysCreateLabel.Text = "Days to create: <x>";
+            // 
+            // BuildingFlagsCostInfluenceUpDown
+            // 
+            this.BuildingFlagsCostInfluenceUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.BuildingFlagsCostInfluenceUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.BuildingFlagsCostInfluenceUpDown.Location = new System.Drawing.Point(70, 145);
+            this.BuildingFlagsCostInfluenceUpDown.Name = "BuildingFlagsCostInfluenceUpDown";
+            this.BuildingFlagsCostInfluenceUpDown.ReadOnly = true;
+            this.BuildingFlagsCostInfluenceUpDown.Size = new System.Drawing.Size(53, 20);
+            this.BuildingFlagsCostInfluenceUpDown.TabIndex = 52;
+            this.BuildingFlagsCostInfluenceUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // BuildingFlagsCostGoldUpDown
+            // 
+            this.BuildingFlagsCostGoldUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.BuildingFlagsCostGoldUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.BuildingFlagsCostGoldUpDown.Location = new System.Drawing.Point(70, 120);
+            this.BuildingFlagsCostGoldUpDown.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.BuildingFlagsCostGoldUpDown.Name = "BuildingFlagsCostGoldUpDown";
+            this.BuildingFlagsCostGoldUpDown.ReadOnly = true;
+            this.BuildingFlagsCostGoldUpDown.Size = new System.Drawing.Size(53, 20);
+            this.BuildingFlagsCostGoldUpDown.TabIndex = 50;
+            this.BuildingFlagsCostGoldUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // BuildingFlagsCostInfluenceLabel
+            // 
+            this.BuildingFlagsCostInfluenceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.BuildingFlagsCostInfluenceLabel.AutoSize = true;
+            this.BuildingFlagsCostInfluenceLabel.Location = new System.Drawing.Point(6, 147);
+            this.BuildingFlagsCostInfluenceLabel.Name = "BuildingFlagsCostInfluenceLabel";
+            this.BuildingFlagsCostInfluenceLabel.Size = new System.Drawing.Size(54, 13);
+            this.BuildingFlagsCostInfluenceLabel.TabIndex = 51;
+            this.BuildingFlagsCostInfluenceLabel.Text = "Influence:";
+            // 
+            // BuildingFlagsCostGoodsLabel
+            // 
+            this.BuildingFlagsCostGoodsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.BuildingFlagsCostGoodsLabel.AutoSize = true;
+            this.BuildingFlagsCostGoodsLabel.Location = new System.Drawing.Point(193, 122);
+            this.BuildingFlagsCostGoodsLabel.Name = "BuildingFlagsCostGoodsLabel";
+            this.BuildingFlagsCostGoodsLabel.Size = new System.Drawing.Size(41, 13);
+            this.BuildingFlagsCostGoodsLabel.TabIndex = 53;
+            this.BuildingFlagsCostGoodsLabel.Text = "Goods:";
+            // 
+            // BuildingFlagsCostGoodsUpDown
+            // 
+            this.BuildingFlagsCostGoodsUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.BuildingFlagsCostGoodsUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.BuildingFlagsCostGoodsUpDown.Location = new System.Drawing.Point(257, 120);
+            this.BuildingFlagsCostGoodsUpDown.Name = "BuildingFlagsCostGoodsUpDown";
+            this.BuildingFlagsCostGoodsUpDown.ReadOnly = true;
+            this.BuildingFlagsCostGoodsUpDown.Size = new System.Drawing.Size(53, 20);
+            this.BuildingFlagsCostGoodsUpDown.TabIndex = 54;
+            this.BuildingFlagsCostGoodsUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // BuildingFlagsCostLaborLabel
+            // 
+            this.BuildingFlagsCostLaborLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.BuildingFlagsCostLaborLabel.AutoSize = true;
+            this.BuildingFlagsCostLaborLabel.Location = new System.Drawing.Point(193, 147);
+            this.BuildingFlagsCostLaborLabel.Name = "BuildingFlagsCostLaborLabel";
+            this.BuildingFlagsCostLaborLabel.Size = new System.Drawing.Size(37, 13);
+            this.BuildingFlagsCostLaborLabel.TabIndex = 55;
+            this.BuildingFlagsCostLaborLabel.Text = "Labor:";
+            // 
+            // BuildingFlagsCostLaborUpDown
+            // 
+            this.BuildingFlagsCostLaborUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.BuildingFlagsCostLaborUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.BuildingFlagsCostLaborUpDown.Location = new System.Drawing.Point(257, 145);
+            this.BuildingFlagsCostLaborUpDown.Name = "BuildingFlagsCostLaborUpDown";
+            this.BuildingFlagsCostLaborUpDown.ReadOnly = true;
+            this.BuildingFlagsCostLaborUpDown.Size = new System.Drawing.Size(53, 20);
+            this.BuildingFlagsCostLaborUpDown.TabIndex = 56;
+            this.BuildingFlagsCostLaborUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // BuildingFlagsCostLabel
+            // 
+            this.BuildingFlagsCostLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.BuildingFlagsCostLabel.AutoSize = true;
+            this.BuildingFlagsCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BuildingFlagsCostLabel.Location = new System.Drawing.Point(3, 101);
+            this.BuildingFlagsCostLabel.Name = "BuildingFlagsCostLabel";
+            this.BuildingFlagsCostLabel.Size = new System.Drawing.Size(109, 16);
+            this.BuildingFlagsCostLabel.TabIndex = 49;
+            this.BuildingFlagsCostLabel.Text = "Creation Costs";
             // 
             // CostDiscountUpDown
             // 
@@ -2578,6 +2870,7 @@
             this.BrokenBuildingCheckbox.TabIndex = 8;
             this.BrokenBuildingCheckbox.Text = "Building is \'Broken\'";
             this.BrokenBuildingCheckbox.UseVisualStyleBackColor = true;
+            this.BrokenBuildingCheckbox.CheckedChanged += new System.EventHandler(this.BrokenBuildingCheckbox_CheckedChanged);
             // 
             // CostDiscountLabel
             // 
@@ -4196,82 +4489,41 @@
             this.TeamsTab.Text = "Teams";
             this.TeamsTab.UseVisualStyleBackColor = true;
             // 
-            // menuStrip1
+            // TeamListBoxLabel
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.helpToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(700, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
+            this.TeamListBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.TeamListBoxLabel.AutoSize = true;
+            this.TeamListBoxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TeamListBoxLabel.Location = new System.Drawing.Point(3, 4);
+            this.TeamListBoxLabel.Name = "TeamListBoxLabel";
+            this.TeamListBoxLabel.Size = new System.Drawing.Size(158, 16);
+            this.TeamListBoxLabel.TabIndex = 18;
+            this.TeamListBoxLabel.Text = "Teams: Complete List";
             // 
-            // fileToolStripMenuItem
+            // TeamDeleteButton
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem,
-            this.saveToolStripMenuItem,
-            this.saveAsToolStripMenuItem,
-            this.exitToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
+            this.TeamDeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.TeamDeleteButton.Location = new System.Drawing.Point(583, 24);
+            this.TeamDeleteButton.Name = "TeamDeleteButton";
+            this.TeamDeleteButton.Size = new System.Drawing.Size(84, 40);
+            this.TeamDeleteButton.TabIndex = 16;
+            this.TeamDeleteButton.Text = "Delete Team";
+            this.TeamDeleteButton.UseVisualStyleBackColor = true;
             // 
-            // openToolStripMenuItem
+            // TeamCheckBox
             // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
-            this.openToolStripMenuItem.Text = "Open";
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
-            this.saveToolStripMenuItem.Text = "Save";
-            // 
-            // saveAsToolStripMenuItem
-            // 
-            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
-            this.saveAsToolStripMenuItem.Text = "Save As...";
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem,
-            this.toolStripMenuItem2,
-            this.aboutToolStripMenuItem1});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.aboutToolStripMenuItem.Text = "Reset to Unmodified Raws";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(212, 22);
-            this.toolStripMenuItem2.Text = " ";
-            // 
-            // aboutToolStripMenuItem1
-            // 
-            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(212, 22);
-            this.aboutToolStripMenuItem1.Text = "About...";
-            this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
+            this.TeamCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.TeamCheckBox.AutoSize = true;
+            this.TeamCheckBox.Location = new System.Drawing.Point(583, 3);
+            this.TeamCheckBox.Name = "TeamCheckBox";
+            this.TeamCheckBox.Size = new System.Drawing.Size(74, 17);
+            this.TeamCheckBox.TabIndex = 15;
+            this.TeamCheckBox.Text = "Edit Team";
+            this.TeamCheckBox.UseVisualStyleBackColor = true;
             // 
             // TeamGroupBox
             // 
@@ -4390,31 +4642,6 @@
             this.TeamEarnableMagicIncomeUpDown.TabIndex = 34;
             this.TeamEarnableMagicIncomeUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // TeamDaysCreateLabel
-            // 
-            this.TeamDaysCreateLabel.AutoSize = true;
-            this.TeamDaysCreateLabel.Location = new System.Drawing.Point(6, 238);
-            this.TeamDaysCreateLabel.Name = "TeamDaysCreateLabel";
-            this.TeamDaysCreateLabel.Size = new System.Drawing.Size(99, 13);
-            this.TeamDaysCreateLabel.TabIndex = 32;
-            this.TeamDaysCreateLabel.Text = "Days to create: <x>";
-            // 
-            // TeamCostInfluenceUpDown
-            // 
-            this.TeamCostInfluenceUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
-            this.TeamCostInfluenceUpDown.Increment = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.TeamCostInfluenceUpDown.Location = new System.Drawing.Point(70, 167);
-            this.TeamCostInfluenceUpDown.Name = "TeamCostInfluenceUpDown";
-            this.TeamCostInfluenceUpDown.ReadOnly = true;
-            this.TeamCostInfluenceUpDown.Size = new System.Drawing.Size(53, 20);
-            this.TeamCostInfluenceUpDown.TabIndex = 22;
-            this.TeamCostInfluenceUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // TeamCostGoldLabel
             // 
             this.TeamCostGoldLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -4425,6 +4652,15 @@
             this.TeamCostGoldLabel.Size = new System.Drawing.Size(32, 13);
             this.TeamCostGoldLabel.TabIndex = 19;
             this.TeamCostGoldLabel.Text = "Gold:";
+            // 
+            // TeamDaysCreateLabel
+            // 
+            this.TeamDaysCreateLabel.AutoSize = true;
+            this.TeamDaysCreateLabel.Location = new System.Drawing.Point(6, 238);
+            this.TeamDaysCreateLabel.Name = "TeamDaysCreateLabel";
+            this.TeamDaysCreateLabel.Size = new System.Drawing.Size(99, 13);
+            this.TeamDaysCreateLabel.TabIndex = 32;
+            this.TeamDaysCreateLabel.Text = "Days to create: <x>";
             // 
             // TeamCostGoldUpDown
             // 
@@ -4446,6 +4682,22 @@
             this.TeamCostGoldUpDown.Size = new System.Drawing.Size(53, 20);
             this.TeamCostGoldUpDown.TabIndex = 20;
             this.TeamCostGoldUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TeamCostInfluenceUpDown
+            // 
+            this.TeamCostInfluenceUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.TeamCostInfluenceUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.TeamCostInfluenceUpDown.Location = new System.Drawing.Point(70, 167);
+            this.TeamCostInfluenceUpDown.Name = "TeamCostInfluenceUpDown";
+            this.TeamCostInfluenceUpDown.ReadOnly = true;
+            this.TeamCostInfluenceUpDown.Size = new System.Drawing.Size(53, 20);
+            this.TeamCostInfluenceUpDown.TabIndex = 22;
+            this.TeamCostInfluenceUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TeamCostInfluenceLabel
             // 
@@ -5083,42 +5335,6 @@
             this.textBox2.TabIndex = 7;
             this.textBox2.Text = "Changelog";
             // 
-            // TeamDeleteButton
-            // 
-            this.TeamDeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
-            this.TeamDeleteButton.Location = new System.Drawing.Point(583, 24);
-            this.TeamDeleteButton.Name = "TeamDeleteButton";
-            this.TeamDeleteButton.Size = new System.Drawing.Size(84, 40);
-            this.TeamDeleteButton.TabIndex = 16;
-            this.TeamDeleteButton.Text = "Delete Team";
-            this.TeamDeleteButton.UseVisualStyleBackColor = true;
-            // 
-            // TeamCheckBox
-            // 
-            this.TeamCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
-            this.TeamCheckBox.AutoSize = true;
-            this.TeamCheckBox.Location = new System.Drawing.Point(583, 3);
-            this.TeamCheckBox.Name = "TeamCheckBox";
-            this.TeamCheckBox.Size = new System.Drawing.Size(74, 17);
-            this.TeamCheckBox.TabIndex = 15;
-            this.TeamCheckBox.Text = "Edit Team";
-            this.TeamCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // TeamListBoxLabel
-            // 
-            this.TeamListBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.TeamListBoxLabel.AutoSize = true;
-            this.TeamListBoxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TeamListBoxLabel.Location = new System.Drawing.Point(3, 4);
-            this.TeamListBoxLabel.Name = "TeamListBoxLabel";
-            this.TeamListBoxLabel.Size = new System.Drawing.Size(158, 16);
-            this.TeamListBoxLabel.TabIndex = 18;
-            this.TeamListBoxLabel.Text = "Teams: Complete List";
-            // 
             // TeamListBox
             // 
             this.TeamListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -5129,6 +5345,1301 @@
             this.TeamListBox.Size = new System.Drawing.Size(227, 511);
             this.TeamListBox.TabIndex = 17;
             this.TeamListBox.SelectedIndexChanged += new System.EventHandler(this.TeamListBox_SelectedIndexChanged);
+            // 
+            // SettlementTab
+            // 
+            this.SettlementTab.Controls.Add(this.PlayerWideGroupBox);
+            this.SettlementTab.Controls.Add(this.SettlementWideGroupBox);
+            this.SettlementTab.Controls.Add(this.NewSettlementButton);
+            this.SettlementTab.Controls.Add(this.DeleteSettlementButton);
+            this.SettlementTab.Controls.Add(this.SettlementSelectorComboBox);
+            this.SettlementTab.Controls.Add(this.SettlementSelectorLabel);
+            this.SettlementTab.Location = new System.Drawing.Point(4, 22);
+            this.SettlementTab.Name = "SettlementTab";
+            this.SettlementTab.Size = new System.Drawing.Size(671, 546);
+            this.SettlementTab.TabIndex = 5;
+            this.SettlementTab.Text = "Your Settlements";
+            this.SettlementTab.UseVisualStyleBackColor = true;
+            // 
+            // PlayerWideGroupBox
+            // 
+            this.PlayerWideGroupBox.Controls.Add(this.KingdomPlayerLabel);
+            this.PlayerWideGroupBox.Controls.Add(this.LoyaltyPlayerUpDown);
+            this.PlayerWideGroupBox.Controls.Add(this.FamePlayerLabel);
+            this.PlayerWideGroupBox.Controls.Add(this.FamePlayerUpDown);
+            this.PlayerWideGroupBox.Controls.Add(this.LoyaltyPlayerLabel);
+            this.PlayerWideGroupBox.Controls.Add(this.EconomyPlayerLabel);
+            this.PlayerWideGroupBox.Controls.Add(this.EconomyPlayerUpDown);
+            this.PlayerWideGroupBox.Controls.Add(this.StabilityPlayerLabel);
+            this.PlayerWideGroupBox.Controls.Add(this.StabilityPlayerUpDown);
+            this.PlayerWideGroupBox.Controls.Add(this.UnrestPlayerLabel);
+            this.PlayerWideGroupBox.Controls.Add(this.UnrestPlayerUpDown);
+            this.PlayerWideGroupBox.Controls.Add(this.DefensePlayerLabel);
+            this.PlayerWideGroupBox.Controls.Add(this.DefensePlayerUpDown);
+            this.PlayerWideGroupBox.Controls.Add(this.PlayerDerivedWarningLabel);
+            this.PlayerWideGroupBox.Controls.Add(this.PlayerListLabel);
+            this.PlayerWideGroupBox.Controls.Add(this.PlayerListBox);
+            this.PlayerWideGroupBox.Controls.Add(this.SettlementPlayerLabel);
+            this.PlayerWideGroupBox.Controls.Add(this.CrimePlayerUpDown);
+            this.PlayerWideGroupBox.Controls.Add(this.CorruptionPlayerLabel);
+            this.PlayerWideGroupBox.Controls.Add(this.CorruptionPlayerUpDown);
+            this.PlayerWideGroupBox.Controls.Add(this.CrimePlayerLabel);
+            this.PlayerWideGroupBox.Controls.Add(this.ProductivityPlayerLabel);
+            this.PlayerWideGroupBox.Controls.Add(this.ProductivityPlayerUpDown);
+            this.PlayerWideGroupBox.Controls.Add(this.LawPlayerLabel);
+            this.PlayerWideGroupBox.Controls.Add(this.LawPlayerUpDown);
+            this.PlayerWideGroupBox.Controls.Add(this.LorePlayerLabel);
+            this.PlayerWideGroupBox.Controls.Add(this.LorePlayerUpDown);
+            this.PlayerWideGroupBox.Controls.Add(this.SocietyPlayerLabel);
+            this.PlayerWideGroupBox.Controls.Add(this.SocietyPlayerUpDown);
+            this.PlayerWideGroupBox.Location = new System.Drawing.Point(6, 329);
+            this.PlayerWideGroupBox.Name = "PlayerWideGroupBox";
+            this.PlayerWideGroupBox.Size = new System.Drawing.Size(572, 214);
+            this.PlayerWideGroupBox.TabIndex = 67;
+            this.PlayerWideGroupBox.TabStop = false;
+            this.PlayerWideGroupBox.Text = "Player-Derived Modifiers";
+            // 
+            // KingdomPlayerLabel
+            // 
+            this.KingdomPlayerLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.KingdomPlayerLabel.AutoSize = true;
+            this.KingdomPlayerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KingdomPlayerLabel.Location = new System.Drawing.Point(194, 130);
+            this.KingdomPlayerLabel.Name = "KingdomPlayerLabel";
+            this.KingdomPlayerLabel.Size = new System.Drawing.Size(136, 16);
+            this.KingdomPlayerLabel.TabIndex = 93;
+            this.KingdomPlayerLabel.Text = "Kingdom Modifiers";
+            // 
+            // LoyaltyPlayerUpDown
+            // 
+            this.LoyaltyPlayerUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.LoyaltyPlayerUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.LoyaltyPlayerUpDown.Location = new System.Drawing.Point(261, 174);
+            this.LoyaltyPlayerUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.LoyaltyPlayerUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.LoyaltyPlayerUpDown.Name = "LoyaltyPlayerUpDown";
+            this.LoyaltyPlayerUpDown.ReadOnly = true;
+            this.LoyaltyPlayerUpDown.Size = new System.Drawing.Size(53, 20);
+            this.LoyaltyPlayerUpDown.TabIndex = 83;
+            this.LoyaltyPlayerUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // FamePlayerLabel
+            // 
+            this.FamePlayerLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.FamePlayerLabel.AutoSize = true;
+            this.FamePlayerLabel.Location = new System.Drawing.Point(194, 151);
+            this.FamePlayerLabel.Name = "FamePlayerLabel";
+            this.FamePlayerLabel.Size = new System.Drawing.Size(36, 13);
+            this.FamePlayerLabel.TabIndex = 80;
+            this.FamePlayerLabel.Text = "Fame:";
+            // 
+            // FamePlayerUpDown
+            // 
+            this.FamePlayerUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.FamePlayerUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.FamePlayerUpDown.Location = new System.Drawing.Point(261, 149);
+            this.FamePlayerUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.FamePlayerUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.FamePlayerUpDown.Name = "FamePlayerUpDown";
+            this.FamePlayerUpDown.ReadOnly = true;
+            this.FamePlayerUpDown.Size = new System.Drawing.Size(53, 20);
+            this.FamePlayerUpDown.TabIndex = 81;
+            this.FamePlayerUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // LoyaltyPlayerLabel
+            // 
+            this.LoyaltyPlayerLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.LoyaltyPlayerLabel.AutoSize = true;
+            this.LoyaltyPlayerLabel.Location = new System.Drawing.Point(194, 176);
+            this.LoyaltyPlayerLabel.Name = "LoyaltyPlayerLabel";
+            this.LoyaltyPlayerLabel.Size = new System.Drawing.Size(43, 13);
+            this.LoyaltyPlayerLabel.TabIndex = 82;
+            this.LoyaltyPlayerLabel.Text = "Loyalty:";
+            // 
+            // EconomyPlayerLabel
+            // 
+            this.EconomyPlayerLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.EconomyPlayerLabel.AutoSize = true;
+            this.EconomyPlayerLabel.Location = new System.Drawing.Point(320, 151);
+            this.EconomyPlayerLabel.Name = "EconomyPlayerLabel";
+            this.EconomyPlayerLabel.Size = new System.Drawing.Size(54, 13);
+            this.EconomyPlayerLabel.TabIndex = 84;
+            this.EconomyPlayerLabel.Text = "Economy:";
+            // 
+            // EconomyPlayerUpDown
+            // 
+            this.EconomyPlayerUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.EconomyPlayerUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.EconomyPlayerUpDown.Location = new System.Drawing.Point(383, 149);
+            this.EconomyPlayerUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.EconomyPlayerUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.EconomyPlayerUpDown.Name = "EconomyPlayerUpDown";
+            this.EconomyPlayerUpDown.ReadOnly = true;
+            this.EconomyPlayerUpDown.Size = new System.Drawing.Size(53, 20);
+            this.EconomyPlayerUpDown.TabIndex = 85;
+            this.EconomyPlayerUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // StabilityPlayerLabel
+            // 
+            this.StabilityPlayerLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.StabilityPlayerLabel.AutoSize = true;
+            this.StabilityPlayerLabel.Location = new System.Drawing.Point(444, 151);
+            this.StabilityPlayerLabel.Name = "StabilityPlayerLabel";
+            this.StabilityPlayerLabel.Size = new System.Drawing.Size(46, 13);
+            this.StabilityPlayerLabel.TabIndex = 86;
+            this.StabilityPlayerLabel.Text = "Stability:";
+            // 
+            // StabilityPlayerUpDown
+            // 
+            this.StabilityPlayerUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.StabilityPlayerUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.StabilityPlayerUpDown.Location = new System.Drawing.Point(508, 149);
+            this.StabilityPlayerUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.StabilityPlayerUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.StabilityPlayerUpDown.Name = "StabilityPlayerUpDown";
+            this.StabilityPlayerUpDown.ReadOnly = true;
+            this.StabilityPlayerUpDown.Size = new System.Drawing.Size(53, 20);
+            this.StabilityPlayerUpDown.TabIndex = 87;
+            this.StabilityPlayerUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // UnrestPlayerLabel
+            // 
+            this.UnrestPlayerLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.UnrestPlayerLabel.AutoSize = true;
+            this.UnrestPlayerLabel.Location = new System.Drawing.Point(444, 176);
+            this.UnrestPlayerLabel.Name = "UnrestPlayerLabel";
+            this.UnrestPlayerLabel.Size = new System.Drawing.Size(38, 13);
+            this.UnrestPlayerLabel.TabIndex = 88;
+            this.UnrestPlayerLabel.Text = "Unrest";
+            // 
+            // UnrestPlayerUpDown
+            // 
+            this.UnrestPlayerUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.UnrestPlayerUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.UnrestPlayerUpDown.Location = new System.Drawing.Point(508, 174);
+            this.UnrestPlayerUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.UnrestPlayerUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.UnrestPlayerUpDown.Name = "UnrestPlayerUpDown";
+            this.UnrestPlayerUpDown.ReadOnly = true;
+            this.UnrestPlayerUpDown.Size = new System.Drawing.Size(53, 20);
+            this.UnrestPlayerUpDown.TabIndex = 89;
+            this.UnrestPlayerUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // DefensePlayerLabel
+            // 
+            this.DefensePlayerLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.DefensePlayerLabel.AutoSize = true;
+            this.DefensePlayerLabel.Location = new System.Drawing.Point(320, 178);
+            this.DefensePlayerLabel.Name = "DefensePlayerLabel";
+            this.DefensePlayerLabel.Size = new System.Drawing.Size(50, 13);
+            this.DefensePlayerLabel.TabIndex = 90;
+            this.DefensePlayerLabel.Text = "Defense:";
+            // 
+            // DefensePlayerUpDown
+            // 
+            this.DefensePlayerUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.DefensePlayerUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.DefensePlayerUpDown.Location = new System.Drawing.Point(383, 176);
+            this.DefensePlayerUpDown.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.DefensePlayerUpDown.Name = "DefensePlayerUpDown";
+            this.DefensePlayerUpDown.ReadOnly = true;
+            this.DefensePlayerUpDown.Size = new System.Drawing.Size(53, 20);
+            this.DefensePlayerUpDown.TabIndex = 91;
+            this.DefensePlayerUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // PlayerDerivedWarningLabel
+            // 
+            this.PlayerDerivedWarningLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.PlayerDerivedWarningLabel.AutoSize = true;
+            this.PlayerDerivedWarningLabel.Location = new System.Drawing.Point(194, 16);
+            this.PlayerDerivedWarningLabel.Name = "PlayerDerivedWarningLabel";
+            this.PlayerDerivedWarningLabel.Size = new System.Drawing.Size(226, 13);
+            this.PlayerDerivedWarningLabel.TabIndex = 92;
+            this.PlayerDerivedWarningLabel.Text = "(These are a subset of the overall stats above)";
+            // 
+            // PlayerListLabel
+            // 
+            this.PlayerListLabel.AutoSize = true;
+            this.PlayerListLabel.Location = new System.Drawing.Point(6, 31);
+            this.PlayerListLabel.Name = "PlayerListLabel";
+            this.PlayerListLabel.Size = new System.Drawing.Size(68, 13);
+            this.PlayerListLabel.TabIndex = 79;
+            this.PlayerListLabel.Text = "Landowners:";
+            // 
+            // PlayerListBox
+            // 
+            this.PlayerListBox.FormattingEnabled = true;
+            this.PlayerListBox.Location = new System.Drawing.Point(9, 47);
+            this.PlayerListBox.Name = "PlayerListBox";
+            this.PlayerListBox.Size = new System.Drawing.Size(128, 147);
+            this.PlayerListBox.TabIndex = 78;
+            // 
+            // SettlementPlayerLabel
+            // 
+            this.SettlementPlayerLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.SettlementPlayerLabel.AutoSize = true;
+            this.SettlementPlayerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SettlementPlayerLabel.Location = new System.Drawing.Point(194, 42);
+            this.SettlementPlayerLabel.Name = "SettlementPlayerLabel";
+            this.SettlementPlayerLabel.Size = new System.Drawing.Size(149, 16);
+            this.SettlementPlayerLabel.TabIndex = 64;
+            this.SettlementPlayerLabel.Text = "Settlement Modifiers";
+            // 
+            // CrimePlayerUpDown
+            // 
+            this.CrimePlayerUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.CrimePlayerUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.CrimePlayerUpDown.Location = new System.Drawing.Point(261, 85);
+            this.CrimePlayerUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.CrimePlayerUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.CrimePlayerUpDown.Name = "CrimePlayerUpDown";
+            this.CrimePlayerUpDown.ReadOnly = true;
+            this.CrimePlayerUpDown.Size = new System.Drawing.Size(53, 20);
+            this.CrimePlayerUpDown.TabIndex = 68;
+            this.CrimePlayerUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // CorruptionPlayerLabel
+            // 
+            this.CorruptionPlayerLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.CorruptionPlayerLabel.AutoSize = true;
+            this.CorruptionPlayerLabel.Location = new System.Drawing.Point(197, 62);
+            this.CorruptionPlayerLabel.Name = "CorruptionPlayerLabel";
+            this.CorruptionPlayerLabel.Size = new System.Drawing.Size(58, 13);
+            this.CorruptionPlayerLabel.TabIndex = 65;
+            this.CorruptionPlayerLabel.Text = "Corruption:";
+            // 
+            // CorruptionPlayerUpDown
+            // 
+            this.CorruptionPlayerUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.CorruptionPlayerUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.CorruptionPlayerUpDown.Location = new System.Drawing.Point(261, 60);
+            this.CorruptionPlayerUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.CorruptionPlayerUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.CorruptionPlayerUpDown.Name = "CorruptionPlayerUpDown";
+            this.CorruptionPlayerUpDown.ReadOnly = true;
+            this.CorruptionPlayerUpDown.Size = new System.Drawing.Size(53, 20);
+            this.CorruptionPlayerUpDown.TabIndex = 66;
+            this.CorruptionPlayerUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // CrimePlayerLabel
+            // 
+            this.CrimePlayerLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.CrimePlayerLabel.AutoSize = true;
+            this.CrimePlayerLabel.Location = new System.Drawing.Point(197, 87);
+            this.CrimePlayerLabel.Name = "CrimePlayerLabel";
+            this.CrimePlayerLabel.Size = new System.Drawing.Size(36, 13);
+            this.CrimePlayerLabel.TabIndex = 67;
+            this.CrimePlayerLabel.Text = "Crime:";
+            // 
+            // ProductivityPlayerLabel
+            // 
+            this.ProductivityPlayerLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.ProductivityPlayerLabel.AutoSize = true;
+            this.ProductivityPlayerLabel.Location = new System.Drawing.Point(320, 62);
+            this.ProductivityPlayerLabel.Name = "ProductivityPlayerLabel";
+            this.ProductivityPlayerLabel.Size = new System.Drawing.Size(62, 13);
+            this.ProductivityPlayerLabel.TabIndex = 69;
+            this.ProductivityPlayerLabel.Text = "Productivity";
+            // 
+            // ProductivityPlayerUpDown
+            // 
+            this.ProductivityPlayerUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.ProductivityPlayerUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.ProductivityPlayerUpDown.Location = new System.Drawing.Point(384, 60);
+            this.ProductivityPlayerUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ProductivityPlayerUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.ProductivityPlayerUpDown.Name = "ProductivityPlayerUpDown";
+            this.ProductivityPlayerUpDown.ReadOnly = true;
+            this.ProductivityPlayerUpDown.Size = new System.Drawing.Size(53, 20);
+            this.ProductivityPlayerUpDown.TabIndex = 70;
+            this.ProductivityPlayerUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // LawPlayerLabel
+            // 
+            this.LawPlayerLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.LawPlayerLabel.AutoSize = true;
+            this.LawPlayerLabel.Location = new System.Drawing.Point(320, 87);
+            this.LawPlayerLabel.Name = "LawPlayerLabel";
+            this.LawPlayerLabel.Size = new System.Drawing.Size(30, 13);
+            this.LawPlayerLabel.TabIndex = 71;
+            this.LawPlayerLabel.Text = "Law:";
+            // 
+            // LawPlayerUpDown
+            // 
+            this.LawPlayerUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.LawPlayerUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.LawPlayerUpDown.Location = new System.Drawing.Point(384, 85);
+            this.LawPlayerUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.LawPlayerUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.LawPlayerUpDown.Name = "LawPlayerUpDown";
+            this.LawPlayerUpDown.ReadOnly = true;
+            this.LawPlayerUpDown.Size = new System.Drawing.Size(53, 20);
+            this.LawPlayerUpDown.TabIndex = 72;
+            this.LawPlayerUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // LorePlayerLabel
+            // 
+            this.LorePlayerLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.LorePlayerLabel.AutoSize = true;
+            this.LorePlayerLabel.Location = new System.Drawing.Point(444, 62);
+            this.LorePlayerLabel.Name = "LorePlayerLabel";
+            this.LorePlayerLabel.Size = new System.Drawing.Size(31, 13);
+            this.LorePlayerLabel.TabIndex = 73;
+            this.LorePlayerLabel.Text = "Lore:";
+            // 
+            // LorePlayerUpDown
+            // 
+            this.LorePlayerUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.LorePlayerUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.LorePlayerUpDown.Location = new System.Drawing.Point(508, 60);
+            this.LorePlayerUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.LorePlayerUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.LorePlayerUpDown.Name = "LorePlayerUpDown";
+            this.LorePlayerUpDown.ReadOnly = true;
+            this.LorePlayerUpDown.Size = new System.Drawing.Size(53, 20);
+            this.LorePlayerUpDown.TabIndex = 74;
+            this.LorePlayerUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // SocietyPlayerLabel
+            // 
+            this.SocietyPlayerLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.SocietyPlayerLabel.AutoSize = true;
+            this.SocietyPlayerLabel.Location = new System.Drawing.Point(444, 87);
+            this.SocietyPlayerLabel.Name = "SocietyPlayerLabel";
+            this.SocietyPlayerLabel.Size = new System.Drawing.Size(45, 13);
+            this.SocietyPlayerLabel.TabIndex = 75;
+            this.SocietyPlayerLabel.Text = "Society:";
+            // 
+            // SocietyPlayerUpDown
+            // 
+            this.SocietyPlayerUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.SocietyPlayerUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.SocietyPlayerUpDown.Location = new System.Drawing.Point(508, 85);
+            this.SocietyPlayerUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.SocietyPlayerUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.SocietyPlayerUpDown.Name = "SocietyPlayerUpDown";
+            this.SocietyPlayerUpDown.ReadOnly = true;
+            this.SocietyPlayerUpDown.Size = new System.Drawing.Size(53, 20);
+            this.SocietyPlayerUpDown.TabIndex = 76;
+            this.SocietyPlayerUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // SettlementWideGroupBox
+            // 
+            this.SettlementWideGroupBox.Controls.Add(this.SizeLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.AlignmentLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.DistrictsWithinTextBox);
+            this.SettlementWideGroupBox.Controls.Add(this.DistrictsWithinLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.CoreStatsLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.MagicItemsProducedLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.MinorItemsLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.MajorItemsLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.MediumItemsLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.SpellcastingLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.PurchaseLimitLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.SettlementPopulationLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.KingdomWideLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.LoyaltyWideUpDown);
+            this.SettlementWideGroupBox.Controls.Add(this.FameWideLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.FameWideUpDown);
+            this.SettlementWideGroupBox.Controls.Add(this.LoyaltyWideLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.EconomyWideLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.EconomyWideUpDown);
+            this.SettlementWideGroupBox.Controls.Add(this.StabilityWideLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.StabilityWideUpDown);
+            this.SettlementWideGroupBox.Controls.Add(this.UnrestWideLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.UnrestWideUpDown);
+            this.SettlementWideGroupBox.Controls.Add(this.DefenseWideLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.DefenseWideUpDown);
+            this.SettlementWideGroupBox.Controls.Add(this.SettlementWideLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.CrimeWideUpDown);
+            this.SettlementWideGroupBox.Controls.Add(this.CorruptionWideLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.CorruptionWideUpDown);
+            this.SettlementWideGroupBox.Controls.Add(this.CrimeWideLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.ProductivityWideLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.ProductivityWideUpDown);
+            this.SettlementWideGroupBox.Controls.Add(this.LawWideLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.LawWideUpDown);
+            this.SettlementWideGroupBox.Controls.Add(this.LoreWideLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.LoreWideUpDown);
+            this.SettlementWideGroupBox.Controls.Add(this.SocietyWideLabel);
+            this.SettlementWideGroupBox.Controls.Add(this.SocietyWideUpDown);
+            this.SettlementWideGroupBox.Location = new System.Drawing.Point(6, 30);
+            this.SettlementWideGroupBox.Name = "SettlementWideGroupBox";
+            this.SettlementWideGroupBox.Size = new System.Drawing.Size(572, 293);
+            this.SettlementWideGroupBox.TabIndex = 66;
+            this.SettlementWideGroupBox.TabStop = false;
+            this.SettlementWideGroupBox.Text = "Settlement-Wide Modifiers";
+            // 
+            // SizeLabel
+            // 
+            this.SizeLabel.AutoSize = true;
+            this.SizeLabel.Location = new System.Drawing.Point(6, 67);
+            this.SizeLabel.Name = "SizeLabel";
+            this.SizeLabel.Size = new System.Drawing.Size(33, 13);
+            this.SizeLabel.TabIndex = 135;
+            this.SizeLabel.Text = "Size: ";
+            // 
+            // AlignmentLabel
+            // 
+            this.AlignmentLabel.AutoSize = true;
+            this.AlignmentLabel.Location = new System.Drawing.Point(6, 48);
+            this.AlignmentLabel.Name = "AlignmentLabel";
+            this.AlignmentLabel.Size = new System.Drawing.Size(59, 13);
+            this.AlignmentLabel.TabIndex = 134;
+            this.AlignmentLabel.Text = "Alignment: ";
+            // 
+            // DistrictsWithinTextBox
+            // 
+            this.DistrictsWithinTextBox.Location = new System.Drawing.Point(9, 221);
+            this.DistrictsWithinTextBox.Multiline = true;
+            this.DistrictsWithinTextBox.Name = "DistrictsWithinTextBox";
+            this.DistrictsWithinTextBox.ReadOnly = true;
+            this.DistrictsWithinTextBox.Size = new System.Drawing.Size(128, 66);
+            this.DistrictsWithinTextBox.TabIndex = 131;
+            // 
+            // DistrictsWithinLabel
+            // 
+            this.DistrictsWithinLabel.AutoSize = true;
+            this.DistrictsWithinLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DistrictsWithinLabel.Location = new System.Drawing.Point(6, 205);
+            this.DistrictsWithinLabel.Name = "DistrictsWithinLabel";
+            this.DistrictsWithinLabel.Size = new System.Drawing.Size(97, 13);
+            this.DistrictsWithinLabel.TabIndex = 130;
+            this.DistrictsWithinLabel.Text = "Districts Within:";
+            // 
+            // CoreStatsLabel
+            // 
+            this.CoreStatsLabel.AutoSize = true;
+            this.CoreStatsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CoreStatsLabel.Location = new System.Drawing.Point(6, 15);
+            this.CoreStatsLabel.Name = "CoreStatsLabel";
+            this.CoreStatsLabel.Size = new System.Drawing.Size(70, 13);
+            this.CoreStatsLabel.TabIndex = 129;
+            this.CoreStatsLabel.Text = "Core Stats:";
+            // 
+            // MagicItemsProducedLabel
+            // 
+            this.MagicItemsProducedLabel.AutoSize = true;
+            this.MagicItemsProducedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MagicItemsProducedLabel.Location = new System.Drawing.Point(6, 122);
+            this.MagicItemsProducedLabel.Name = "MagicItemsProducedLabel";
+            this.MagicItemsProducedLabel.Size = new System.Drawing.Size(137, 13);
+            this.MagicItemsProducedLabel.TabIndex = 128;
+            this.MagicItemsProducedLabel.Text = "Magic Items Produced:";
+            // 
+            // MinorItemsLabel
+            // 
+            this.MinorItemsLabel.AutoSize = true;
+            this.MinorItemsLabel.Location = new System.Drawing.Point(6, 135);
+            this.MinorItemsLabel.Name = "MinorItemsLabel";
+            this.MinorItemsLabel.Size = new System.Drawing.Size(62, 13);
+            this.MinorItemsLabel.TabIndex = 125;
+            this.MinorItemsLabel.Text = "Minor Slots:";
+            // 
+            // MajorItemsLabel
+            // 
+            this.MajorItemsLabel.AutoSize = true;
+            this.MajorItemsLabel.Location = new System.Drawing.Point(6, 174);
+            this.MajorItemsLabel.Name = "MajorItemsLabel";
+            this.MajorItemsLabel.Size = new System.Drawing.Size(62, 13);
+            this.MajorItemsLabel.TabIndex = 127;
+            this.MajorItemsLabel.Text = "Major Slots:";
+            // 
+            // MediumItemsLabel
+            // 
+            this.MediumItemsLabel.AutoSize = true;
+            this.MediumItemsLabel.Location = new System.Drawing.Point(6, 154);
+            this.MediumItemsLabel.Name = "MediumItemsLabel";
+            this.MediumItemsLabel.Size = new System.Drawing.Size(73, 13);
+            this.MediumItemsLabel.TabIndex = 126;
+            this.MediumItemsLabel.Text = "Medium Slots:";
+            // 
+            // SpellcastingLabel
+            // 
+            this.SpellcastingLabel.AutoSize = true;
+            this.SpellcastingLabel.Location = new System.Drawing.Point(6, 105);
+            this.SpellcastingLabel.Name = "SpellcastingLabel";
+            this.SpellcastingLabel.Size = new System.Drawing.Size(131, 13);
+            this.SpellcastingLabel.TabIndex = 124;
+            this.SpellcastingLabel.Text = "Spellcasting: Up to level X";
+            // 
+            // PurchaseLimitLabel
+            // 
+            this.PurchaseLimitLabel.AutoSize = true;
+            this.PurchaseLimitLabel.Location = new System.Drawing.Point(6, 86);
+            this.PurchaseLimitLabel.Name = "PurchaseLimitLabel";
+            this.PurchaseLimitLabel.Size = new System.Drawing.Size(103, 13);
+            this.PurchaseLimitLabel.TabIndex = 123;
+            this.PurchaseLimitLabel.Text = "Purchase Limit: 0 gp";
+            // 
+            // SettlementPopulationLabel
+            // 
+            this.SettlementPopulationLabel.AutoSize = true;
+            this.SettlementPopulationLabel.Location = new System.Drawing.Point(6, 28);
+            this.SettlementPopulationLabel.Name = "SettlementPopulationLabel";
+            this.SettlementPopulationLabel.Size = new System.Drawing.Size(112, 13);
+            this.SettlementPopulationLabel.TabIndex = 121;
+            this.SettlementPopulationLabel.Text = "Population: <Number>";
+            // 
+            // KingdomWideLabel
+            // 
+            this.KingdomWideLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.KingdomWideLabel.AutoSize = true;
+            this.KingdomWideLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KingdomWideLabel.Location = new System.Drawing.Point(188, 120);
+            this.KingdomWideLabel.Name = "KingdomWideLabel";
+            this.KingdomWideLabel.Size = new System.Drawing.Size(136, 16);
+            this.KingdomWideLabel.TabIndex = 119;
+            this.KingdomWideLabel.Text = "Kingdom Modifiers";
+            // 
+            // LoyaltyWideUpDown
+            // 
+            this.LoyaltyWideUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.LoyaltyWideUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.LoyaltyWideUpDown.Location = new System.Drawing.Point(255, 164);
+            this.LoyaltyWideUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.LoyaltyWideUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.LoyaltyWideUpDown.Name = "LoyaltyWideUpDown";
+            this.LoyaltyWideUpDown.ReadOnly = true;
+            this.LoyaltyWideUpDown.Size = new System.Drawing.Size(53, 20);
+            this.LoyaltyWideUpDown.TabIndex = 109;
+            this.LoyaltyWideUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // FameWideLabel
+            // 
+            this.FameWideLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.FameWideLabel.AutoSize = true;
+            this.FameWideLabel.Location = new System.Drawing.Point(188, 141);
+            this.FameWideLabel.Name = "FameWideLabel";
+            this.FameWideLabel.Size = new System.Drawing.Size(36, 13);
+            this.FameWideLabel.TabIndex = 106;
+            this.FameWideLabel.Text = "Fame:";
+            // 
+            // FameWideUpDown
+            // 
+            this.FameWideUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.FameWideUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.FameWideUpDown.Location = new System.Drawing.Point(255, 139);
+            this.FameWideUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.FameWideUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.FameWideUpDown.Name = "FameWideUpDown";
+            this.FameWideUpDown.ReadOnly = true;
+            this.FameWideUpDown.Size = new System.Drawing.Size(53, 20);
+            this.FameWideUpDown.TabIndex = 107;
+            this.FameWideUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // LoyaltyWideLabel
+            // 
+            this.LoyaltyWideLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.LoyaltyWideLabel.AutoSize = true;
+            this.LoyaltyWideLabel.Location = new System.Drawing.Point(188, 166);
+            this.LoyaltyWideLabel.Name = "LoyaltyWideLabel";
+            this.LoyaltyWideLabel.Size = new System.Drawing.Size(43, 13);
+            this.LoyaltyWideLabel.TabIndex = 108;
+            this.LoyaltyWideLabel.Text = "Loyalty:";
+            // 
+            // EconomyWideLabel
+            // 
+            this.EconomyWideLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.EconomyWideLabel.AutoSize = true;
+            this.EconomyWideLabel.Location = new System.Drawing.Point(322, 141);
+            this.EconomyWideLabel.Name = "EconomyWideLabel";
+            this.EconomyWideLabel.Size = new System.Drawing.Size(54, 13);
+            this.EconomyWideLabel.TabIndex = 110;
+            this.EconomyWideLabel.Text = "Economy:";
+            // 
+            // EconomyWideUpDown
+            // 
+            this.EconomyWideUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.EconomyWideUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.EconomyWideUpDown.Location = new System.Drawing.Point(377, 139);
+            this.EconomyWideUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.EconomyWideUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.EconomyWideUpDown.Name = "EconomyWideUpDown";
+            this.EconomyWideUpDown.ReadOnly = true;
+            this.EconomyWideUpDown.Size = new System.Drawing.Size(53, 20);
+            this.EconomyWideUpDown.TabIndex = 111;
+            this.EconomyWideUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // StabilityWideLabel
+            // 
+            this.StabilityWideLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.StabilityWideLabel.AutoSize = true;
+            this.StabilityWideLabel.Location = new System.Drawing.Point(450, 141);
+            this.StabilityWideLabel.Name = "StabilityWideLabel";
+            this.StabilityWideLabel.Size = new System.Drawing.Size(46, 13);
+            this.StabilityWideLabel.TabIndex = 112;
+            this.StabilityWideLabel.Text = "Stability:";
+            // 
+            // StabilityWideUpDown
+            // 
+            this.StabilityWideUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.StabilityWideUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.StabilityWideUpDown.Location = new System.Drawing.Point(502, 139);
+            this.StabilityWideUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.StabilityWideUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.StabilityWideUpDown.Name = "StabilityWideUpDown";
+            this.StabilityWideUpDown.ReadOnly = true;
+            this.StabilityWideUpDown.Size = new System.Drawing.Size(53, 20);
+            this.StabilityWideUpDown.TabIndex = 113;
+            this.StabilityWideUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // UnrestWideLabel
+            // 
+            this.UnrestWideLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.UnrestWideLabel.AutoSize = true;
+            this.UnrestWideLabel.Location = new System.Drawing.Point(450, 166);
+            this.UnrestWideLabel.Name = "UnrestWideLabel";
+            this.UnrestWideLabel.Size = new System.Drawing.Size(38, 13);
+            this.UnrestWideLabel.TabIndex = 114;
+            this.UnrestWideLabel.Text = "Unrest";
+            // 
+            // UnrestWideUpDown
+            // 
+            this.UnrestWideUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.UnrestWideUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.UnrestWideUpDown.Location = new System.Drawing.Point(502, 164);
+            this.UnrestWideUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.UnrestWideUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.UnrestWideUpDown.Name = "UnrestWideUpDown";
+            this.UnrestWideUpDown.ReadOnly = true;
+            this.UnrestWideUpDown.Size = new System.Drawing.Size(53, 20);
+            this.UnrestWideUpDown.TabIndex = 115;
+            this.UnrestWideUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // DefenseWideLabel
+            // 
+            this.DefenseWideLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.DefenseWideLabel.AutoSize = true;
+            this.DefenseWideLabel.Location = new System.Drawing.Point(322, 168);
+            this.DefenseWideLabel.Name = "DefenseWideLabel";
+            this.DefenseWideLabel.Size = new System.Drawing.Size(50, 13);
+            this.DefenseWideLabel.TabIndex = 116;
+            this.DefenseWideLabel.Text = "Defense:";
+            // 
+            // DefenseWideUpDown
+            // 
+            this.DefenseWideUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.DefenseWideUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.DefenseWideUpDown.Location = new System.Drawing.Point(377, 166);
+            this.DefenseWideUpDown.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.DefenseWideUpDown.Name = "DefenseWideUpDown";
+            this.DefenseWideUpDown.ReadOnly = true;
+            this.DefenseWideUpDown.Size = new System.Drawing.Size(53, 20);
+            this.DefenseWideUpDown.TabIndex = 117;
+            this.DefenseWideUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // SettlementWideLabel
+            // 
+            this.SettlementWideLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.SettlementWideLabel.AutoSize = true;
+            this.SettlementWideLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SettlementWideLabel.Location = new System.Drawing.Point(188, 16);
+            this.SettlementWideLabel.Name = "SettlementWideLabel";
+            this.SettlementWideLabel.Size = new System.Drawing.Size(149, 16);
+            this.SettlementWideLabel.TabIndex = 92;
+            this.SettlementWideLabel.Text = "Settlement Modifiers";
+            // 
+            // CrimeWideUpDown
+            // 
+            this.CrimeWideUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.CrimeWideUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.CrimeWideUpDown.Location = new System.Drawing.Point(255, 59);
+            this.CrimeWideUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.CrimeWideUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.CrimeWideUpDown.Name = "CrimeWideUpDown";
+            this.CrimeWideUpDown.ReadOnly = true;
+            this.CrimeWideUpDown.Size = new System.Drawing.Size(53, 20);
+            this.CrimeWideUpDown.TabIndex = 96;
+            this.CrimeWideUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // CorruptionWideLabel
+            // 
+            this.CorruptionWideLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.CorruptionWideLabel.AutoSize = true;
+            this.CorruptionWideLabel.Location = new System.Drawing.Point(191, 36);
+            this.CorruptionWideLabel.Name = "CorruptionWideLabel";
+            this.CorruptionWideLabel.Size = new System.Drawing.Size(58, 13);
+            this.CorruptionWideLabel.TabIndex = 93;
+            this.CorruptionWideLabel.Text = "Corruption:";
+            // 
+            // CorruptionWideUpDown
+            // 
+            this.CorruptionWideUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.CorruptionWideUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.CorruptionWideUpDown.Location = new System.Drawing.Point(255, 34);
+            this.CorruptionWideUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.CorruptionWideUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.CorruptionWideUpDown.Name = "CorruptionWideUpDown";
+            this.CorruptionWideUpDown.ReadOnly = true;
+            this.CorruptionWideUpDown.Size = new System.Drawing.Size(53, 20);
+            this.CorruptionWideUpDown.TabIndex = 94;
+            this.CorruptionWideUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // CrimeWideLabel
+            // 
+            this.CrimeWideLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.CrimeWideLabel.AutoSize = true;
+            this.CrimeWideLabel.Location = new System.Drawing.Point(191, 61);
+            this.CrimeWideLabel.Name = "CrimeWideLabel";
+            this.CrimeWideLabel.Size = new System.Drawing.Size(36, 13);
+            this.CrimeWideLabel.TabIndex = 95;
+            this.CrimeWideLabel.Text = "Crime:";
+            // 
+            // ProductivityWideLabel
+            // 
+            this.ProductivityWideLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.ProductivityWideLabel.AutoSize = true;
+            this.ProductivityWideLabel.Location = new System.Drawing.Point(314, 36);
+            this.ProductivityWideLabel.Name = "ProductivityWideLabel";
+            this.ProductivityWideLabel.Size = new System.Drawing.Size(62, 13);
+            this.ProductivityWideLabel.TabIndex = 97;
+            this.ProductivityWideLabel.Text = "Productivity";
+            // 
+            // ProductivityWideUpDown
+            // 
+            this.ProductivityWideUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.ProductivityWideUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.ProductivityWideUpDown.Location = new System.Drawing.Point(378, 34);
+            this.ProductivityWideUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ProductivityWideUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.ProductivityWideUpDown.Name = "ProductivityWideUpDown";
+            this.ProductivityWideUpDown.ReadOnly = true;
+            this.ProductivityWideUpDown.Size = new System.Drawing.Size(53, 20);
+            this.ProductivityWideUpDown.TabIndex = 98;
+            this.ProductivityWideUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // LawWideLabel
+            // 
+            this.LawWideLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.LawWideLabel.AutoSize = true;
+            this.LawWideLabel.Location = new System.Drawing.Point(314, 61);
+            this.LawWideLabel.Name = "LawWideLabel";
+            this.LawWideLabel.Size = new System.Drawing.Size(30, 13);
+            this.LawWideLabel.TabIndex = 99;
+            this.LawWideLabel.Text = "Law:";
+            // 
+            // LawWideUpDown
+            // 
+            this.LawWideUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.LawWideUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.LawWideUpDown.Location = new System.Drawing.Point(378, 59);
+            this.LawWideUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.LawWideUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.LawWideUpDown.Name = "LawWideUpDown";
+            this.LawWideUpDown.ReadOnly = true;
+            this.LawWideUpDown.Size = new System.Drawing.Size(53, 20);
+            this.LawWideUpDown.TabIndex = 100;
+            this.LawWideUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // LoreWideLabel
+            // 
+            this.LoreWideLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.LoreWideLabel.AutoSize = true;
+            this.LoreWideLabel.Location = new System.Drawing.Point(438, 36);
+            this.LoreWideLabel.Name = "LoreWideLabel";
+            this.LoreWideLabel.Size = new System.Drawing.Size(31, 13);
+            this.LoreWideLabel.TabIndex = 101;
+            this.LoreWideLabel.Text = "Lore:";
+            // 
+            // LoreWideUpDown
+            // 
+            this.LoreWideUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.LoreWideUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.LoreWideUpDown.Location = new System.Drawing.Point(502, 34);
+            this.LoreWideUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.LoreWideUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.LoreWideUpDown.Name = "LoreWideUpDown";
+            this.LoreWideUpDown.ReadOnly = true;
+            this.LoreWideUpDown.Size = new System.Drawing.Size(53, 20);
+            this.LoreWideUpDown.TabIndex = 102;
+            this.LoreWideUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // SocietyWideLabel
+            // 
+            this.SocietyWideLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.SocietyWideLabel.AutoSize = true;
+            this.SocietyWideLabel.Location = new System.Drawing.Point(438, 61);
+            this.SocietyWideLabel.Name = "SocietyWideLabel";
+            this.SocietyWideLabel.Size = new System.Drawing.Size(45, 13);
+            this.SocietyWideLabel.TabIndex = 103;
+            this.SocietyWideLabel.Text = "Society:";
+            // 
+            // SocietyWideUpDown
+            // 
+            this.SocietyWideUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.SocietyWideUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.SocietyWideUpDown.Location = new System.Drawing.Point(502, 59);
+            this.SocietyWideUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.SocietyWideUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.SocietyWideUpDown.Name = "SocietyWideUpDown";
+            this.SocietyWideUpDown.ReadOnly = true;
+            this.SocietyWideUpDown.Size = new System.Drawing.Size(53, 20);
+            this.SocietyWideUpDown.TabIndex = 104;
+            this.SocietyWideUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // NewSettlementButton
+            // 
+            this.NewSettlementButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.NewSettlementButton.Location = new System.Drawing.Point(584, 34);
+            this.NewSettlementButton.Name = "NewSettlementButton";
+            this.NewSettlementButton.Size = new System.Drawing.Size(84, 40);
+            this.NewSettlementButton.TabIndex = 53;
+            this.NewSettlementButton.Text = "New Settlement";
+            this.NewSettlementButton.UseVisualStyleBackColor = true;
+            this.NewSettlementButton.Click += new System.EventHandler(this.NewSettlementButton_Click);
+            // 
+            // DeleteSettlementButton
+            // 
+            this.DeleteSettlementButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.DeleteSettlementButton.Location = new System.Drawing.Point(584, 503);
+            this.DeleteSettlementButton.Name = "DeleteSettlementButton";
+            this.DeleteSettlementButton.Size = new System.Drawing.Size(84, 40);
+            this.DeleteSettlementButton.TabIndex = 52;
+            this.DeleteSettlementButton.Text = "Delete Settlement";
+            this.DeleteSettlementButton.UseVisualStyleBackColor = true;
+            // 
+            // SettlementSelectorComboBox
+            // 
+            this.SettlementSelectorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SettlementSelectorComboBox.FormattingEnabled = true;
+            this.SettlementSelectorComboBox.Location = new System.Drawing.Point(233, 7);
+            this.SettlementSelectorComboBox.Name = "SettlementSelectorComboBox";
+            this.SettlementSelectorComboBox.Size = new System.Drawing.Size(435, 21);
+            this.SettlementSelectorComboBox.TabIndex = 51;
+            // 
+            // SettlementSelectorLabel
+            // 
+            this.SettlementSelectorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.SettlementSelectorLabel.AutoSize = true;
+            this.SettlementSelectorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SettlementSelectorLabel.Location = new System.Drawing.Point(3, 8);
+            this.SettlementSelectorLabel.Name = "SettlementSelectorLabel";
+            this.SettlementSelectorLabel.Size = new System.Drawing.Size(224, 16);
+            this.SettlementSelectorLabel.TabIndex = 50;
+            this.SettlementSelectorLabel.Text = "Settlements within the Kingdom:";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(700, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.saveToolStripMenuItem,
+            this.saveAsToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.saveAsToolStripMenuItem.Text = "Save As...";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.aboutToolStripMenuItem1});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.aboutToolStripMenuItem.Text = "Reset to Unmodified Raws";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(212, 22);
+            this.toolStripMenuItem2.Text = " ";
+            // 
+            // aboutToolStripMenuItem1
+            // 
+            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(212, 22);
+            this.aboutToolStripMenuItem1.Text = "About...";
+            this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
             // MainViewerForm
             // 
@@ -5215,6 +6726,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.DefenseUpDown)).EndInit();
             this.FlagsTab.ResumeLayout(false);
             this.FlagsTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BuildingFlagsCostMagicUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BuildingFlagsCostInfluenceUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BuildingFlagsCostGoldUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BuildingFlagsCostGoodsUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BuildingFlagsCostLaborUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CostDiscountUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedProductionUpDown)).EndInit();
             this.ChangeLogTabindex.ResumeLayout(false);
@@ -5269,16 +6785,14 @@
             this.OrganizationChangelogTab.PerformLayout();
             this.TeamsTab.ResumeLayout(false);
             this.TeamsTab.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.TeamGroupBox.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TeamCostMagicUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TeamEarnableMagicIncomeUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TeamCostInfluenceUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TeamCostGoldUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TeamCostInfluenceUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TeamCostGoodsUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TeamCostLaborUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TeamEarnableInfluenceIncomeUpDown)).EndInit();
@@ -5297,6 +6811,38 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown18)).EndInit();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
+            this.SettlementTab.ResumeLayout(false);
+            this.SettlementTab.PerformLayout();
+            this.PlayerWideGroupBox.ResumeLayout(false);
+            this.PlayerWideGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LoyaltyPlayerUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FamePlayerUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EconomyPlayerUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StabilityPlayerUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UnrestPlayerUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DefensePlayerUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CrimePlayerUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CorruptionPlayerUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductivityPlayerUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LawPlayerUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LorePlayerUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SocietyPlayerUpDown)).EndInit();
+            this.SettlementWideGroupBox.ResumeLayout(false);
+            this.SettlementWideGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LoyaltyWideUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FameWideUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EconomyWideUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StabilityWideUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UnrestWideUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DefenseWideUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CrimeWideUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CorruptionWideUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductivityWideUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LawWideUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LoreWideUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SocietyWideUpDown)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5656,6 +7202,92 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ListBox TeamListBox;
+        private System.Windows.Forms.Label GoldFlagCostLabel;
+        private System.Windows.Forms.Label BuildingFlagsCostMagicLabel;
+        private System.Windows.Forms.NumericUpDown BuildingFlagsCostMagicUpDown;
+        private System.Windows.Forms.Label BuildingFlagsCostDaysCreateLabel;
+        private System.Windows.Forms.NumericUpDown BuildingFlagsCostInfluenceUpDown;
+        private System.Windows.Forms.NumericUpDown BuildingFlagsCostGoldUpDown;
+        private System.Windows.Forms.Label BuildingFlagsCostInfluenceLabel;
+        private System.Windows.Forms.Label BuildingFlagsCostGoodsLabel;
+        private System.Windows.Forms.NumericUpDown BuildingFlagsCostGoodsUpDown;
+        private System.Windows.Forms.Label BuildingFlagsCostLaborLabel;
+        private System.Windows.Forms.NumericUpDown BuildingFlagsCostLaborUpDown;
+        private System.Windows.Forms.Label BuildingFlagsCostLabel;
+        private System.Windows.Forms.TabPage SettlementTab;
+        private System.Windows.Forms.Button NewSettlementButton;
+        private System.Windows.Forms.Button DeleteSettlementButton;
+        private System.Windows.Forms.ComboBox SettlementSelectorComboBox;
+        private System.Windows.Forms.Label SettlementSelectorLabel;
+        private System.Windows.Forms.GroupBox PlayerWideGroupBox;
+        private System.Windows.Forms.Label KingdomPlayerLabel;
+        private System.Windows.Forms.NumericUpDown LoyaltyPlayerUpDown;
+        private System.Windows.Forms.Label FamePlayerLabel;
+        private System.Windows.Forms.NumericUpDown FamePlayerUpDown;
+        private System.Windows.Forms.Label LoyaltyPlayerLabel;
+        private System.Windows.Forms.Label EconomyPlayerLabel;
+        private System.Windows.Forms.NumericUpDown EconomyPlayerUpDown;
+        private System.Windows.Forms.Label StabilityPlayerLabel;
+        private System.Windows.Forms.NumericUpDown StabilityPlayerUpDown;
+        private System.Windows.Forms.Label UnrestPlayerLabel;
+        private System.Windows.Forms.NumericUpDown UnrestPlayerUpDown;
+        private System.Windows.Forms.Label DefensePlayerLabel;
+        private System.Windows.Forms.NumericUpDown DefensePlayerUpDown;
+        private System.Windows.Forms.Label PlayerDerivedWarningLabel;
+        private System.Windows.Forms.Label PlayerListLabel;
+        private System.Windows.Forms.ListBox PlayerListBox;
+        private System.Windows.Forms.Label SettlementPlayerLabel;
+        private System.Windows.Forms.NumericUpDown CrimePlayerUpDown;
+        private System.Windows.Forms.Label CorruptionPlayerLabel;
+        private System.Windows.Forms.NumericUpDown CorruptionPlayerUpDown;
+        private System.Windows.Forms.Label CrimePlayerLabel;
+        private System.Windows.Forms.Label ProductivityPlayerLabel;
+        private System.Windows.Forms.NumericUpDown ProductivityPlayerUpDown;
+        private System.Windows.Forms.Label LawPlayerLabel;
+        private System.Windows.Forms.NumericUpDown LawPlayerUpDown;
+        private System.Windows.Forms.Label LorePlayerLabel;
+        private System.Windows.Forms.NumericUpDown LorePlayerUpDown;
+        private System.Windows.Forms.Label SocietyPlayerLabel;
+        private System.Windows.Forms.NumericUpDown SocietyPlayerUpDown;
+        private System.Windows.Forms.GroupBox SettlementWideGroupBox;
+        private System.Windows.Forms.TextBox DistrictsWithinTextBox;
+        private System.Windows.Forms.Label DistrictsWithinLabel;
+        private System.Windows.Forms.Label CoreStatsLabel;
+        private System.Windows.Forms.Label MagicItemsProducedLabel;
+        private System.Windows.Forms.Label MinorItemsLabel;
+        private System.Windows.Forms.Label MajorItemsLabel;
+        private System.Windows.Forms.Label MediumItemsLabel;
+        private System.Windows.Forms.Label SpellcastingLabel;
+        private System.Windows.Forms.Label PurchaseLimitLabel;
+        private System.Windows.Forms.Label SettlementPopulationLabel;
+        private System.Windows.Forms.Label KingdomWideLabel;
+        private System.Windows.Forms.NumericUpDown LoyaltyWideUpDown;
+        private System.Windows.Forms.Label FameWideLabel;
+        private System.Windows.Forms.NumericUpDown FameWideUpDown;
+        private System.Windows.Forms.Label LoyaltyWideLabel;
+        private System.Windows.Forms.Label EconomyWideLabel;
+        private System.Windows.Forms.NumericUpDown EconomyWideUpDown;
+        private System.Windows.Forms.Label StabilityWideLabel;
+        private System.Windows.Forms.NumericUpDown StabilityWideUpDown;
+        private System.Windows.Forms.Label UnrestWideLabel;
+        private System.Windows.Forms.NumericUpDown UnrestWideUpDown;
+        private System.Windows.Forms.Label DefenseWideLabel;
+        private System.Windows.Forms.NumericUpDown DefenseWideUpDown;
+        private System.Windows.Forms.Label SettlementWideLabel;
+        private System.Windows.Forms.NumericUpDown CrimeWideUpDown;
+        private System.Windows.Forms.Label CorruptionWideLabel;
+        private System.Windows.Forms.NumericUpDown CorruptionWideUpDown;
+        private System.Windows.Forms.Label CrimeWideLabel;
+        private System.Windows.Forms.Label ProductivityWideLabel;
+        private System.Windows.Forms.NumericUpDown ProductivityWideUpDown;
+        private System.Windows.Forms.Label LawWideLabel;
+        private System.Windows.Forms.NumericUpDown LawWideUpDown;
+        private System.Windows.Forms.Label LoreWideLabel;
+        private System.Windows.Forms.NumericUpDown LoreWideUpDown;
+        private System.Windows.Forms.Label SocietyWideLabel;
+        private System.Windows.Forms.NumericUpDown SocietyWideUpDown;
+        private System.Windows.Forms.Label SizeLabel;
+        private System.Windows.Forms.Label AlignmentLabel;
     }
 }
 

@@ -5,6 +5,7 @@ using System.Text;
 
 namespace KingmakerResourceViewer
 {
+    [Serializable()]
     public class SKILL_ENUM
     {
         public static String[] GP_RELATED_SKILLS = new String[]{"Appraise","Bluff","Climb","Craft","Diplomacy","Disable Device","Handle Animal","Intimidate","Heal","Knowledge",

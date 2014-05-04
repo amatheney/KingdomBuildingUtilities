@@ -5,6 +5,7 @@ using System.Text;
 
 namespace KingmakerResourceViewer
 {
+    [Serializable()]
     public class Account
     {
         public float GP;

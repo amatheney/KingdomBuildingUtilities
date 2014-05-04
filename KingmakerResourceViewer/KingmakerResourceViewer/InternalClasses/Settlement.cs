@@ -5,8 +5,9 @@ using System.Text;
 
 namespace KingmakerResourceViewer
 {
+    [Serializable()]
     public class Settlement 
-{
+    {
         public String Name;
         public String Alignment;
         public String Size;
@@ -24,7 +25,7 @@ namespace KingmakerResourceViewer
 	public Settlement()
 	{
 		this.Name = "";
-		this.Alignment = "";
+		this.Alignment = "NN";
 		this.Size = "";
 		this.Population = 0;
 		this.Modifiers = new SettlementMods();
@@ -140,7 +141,9 @@ namespace KingmakerResourceViewer
 			this.MediumItems += this.Districts[lcv].getMediumItemsProduced();
 			this.MajorItems += this.Districts[lcv].getMajorItemsProduced();
 		}
-		
+
+        this.Population = estimatePopulation();
+
 		//Apply somemodifiers based off size
 		//Console.Out.WriteLine("---Calculating population size...");
 		this.Size = getSize(this.Population);
@@ -305,11 +308,14 @@ namespace KingmakerResourceViewer
 				returnString += this.Qualities[lcv].toString() + "\n";
 			}
 		}
-		returnString += "\n--==Notable NPCs==--\n";
-		for (int lcv = 0; lcv < this.notableNPCs.Length; lcv++)
-		{
-			returnString += this.notableNPCs[lcv] + "\n";
-		}
+        if (this.notableNPCs != null)
+        {
+            returnString += "\n--==Notable NPCs==--\n";
+            for (int lcv = 0; lcv < this.notableNPCs.Length; lcv++)
+            {
+                returnString += this.notableNPCs[lcv] + "\n";
+            }
+        }
 		returnString += "\n-----=====Districts=====-----\n";
 		for (int lcv = 0; lcv < this.Districts.Length; lcv++)
 		{
@@ -361,13 +367,12 @@ namespace KingmakerResourceViewer
 	public int estimatePopulation()
 	{
 		int newPopulation = 0;
-		if (this.Population <= 0)
+		
+		for (int lcv = 0; lcv < this.Districts.Length; lcv++)
 		{
-			for (int lcv = 0; lcv < this.Districts.Length; lcv++)
-			{
-				newPopulation += Districts[lcv].currentlyOccupiedLots() * 250;
-			}
+			newPopulation += Districts[lcv].currentlyOccupiedLots() * 250;
 		}
+		
 		return newPopulation;
 	}
 	
@@ -484,12 +489,92 @@ namespace KingmakerResourceViewer
 		}
 		return Districts;
 	}
+
+    public void BuildDistricts(Building[] Buildings, string districtName)
+    {
+        District[] Districts = new District[0];
+
+        //Console.Out.WriteLine("At the start of BuildDistricts, there are " + Districts.Length + " districts");
+        Building[] remainder = Buildings;
+        bool nameApplied = false;
+        bool iterationRequired = true;
+
+        if (Districts.Length == 0)
+        {
+            Districts = new District[1];
+            Districts[0] = new District();
+            //Console.Out.WriteLine("Before the loop, I had to add a new district. The new length is " + Districts.Length);
+        }
+        else if (!(districtName.Equals("")))
+        {
+            Districts = District.expand(Districts);
+            Districts[Districts.Length - 1] = new District(districtName);
+            nameApplied = true;
+            //Console.Out.WriteLine("I set the last district in the list to " + districtName);
+        }
+
+        for (int districtLCV = 0; districtLCV < Districts.Length; districtLCV++)
+        {
+            //Console.Out.WriteLine("At the start of the loop, there are " + Districts[districtLCV].remainingLotsAvailable() + " lots available in the " + Districts[districtLCV].nameOfDistrict + " district.");
+            //If the district is unnamed, and a string  has been supplied, and we have not yet named a district in this iteration:
+            //Console.Out.WriteLine(Districts[districtLCV].nameOfDistrict + " is being looped over");
+            if (Districts[districtLCV].nameOfDistrict.Equals("") && !(districtName.Equals("")) && nameApplied == false)
+            {
+                Districts[districtLCV].nameOfDistrict = districtName;
+                nameApplied = true;
+                //Console.Out.WriteLine("I set district #" + districtLCV + " to " + districtName);
+            }
+
+            if (Districts[districtLCV].nameOfDistrict.Equals(districtName) || districtName.Equals("") && iterationRequired)
+            {
+                iterationRequired = false;
+                for (int buildingLCV = 0; buildingLCV < remainder.Length; buildingLCV++)
+                {
+                    //Console.Out.WriteLine(remainder.Length-buildingLCV + " buildings to place");
+                    //Console.Out.WriteLine("Right now, I'm trying to add a " + Buildings[buildingLCV].name + ", owned by " + Buildings[buildingLCV].owner + " to district #" + districtLCV);
+                    if (!Districts[districtLCV].placeBuilding(Buildings[buildingLCV]))
+                    {
+                        //Console.Out.WriteLine("...But the district was full!");
+                        //If we've entered here, this district is full. This building, and all after it, become the only elements in remainder,
+                        //and we're going to break out of the loop prematurely.
+                        remainder = new Building[0];
+                        for (int lcv = 0; lcv < Buildings.Length - buildingLCV; lcv++)
+                        {
+                            remainder = RoomUtilities.expand(remainder);
+                            remainder[lcv] = Buildings[buildingLCV + lcv];
+                        }
+                        buildingLCV = remainder.Length + 1;
+                        Districts = District.expand(Districts);
+                        Districts[Districts.Length - 1] = new District();
+                        districtName = "";
+                        //Console.Out.WriteLine("I had to add a new district. The new length is " + Districts.Length);
+                        iterationRequired = true;
+                    }
+                    //else
+                    //districtLCV = Districts.Length;
+                }
+            }
+            //else
+            //Console.Out.WriteLine("I'm skipping putting buildings in '" + Districts[districtLCV].nameOfDistrict + "' district because the name didn't match '" + districtName + "'" + " (" + Districts[districtLCV].Equals(districtName) + ")");
+            //Console.Out.WriteLine("At the end of the loop, there are " + Districts[districtLCV].remainingLotsAvailable() + " lots available in the " + Districts[districtLCV].nameOfDistrict + " district.");
+
+        }
+        this.Districts = Districts;
+
+        calculateModifiers();
+    }
+
+    public KingdomMods calculateKingdomModifiers()
+    {
+
+    }
 	
 	/**Inner class that stores a district's worth of buildings - typically a settlement only contains a single district*/
-	public class District
+    [Serializable()]
+    public class District
 	{
         public int BLOCK_SIZE = 4;			//The size of a block, in lots
-        public int NUMBER_OF_BLOCKS = 9;		//The number of blocks in a district
+        public int NUMBER_OF_BLOCKS = 9;    //The number of blocks in a district
         public int LOT_SIZE = 750;			//The size of a single lot, in feet
 
         public Building[] Buildings;

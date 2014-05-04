@@ -6,6 +6,7 @@ using System.IO;
 
 namespace KingmakerResourceViewer
 {
+    [Serializable()]
     public class CentralCommand
     {
 
@@ -282,6 +283,28 @@ namespace KingmakerResourceViewer
             this.businesses = RoomUtilities.expand(this.businesses);
 
             this.businesses[this.businesses.Length - 1] = toBeAdded;
+        }
+
+        public void compileLandowners()
+        {
+            Building[] allBuildings = new Building[0];
+            Owner[] allOwners = new Owner[0];
+            for (int lcv = 0; lcv < businesses.Length; lcv++)
+            {
+                for (int innerLCV = 0; innerLCV < businesses[lcv].getBuildings().Length; innerLCV++)
+                {
+                    allBuildings = RoomUtilities.expand(allBuildings);
+                    allBuildings[allBuildings.Length-1] = businesses[lcv].getBuildings()[innerLCV];
+                }
+
+                allOwners = RoomUtilities.expand(allOwners);
+                allOwners[lcv] = businesses[lcv].getOwner();
+            }
+
+            Settlement sampleSettlement = new Settlement();
+            sampleSettlement.BuildDistricts(allBuildings, "Central District");
+
+            command = new Landowners(allOwners, sampleSettlement);
         }
 
         /*public static void main(String[] args) 

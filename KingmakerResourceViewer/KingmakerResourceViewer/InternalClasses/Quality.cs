@@ -6,6 +6,7 @@ using System.Text;
 namespace KingmakerResourceViewer
 {
     /**Inner class that stores all the qualities, disadvantages, and governments of the settlement, proving an easy-to-iterate structure for calculating total modifiers*/
+    [Serializable()]
     public class Quality
     {
         public SettlementMods modifiers;

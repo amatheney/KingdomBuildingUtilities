@@ -6,6 +6,7 @@ using System.Text;
 namespace KingmakerResourceViewer
 {
     /**Stores the potential earnings of a room, building, or collection of buildings. Pivots off 'preferredIncome' - an identifier specifiying the ideal currency to generate*/
+    [Serializable()]
     public class BalanceSheet
     {
         public float GP;					//Maximum gold pieces that can be earned

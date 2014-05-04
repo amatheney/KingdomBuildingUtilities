@@ -8,6 +8,10 @@ using System.Text;
 using System.Windows.Forms;
 using System.Globalization;
 using System.Threading;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml.Serialization;
+using System.IO;
+using System.Runtime.Serialization;
 
 namespace KingmakerResourceViewer
 {
@@ -17,6 +21,7 @@ namespace KingmakerResourceViewer
         Room selectedRoom;
         Organization selectedOrganization;
         Team selectedTeam;
+        String savableFilename;
 
         //Conditional forms
         public BusinessCreationForm NewBusinessForm;
@@ -104,6 +109,9 @@ namespace KingmakerResourceViewer
                 DefenseUpDown.Value = selectedBuilding.kingdomgDefenseModifier;
 
                 BPCostLabel.Text = "Build Point Cost: " + selectedBuilding.BPCost + " BP or " + ((selectedBuilding.BPCost * 4000) * 1.1) + " GP";
+
+                //Fourth tab
+
             }
         }
 
@@ -406,6 +414,9 @@ namespace KingmakerResourceViewer
             central.addBusiness(NewBusinessForm.selectedBusiness);
             FillBusinessListBox();
             PopulateBusinessData();
+
+            central.compileLandowners();
+            Console.WriteLine(central.command.derivedSettlement.toString());
         }
 
         //Gets a String list of all the names in CompleteBuildingList within central command.
@@ -890,6 +901,248 @@ namespace KingmakerResourceViewer
 
                 TeamDescriptionTextBox.Text = selectedTeam.LimtedDescriptionForTextBox();
             }
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog savefile1 = new SaveFileDialog();
+
+            savefile1.Filter = "Kingmaker files |*.king";
+            savefile1.FilterIndex = 2;
+            savefile1.RestoreDirectory = true;
+
+            if (savefile1.ShowDialog() == DialogResult.OK)
+            {
+                savableFilename = savefile1.FileName;
+                SaveValues();
+            }
+        }
+
+        public void SaveValues()
+        {
+            /*XmlSerializer serializer = new XmlSerializer();
+            using(TextWriter textWriter = new StreamWriter(filename)
+            {
+                serializer.Serialize(textWriter, v);
+            }*/
+            Stream myStream;
+
+            Console.WriteLine("Writing file: " + savableFilename);
+            IFormatter formatter = new BinaryFormatter();
+            myStream = new FileStream(savableFilename, FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(myStream, central);
+            myStream.Close();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (savableFilename != null)
+            {
+                SaveValues();
+            }
+            else
+            {
+                SaveFileDialog savefile1 = new SaveFileDialog();
+
+                savefile1.Filter = "Kingmaker files |*.king";
+                savefile1.FilterIndex = 2;
+                savefile1.RestoreDirectory = true;
+
+                if (savefile1.ShowDialog() == DialogResult.OK)
+                {
+                    savableFilename = savefile1.FileName;
+                    SaveValues();
+                }
+            }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openfile1 = new OpenFileDialog();
+
+            openfile1.Filter = "Kingmaker files |*.king";
+            openfile1.FilterIndex = 0;
+            openfile1.RestoreDirectory = true;
+
+            if (openfile1.ShowDialog() == DialogResult.OK)
+            {
+                savableFilename = openfile1.FileName;
+
+                IFormatter formatter = new BinaryFormatter();
+                Stream stream = new FileStream(savableFilename, FileMode.Open, FileAccess.Read, FileShare.Read);
+                central = (CentralCommand)formatter.Deserialize(stream);
+                stream.Close();
+
+                generalRefresh();
+            }
+        }
+
+        private void generalRefresh()
+        {
+            PreferredIncomeComboBox.SelectedIndex = 0;
+            OrganizationPreferredIncomeComboBox.SelectedIndex = 0;
+
+            //Building tab
+            ListBox.ObjectCollection items = BuildingPickerListbox.Items;
+            items.AddRange(GetBuildingNames().ToArray());
+            BuildingPickerListbox.SelectedIndex = 0;
+
+            //Room tab
+            ListBox.ObjectCollection roomItems = RoomListBox.Items;
+            roomItems.AddRange(GetRoomNames().ToArray());
+            RoomListBox.SelectedIndex = 0;
+
+            //Organization tab
+            ListBox.ObjectCollection organizationItems = OrganizationListBox.Items;
+            organizationItems.AddRange(GetOrganizationNames().ToArray());
+            OrganizationListBox.SelectedIndex = 0;
+
+            //Team tab
+            ListBox.ObjectCollection teamItems = TeamListBox.Items;
+            teamItems.AddRange(GetTeamNames().ToArray());
+            TeamListBox.SelectedIndex = 0;
+
+            //Unit testing
+            //selectedBuilding = central.getCompleteBuildingList()[0];
+
+            //Console.Out.WriteLine("Selected building: " + selectedBuilding.toString());
+            setBuildingFields();
+            setRoomFields();
+            
+            //Hope this works
+            Console.WriteLine("Businesses within central: " + central.businesses.Length);
+            FillBusinessListBox();
+            PopulateBusinessData();
+
+            //Settlement tab
+            updateSettlementPane();
+        }
+
+        private void updateSettlementPane()
+        {
+            if (central.command.derivedSettlement != null)
+            {
+                central.command.derivedSettlement.calculateModifiers();
+
+                //Magic items
+                MinorItemsLabel.Text = central.command.derivedSettlement.MinorItems.ToString();
+                MajorItemsLabel.Text = central.command.derivedSettlement.MajorItems.ToString();
+                MediumItemsLabel.Text = central.command.derivedSettlement.MediumItems.ToString();
+
+                //raw stats
+                SpellcastingLabel.Text = "Spellcasting: Spells up to level" + central.command.derivedSettlement.Spellcasting.ToString();
+                PurchaseLimitLabel.Text = "Purchase Limit: 75% chance for items worth " + central.command.derivedSettlement.PurchaseLimit + "gp to be readily available";
+                SettlementPopulationLabel.Text = "Population: " + central.command.derivedSettlement.Population;
+                SizeLabel.Text = "Size: " + central.command.derivedSettlement.Size;
+                AlignmentLabel.Text = "Alignment: " + central.command.derivedSettlement.Alignment;
+
+                //Kingdom-wide stats
+                LoyaltyWideUpDown = central.command.derivedSettlement;
+                FameWideUpDown;
+                EconomyWideUpDown;
+                StabilityWideUpDown;
+                UnrestWideUpDown;
+                DefenseWideUpDown;
+
+                //Settlement-wide stats
+                CrimeWideUpDown;
+                CorruptionWideUpDown;
+                ProductivityWideUpDown;
+                LawWideUpDown;
+                LoreWideUpDown;
+                SocietyWideUpDown;
+
+                updatePlayerGroupBox();
+            }
+        }
+
+        public void updatePlayerGroupBox()
+        {
+            //Populate the player list
+            PlayerListBox;
+
+            //Kingdom stats - lower player section
+            LoyaltyPlayerUpDown;
+            FamePlayerUpDown;
+            EconomyPlayerUpDown;
+            StabilityPlayerUpDown;
+            UnrestPlayerUpDown;
+            DefensePlayerUpDown;
+
+            //Settlement stats - lower player section
+            CrimePlayerUpDown;
+            CorruptionPlayerUpDown;
+            ProductivityPlayerUpDown;
+            LawPlayerUpDown;
+            LorePlayerUpDown;
+            SocietyPlayerUpDown;
+            SettlementWideGroupBox;
+            DistrictsWithinTextBox;
+            DistrictsWithinLabel;
+            CoreStatsLabel;
+        }
+
+        private void BrokenBuildingCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateBuildingCost()
+        {
+            float rushCostMod = 0;
+            float generalCostMod = 0;
+
+            //Reset values from array
+            FlagsGoldUpDown.Value = (decimal)selectedRoom.GPCreate;
+            FlagsInfluenceCostUpDown.Value = (decimal)selectedRoom.InfluenceCreate;
+            FlagsGoodsUpDown.Value = (decimal)selectedRoom.GoodsCreate;
+            FlagsLaborUpDown.Value = (decimal)selectedRoom.LaborCreate;
+            FlagsMagicUpDown.Value = (decimal)selectedRoom.MagicCreate;
+            FlagsDaysToCreateLabel.Text = "Days to create: " + selectedRoom.DaysCreate + " days";
+
+            rushCostMod = (float)RoomRushProductionCostUpDown.Value / 100;
+            if (RoomCostModUpDown.Value < 0)
+                generalCostMod = (float)(1 - (Math.Abs(RoomCostModUpDown.Value) / 100));
+            if (RoomCostModUpDown.Value > 0)
+                generalCostMod = (float)((RoomCostModUpDown.Value / 100) + 1);
+            if (RoomCostModUpDown.Value == 0)
+                generalCostMod = 1;
+            if (RoomCostModUpDown.Value == -100)
+                generalCostMod = 0;
+
+
+            //RushCostModLabel.Text = "Rush Cost Mod: " + rushCostMod.ToString();
+            //GeneralCostModLabel.Text = "General Cost Mod: " + generalCostMod.ToString();
+            //DaysCreateMod.Text = "Days Create Mod: " + (1 - (((RoomRushProductionCostUpDown.Value - 100) / 100) / 2)).ToString();
+
+            if (rushCostMod != 0)
+            {
+                FlagsGoldUpDown.Value = FlagsGoldUpDown.Value * (decimal)rushCostMod;
+                FlagsInfluenceCostUpDown.Value = FlagsInfluenceCostUpDown.Value * (decimal)rushCostMod;
+                FlagsGoodsUpDown.Value = FlagsGoodsUpDown.Value * (decimal)rushCostMod;
+                FlagsLaborUpDown.Value = FlagsLaborUpDown.Value * (decimal)rushCostMod;
+                FlagsMagicUpDown.Value = FlagsMagicUpDown.Value * (decimal)rushCostMod;
+            }
+
+            FlagsGoldUpDown.Value = FlagsGoldUpDown.Value * (decimal)generalCostMod;
+            FlagsInfluenceCostUpDown.Value = FlagsInfluenceCostUpDown.Value * (decimal)generalCostMod;
+            FlagsGoodsUpDown.Value = FlagsGoodsUpDown.Value * (decimal)generalCostMod;
+            FlagsLaborUpDown.Value = FlagsLaborUpDown.Value * (decimal)generalCostMod;
+            FlagsMagicUpDown.Value = FlagsMagicUpDown.Value * (decimal)generalCostMod;
+
+            //Adjust creation time
+            double daysToCreate = selectedRoom.DaysCreate;
+            if (rushCostMod != 0)
+                daysToCreate = Math.Ceiling(selectedRoom.DaysCreate * (float)(1 - (((RoomRushProductionCostUpDown.Value - 100) / 100)) / 2));
+            if (RoomBrokenCheckbox.Checked)
+                daysToCreate *= .5;
+
+            FlagsDaysToCreateLabel.Text = "Days to create: " + daysToCreate + " days";
+        }
+
+        private void NewSettlementButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

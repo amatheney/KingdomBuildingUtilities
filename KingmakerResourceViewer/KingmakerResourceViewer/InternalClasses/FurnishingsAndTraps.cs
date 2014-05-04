@@ -6,6 +6,7 @@ using System.Text;
 namespace KingmakerResourceViewer
 {
     /**Container class to store room augmentations, to hopefully someday include traps*/
+    [Serializable()]
     public class FurnishingsAndTraps
     {
         public String Name;

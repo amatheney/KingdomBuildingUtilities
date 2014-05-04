@@ -40,6 +40,14 @@ namespace KingmakerResourceViewer
             PopulateOrganizationList();
 
             UnitTestPopulating();
+
+            selectedBuilding = new Building();
+            selectedBuilding.name = "Custom Building";
+            selectedBuilding.rooms = new Room[0];
+            
+            selectedOrganization = new Organization();
+            selectedOrganization.name = "Custom Organization";
+            selectedOrganization.teams = new Team[0];
         }
 
         private void UnitTestPopulating()
@@ -221,7 +229,7 @@ namespace KingmakerResourceViewer
                 }
                 else
                 {
-                    ListBox.ObjectCollection items = AdditionalRoomsListBox.Items;
+                    ListBox.ObjectCollection items = AdditionalEmployeesListBox.Items;
                     items.Clear();
                 }
             }
@@ -279,6 +287,9 @@ namespace KingmakerResourceViewer
                 //Set currently selected building in global structure, for editing later
                 selectedBuilding = toBeDescribed;
                 setDescription(toBeDescribed);
+
+                //Now set the rooms in the 'optional' tab
+                PopulateOptionalTab();
             }
         }
 
@@ -335,6 +346,9 @@ namespace KingmakerResourceViewer
                 selectedOrganization = toBeDescribed;
                 //MessageBox.Show("Selected Index: " + BuildingsListBox.SelectedIndex);
                 setDescription(toBeDescribed);
+
+                //Now set the fields in the optional tab
+                PopulateOptionalTab();
             }
         }
 
@@ -427,11 +441,12 @@ namespace KingmakerResourceViewer
                 selectedBuilding.addRoom(RoomPicker.selectedRoom);
 
                 PopulateOptionalTab();
+                //MessageBox.Show(AdditionalRoomsListBox.Items.Count.ToString());
                 AdditionalRoomsListBox.SelectedIndex = selectedBuilding.rooms.Length - 1;
 
                 setOptionalDescription(RoomPicker.selectedRoom);
             }
-            else if (BuildingPicker.DialogResult == DialogResult.Cancel)
+            else if (RoomPicker.DialogResult == DialogResult.Cancel)
             {
                 //MessageBox.Show("Nothing selected, boss");
             }
@@ -457,8 +472,9 @@ namespace KingmakerResourceViewer
                 errorList += "Player name is blank\r\n";
             if (BusinessNameTextBox.Text.Equals(""))
                 errorList += "Business name is blank\r\n";
-            if (BuildingsListBox.Items.Count == 0 && OrganizationListBox.Items.Count == 0)
-                errorList += "No Buildings or Organizations in business\r\n";
+            if (BuildingsListBox.Items.Count == 0 && OrganizationListBox.Items.Count == 0 && AdditionalEmployeesListBox.Items.Count == 0 
+                    && AdditionalRoomsListBox.Items.Count == 0)
+                errorList += "No Buildings, Rooms, Organizations or Teams in business\r\n";
 
             //Buildings and Organization arrays should be set, but clear them and throw an error if there's a mismatch
             if (selectedBusiness.getBuildings().Length != BuildingsListBox.Items.Count)
@@ -472,6 +488,11 @@ namespace KingmakerResourceViewer
             if (errorList.Equals(""))
             {
                 //No errors, create and update the business
+                if (BuildingsListBox.Items.Count == 0 && AdditionalRoomsListBox.Items.Count != 0)
+                    selectedBusiness.addBuilding(selectedBuilding);
+                if (OrganizationListBox.Items.Count == 0 && AdditionalEmployeesListBox.Items.Count != 0)
+                    selectedBusiness.addOrganization(selectedOrganization);
+
                 //Build the manager, if present
                 if (!ManagerNameTextBox.Text.Equals(""))
                 {
@@ -572,6 +593,32 @@ namespace KingmakerResourceViewer
             else
             {
                 //Error message will occur in compile service
+            }
+        }
+
+        private void AddEmployeeButton_Click(object sender, EventArgs e)
+        {
+            TeamPicker = new SubForms.TeamPickerWindow();
+            TeamPicker.ShowDialog();
+
+            if (TeamPicker.DialogResult == DialogResult.OK)
+            {
+                //MessageBox.Show(BuildingPicker.selectedBuilding.toString());
+                selectedOrganization.addTeam(TeamPicker.selectedTeam);
+
+                PopulateOptionalTab();
+                //MessageBox.Show(AdditionalRoomsListBox.Items.Count.ToString());
+                AdditionalEmployeesListBox.SelectedIndex = selectedOrganization.teams.Length - 1;
+
+                setOptionalDescription(TeamPicker.selectedTeam);
+            }
+            else if (TeamPicker.DialogResult == DialogResult.Cancel)
+            {
+                //MessageBox.Show("Nothing selected, boss");
+            }
+            else
+            {
+                //MessageBox.Show("You didn't even pick a button :(");
             }
         }
     }

@@ -6,6 +6,7 @@ using System.Text;
 namespace KingmakerResourceViewer
 {
     /**Container class to store the modifiers for a settlement - broken out to be more flexible and placed in buildings, settlements, disctricts and kingdoms alike.*/
+    [Serializable()]
     public class SettlementMods
     {
         public int settlementCorruptionModifier;

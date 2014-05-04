@@ -6,6 +6,7 @@ using System.Text;
 namespace KingmakerResourceViewer
 {
     /**Container class used to store all the attributes of a Building, from the rooms within to the modifiers on the settlement and kingdom in which the building resides*/
+    [Serializable()]
     public class Building
     {
         public String name;
@@ -748,6 +749,45 @@ namespace KingmakerResourceViewer
             returnString += costs.GP + " GP";
             
             return returnString;
+        }
+
+        public String getModifiedBuildingCostsForTextBox(double percentage)
+        {
+            String returnString = "";
+            BalanceSheet costs = getBuildingCostBalanceSheet();
+
+            if (costs.Goods > 0)
+            {
+                returnString += Math.Ceiling(costs.Goods * percentage) + " Goods";
+            }
+            if (costs.Labor > 0)
+            {
+                if (!returnString.Equals(""))
+                    returnString += ", ";
+                returnString += Math.Ceiling(costs.Labor * percentage) + " Labor";
+            }
+
+            if (costs.Influence > 0)
+            {
+                if (!returnString.Equals(""))
+                    returnString += ", ";
+                returnString += Math.Ceiling(costs.Influence * percentage) + " Influence";
+            }
+
+            if (costs.Magic > 0)
+            {
+                if (!returnString.Equals(""))
+                    returnString += ", ";
+                returnString += Math.Ceiling(costs.Magic * percentage) + " Magic";
+            }
+
+            if (!returnString.Equals(""))
+                returnString += "\r\n--OR ";
+            returnString += Math.Ceiling(costs.GP * percentage) + " GP";
+
+            return returnString;
+
+
         }
 
         //Get an integer value detailing the total days' construction cost of all the rooms within this building
